@@ -8,6 +8,7 @@ public class SonfirmApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SonfirmApplication.class, args);
+		System.out.println("Hello World~!");
 	}
 
 }
