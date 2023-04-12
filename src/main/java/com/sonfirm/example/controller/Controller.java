@@ -10,8 +10,13 @@ public class Controller {
 		return "/index";
 	}
 
-	@RequestMapping("/survey")
-	public String survey() {
+	@RequestMapping("/survey1")
+	public String survey1() {
 		return "/survey1";
+	}
+	
+	@RequestMapping("/survey2")
+	public String survey2() {
+		return "/survey2";
 	}
 }
