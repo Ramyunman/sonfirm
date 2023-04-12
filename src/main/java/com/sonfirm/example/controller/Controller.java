@@ -9,4 +9,9 @@ public class Controller {
 	public String home() {
 		return "/index";
 	}
+
+	@RequestMapping("/survey")
+	public String survey() {
+		return "/survey1";
+	}
 }

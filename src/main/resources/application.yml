@@ -44,3 +44,7 @@ server:
   error:
     whitelabel:
       enabled: false
+      
+mybatis:
+  type-aliases-package: com.sonfirm.example.domain
+  mapper-locations: mapper/**/*.xml
