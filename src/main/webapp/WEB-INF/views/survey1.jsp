@@ -45,7 +45,7 @@
     					<div class="col-sm-auto">
   							<select class="form-select form-select-sm" aria-label=".form-select-sm example">
   								<option selected>메뉴를 선택하세요</option>
-  								<option value="1">주관식</option>
+  								<option value="1">객관식</option>
   								<option value="2">장문형</option>
   								<option value="3">단답형</option>
 							</select>
@@ -53,17 +53,36 @@
     				</div>
   				</div>
 			</div>
-			
-  			<ul class="list-group list-group-flush">
-    			<li class="list-group-item">An item</li>
-    			<li class="list-group-item">A second item</li>
-    			<li class="list-group-item">A third item</li>
- 			 </ul>
+			<div class="form-check">
+  				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  				<label class="form-check-label" for="flexRadioDefault1">
+    				Default radio
+  				</label>
+			</div>
+			<div class="form-check">
+  				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+  				<label class="form-check-label" for="flexRadioDefault2">
+    				Default radio2
+  				</label>
+			</div>
+			<div class="form-check">
+  				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+  				<label class="form-check-label" for="flexRadioDefault3">
+    				Default radio3
+  				</label>
+			</div>
+			<div class="form-check">
+  				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+  				<label class="form-check-label" for="flexRadioDefault4">
+    				Default radio4
+  				</label>
+			</div>
 		</div>	
     </div>
     <div class="col"></div>
 </div>
 &nbsp;
+
 <div class="row">
 	<div class="col"></div>
   	<div class="col">
@@ -79,7 +98,7 @@
     					<div class="col-sm-auto">
   							<select class="form-select form-select-sm" aria-label=".form-select-sm example">
   								<option selected>메뉴를 선택하세요</option>
-  								<option value="1">주관식</option>
+  								<option value="1">객관식</option>
   								<option value="2">장문형</option>
   								<option value="3">단답형</option>
 							</select>
@@ -87,12 +106,13 @@
     				</div>
   				</div>
 			</div>
-			
-  			<ul class="list-group list-group-flush">
-    			<li class="list-group-item">An item</li>
-    			<li class="list-group-item">A second item</li>
-    			<li class="list-group-item">A third item</li>
- 			 </ul>
+  			<div class="card" style="width: 50rem;">
+  				<div class="card-body">
+    				<h5 class="card-title">Card title</h5>
+    				<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  				</div>
+			</div>
 		</div>	
     </div>
     <div class="col"></div>
