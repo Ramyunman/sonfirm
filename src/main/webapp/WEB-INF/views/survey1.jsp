@@ -31,20 +31,71 @@
 </div>
 &nbsp;
 <div class="row">
-	<div class="col">
-	</div>
+	<div class="col"></div>
   	<div class="col">
-    	<div class="card" style="width: 50rem;">
-  	  		<div class="card-header">
-    			<h2>티셔츠신청</h2>
-  			</div>
+  		<div class="card" style="width: 50rem;">
+  			<div class="card-header">
+    			질문을 입력하세요.
+			</div>
+			<div class="container text-center">
+  				<div class="row">
+    				<div class="col"></div>
+    				<div class="col"></div>
+    				<div class="col">
+    					<div class="col-sm-auto">
+  							<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+  								<option selected>메뉴를 선택하세요</option>
+  								<option value="1">주관식</option>
+  								<option value="2">장문형</option>
+  								<option value="3">단답형</option>
+							</select>
+  						</div>
+    				</div>
+  				</div>
+			</div>
+			
   			<ul class="list-group list-group-flush">
-    			<li class="list-group-item">티셔츠를 신청하려면 이름 및 사이즈를 입력하세요.</li>
-  			</ul>
-	 	</div>
+    			<li class="list-group-item">An item</li>
+    			<li class="list-group-item">A second item</li>
+    			<li class="list-group-item">A third item</li>
+ 			 </ul>
+		</div>	
     </div>
-    <div class="col">
+    <div class="col"></div>
+</div>
+&nbsp;
+<div class="row">
+	<div class="col"></div>
+  	<div class="col">
+  		<div class="card" style="width: 50rem;">
+  			<div class="card-header">
+    			질문을 입력하세요.
+			</div>
+			<div class="container text-center">
+  				<div class="row">
+    				<div class="col"></div>
+    				<div class="col"></div>
+    				<div class="col">
+    					<div class="col-sm-auto">
+  							<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+  								<option selected>메뉴를 선택하세요</option>
+  								<option value="1">주관식</option>
+  								<option value="2">장문형</option>
+  								<option value="3">단답형</option>
+							</select>
+  						</div>
+    				</div>
+  				</div>
+			</div>
+			
+  			<ul class="list-group list-group-flush">
+    			<li class="list-group-item">An item</li>
+    			<li class="list-group-item">A second item</li>
+    			<li class="list-group-item">A third item</li>
+ 			 </ul>
+		</div>	
     </div>
+    <div class="col"></div>
 </div>
 	
 

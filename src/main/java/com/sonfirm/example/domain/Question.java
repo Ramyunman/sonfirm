@@ -4,21 +4,28 @@ import java.util.List;
 
 public class Question {
 	
-	private int type;
-	private String value;
+	private int qIdx;			//q_idx
+	private String qTitle;		//q_title
+	private String qType;		//q_type
 	private List<Item> items;
 	
-	public int getType() {
-		return type;
+	public int getqIdx() {
+		return qIdx;
 	}
-	public void setType(int type) {
-		this.type = type;
+	public void setqIdx(int qIdx) {
+		this.qIdx = qIdx;
 	}
-	public String getValue() {
-		return value;
+	public String getqTitle() {
+		return qTitle;
 	}
-	public void setValue(String value) {
-		this.value = value;
+	public void setqTitle(String qTitle) {
+		this.qTitle = qTitle;
+	}
+	public String getqType() {
+		return qType;
+	}
+	public void setqType(String qType) {
+		this.qType = qType;
 	}
 	public List<Item> getItems() {
 		return items;
@@ -26,6 +33,10 @@ public class Question {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
+
+	
+	
+	
 	
 
 }

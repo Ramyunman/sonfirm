@@ -4,29 +4,34 @@ import java.util.List;
 
 public class Survey {
 	
-	private String title;
-	private String description;
+	private int sIdx;						//s_idx
+	private String sTitle;					//s_title
+	private String sDesc;					//s_desc
 	private List<Question> questions;
 	
-	public String getTitle() {
-		return title;
+	public int getsIdx() {
+		return sIdx;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setsIdx(int sIdx) {
+		this.sIdx = sIdx;
 	}
-	public String getDescription() {
-		return description;
+	public String getsTitle() {
+		return sTitle;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setsTitle(String sTitle) {
+		this.sTitle = sTitle;
+	}
+	public String getsDesc() {
+		return sDesc;
+	}
+	public void setsDesc(String sDesc) {
+		this.sDesc = sDesc;
 	}
 	public List<Question> getQuestions() {
 		return questions;
 	}
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
-	}
-	
-	
+	}		
 
 }
