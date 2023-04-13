@@ -6,11 +6,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Hello World</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
 	<h1>Hello Survey~!</h1>
+	
+<div class="row">
+	<div class="col">
+	</div>
+	<div class="col">
+		<div class="card" style="width: 50rem;">
+    		<div class="card-header">
+    			<h2>티셔츠신청</h2>
+  			</div>
+  			<ul class="list-group list-group-flush">
+    			<li class="list-group-item">티셔츠를 신청하려면 이름 및 사이즈를 입력하세요.</li>
+  			</ul>
+		</div>
+    </div>
+    <div class="col">
+    </div>
+</div>
+&nbsp;
+<div class="row">
+	<div class="col">
+	</div>
+  	<div class="col">
+    	<div class="card" style="width: 50rem;">
+  	  		<div class="card-header">
+    			<h2>티셔츠신청</h2>
+  			</div>
+  			<ul class="list-group list-group-flush">
+    			<li class="list-group-item">티셔츠를 신청하려면 이름 및 사이즈를 입력하세요.</li>
+  			</ul>
+	 	</div>
+    </div>
+    <div class="col">
+    </div>
+</div>
+	
+
 	
 	<div class="q">
 	<p>질문 제목</p>
@@ -64,5 +101,6 @@ $(document).on('click','#btn_survey',function() {
 	});
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
