@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello World</title>
+<title>Survey</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -17,7 +17,7 @@
 	<div class="col">
 	</div>
 	<div class="col">
-		<div class="card" style="width: 50rem;">
+		<div class="card" style="width: 53rem;">
     		<div class="card-header">
     			<h2>티셔츠신청</h2>
   			</div>
@@ -29,11 +29,18 @@
     <div class="col">
     </div>
 </div>
+
 &nbsp;
+<div class="d-grid gap-2 col-6 mx-auto">
+  <button class="btn btn-primary" type="button">질문추가</button>
+</div>
+&nbsp;
+
+<!-- 설문지 폼 -->
 <div class="row">
 	<div class="col"></div>
   	<div class="col">
-  		<div class="card" style="width: 50rem;">
+  		<div class="card q" style="width: 53rem;">
   			<div class="card-header">
     			질문을 입력하세요.
 			</div>
@@ -43,7 +50,7 @@
     				<div class="col"></div>
     				<div class="col">
     					<div class="col-sm-auto">
-  							<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+  							<select class="form-select q_type" aria-label="Default select example">
   								<option selected>메뉴를 선택하세요</option>
   								<option value="1">객관식</option>
   								<option value="2">장문형</option>
@@ -59,34 +66,17 @@
     				Default radio
   				</label>
 			</div>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-  				<label class="form-check-label" for="flexRadioDefault2">
-    				Default radio2
-  				</label>
-			</div>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-  				<label class="form-check-label" for="flexRadioDefault3">
-    				Default radio3
-  				</label>
-			</div>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-  				<label class="form-check-label" for="flexRadioDefault4">
-    				Default radio4
-  				</label>
-			</div>
 		</div>	
     </div>
     <div class="col"></div>
 </div>
 &nbsp;
 
+<!-- 설문지 폼 -->
 <div class="row">
 	<div class="col"></div>
   	<div class="col">
-  		<div class="card" style="width: 50rem;">
+  		<div class="card q" style="width: 53rem;">
   			<div class="card-header">
     			질문을 입력하세요.
 			</div>
@@ -96,46 +86,52 @@
     				<div class="col"></div>
     				<div class="col">
     					<div class="col-sm-auto">
-  							<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+  							<select class="form-select q_type" aria-label="Default select example">
   								<option selected>메뉴를 선택하세요</option>
-  								<option value="1">객관식</option>
-  								<option value="2">장문형</option>
-  								<option value="3">단답형</option>
+  									<option value="1">객관식</option>
+  									<option value="2">장문형</option>
+  									<option value="3">단답형</option>
 							</select>
   						</div>
     				</div>
-  				</div>
-			</div>
-  			<div class="card" style="width: 50rem;">
-  				<div class="card-body">
-    				<h5 class="card-title">Card title</h5>
-    				<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    				<div class="mb-3">
+  						<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  						<textarea class="form-control q_title" id="exampleFormControlTextarea1" rows="3"></textarea>
+					</div>
   				</div>
 			</div>
 		</div>	
     </div>
     <div class="col"></div>
 </div>
-	
+&nbsp;
 
+<!-- 제출 버튼 -->
+<div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col">
+    	<button type="submit" class="btn btn-primary">제출</button>
+    </div>
+</div>
 	
+<!-- ----------------------------------------------------------------------- -->
 	<div class="q">
-	<p>질문 제목</p>
-	<select class="q_type">
-	<option value="1">주관식</option>
-	<option value="2">객관식</option>
-	</select>
-	<input type="text" value="" class="q_title">
+		<p>질문 제목</p>
+			<select class="q_type">
+				<option value="1">주관식</option>
+				<option value="2">객관식</option>
+			</select>
+		<input type="text" value="" class="q_title">
 	</div>
 	
 	<div class="q">
-	<p>질문 제목</p>
-	<select class="q_type">
-	<option value="1">주관식</option>
-	<option value="2">객관식</option>
-	</select>
-	<input type="text" value="">
+		<p>질문 제목</p>
+			<select class="q_type">
+				<option value="1">주관식</option>
+				<option value="2">객관식</option>
+			</select>
+		<input type="text" value="">
 	</div>
 	
 <script>
