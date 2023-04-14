@@ -3,7 +3,7 @@ package com.sonfirm.example.domain;
 public class Item {
 	
 	private int iIdx;
-	private String iValue;
+	private String iContent;
 	
 	public int getiIdx() {
 		return iIdx;
@@ -11,11 +11,12 @@ public class Item {
 	public void setiIdx(int iIdx) {
 		this.iIdx = iIdx;
 	}
-	public String getiValue() {
-		return iValue;
+	public String getiContent() {
+		return iContent;
 	}
-	public void setiValue(String iValue) {
-		this.iValue = iValue;
+	public void setiContent(String iContent) {
+		this.iContent = iContent;
 	}
+	
 
 }
