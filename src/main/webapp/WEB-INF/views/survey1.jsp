@@ -32,17 +32,18 @@
 
 &nbsp;
 <div class="d-grid gap-2 col-6 mx-auto">
-  <button class="btn btn-primary" type="button">질문추가</button>
+  <button class="btn btn-outline-success" id="add_question_button" type="button">질문 추가하기</button>
 </div>
 &nbsp;
 
 <!-- 설문지 폼 -->
-<div class="row">
+<div class="row question_form" id="question_form_1" style="display:none;">
 	<div class="col"></div>
   	<div class="col">
   		<div class="card q" style="width: 53rem;">
   			<div class="card-header">
     			질문을 입력하세요.
+    		<button type="button" class="btn-close" aria-label="Close"></button>
 			</div>
 			<div class="container text-center">
   				<div class="row">
@@ -60,51 +61,26 @@
     				</div>
   				</div>
 			</div>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-  				<label class="form-check-label" for="flexRadioDefault1">
-    				Default radio
-  				</label>
-			</div>
 		</div>	
     </div>
     <div class="col"></div>
+</div>
+
+<div class="row" id="question_forms">
 </div>
 &nbsp;
 
-<!-- 설문지 폼 -->
-<div class="row">
-	<div class="col"></div>
-  	<div class="col">
-  		<div class="card q" style="width: 53rem;">
-  			<div class="card-header">
-    			질문을 입력하세요.
-			</div>
-			<div class="container text-center">
-  				<div class="row">
-    				<div class="col"></div>
-    				<div class="col"></div>
-    				<div class="col">
-    					<div class="col-sm-auto">
-  							<select class="form-select q_type" aria-label="Default select example">
-  								<option selected>메뉴를 선택하세요</option>
-  									<option value="1">객관식</option>
-  									<option value="2">장문형</option>
-  									<option value="3">단답형</option>
-							</select>
-  						</div>
-    				</div>
-    				<div class="mb-3">
-  						<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  						<textarea class="form-control q_title" id="exampleFormControlTextarea1" rows="3"></textarea>
-					</div>
-  				</div>
-			</div>
-		</div>	
-    </div>
-    <div class="col"></div>
+<div class="mb-3">
+  	<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  	<textarea class="form-control q_title" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
-&nbsp;
+<div class="form-check">
+	<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+	<label class="form-check-label" for="flexRadioDefault1">
+		Default radio
+	</label>
+</div>
+		
 
 <!-- 제출 버튼 -->
 <div class="row">
@@ -135,6 +111,24 @@
 	</div>
 	
 <script>
+$(document).ready(function() {
+	  // 추가 버튼 클릭 이벤트 처리
+	  $('#add_question_button').click(function() {
+		// 현재 폼 개수 확인
+		var form_count = $('.question_form').length;
+		// 새로운 폼 생성
+		var new_form = $('#question_form_1').clone().attr('id', 'question_form_' + (form_count + 1)).show();
+		// 새로운 폼 추가
+		$('#question_form_' + form_count).after(new_form);
+	  });
+	});
+	
+$(document).on('click', '.btn-close', function() {
+	  $(this).closest('.question_form').hide();
+	});
+
+
+
 $(document).on('click','#btn_survey',function() {
 	let questions = [];
 	
