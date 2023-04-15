@@ -54,18 +54,22 @@ var oper=-1;
     				<div class="col"></div>
     				<div class="col"></div>
     				<div class="col">
-    					<div class="dropdown">
-  							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    							Dropdown button
-  							</button>
-  							<ul class="dropdown-menu">
-    							<li><a class="dropdown-item" href="#">객관식</a></li>
-    							<li><a class="dropdown-item" href="#">장문형</a></li>
-    							<li><a class="dropdown-item" href="#">단답형</a></li>
-  							</ul>
+    					<div class="btn-group" role="group" aria-label="Basic example">
+  							<button type="button" class="btn btn-primary 1">객관식</button>
+  							<button type="button" class="btn btn-primary 2">장문형</button>
+ 							<button type="button" class="btn btn-primary 3">단답형</button>
 						</div>
     				</div>
   				</div>
+  				<!-- 객관식 선택 시 나타날 라디오 버튼 -->
+				
+					<div class="input-group multiple" style="display:none">
+  						<div class="input-group-text">
+    						<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  						</div>
+  							<input type="text" class="form-control" aria-label="Text input with radio button">
+					</div>
+				
 			</div>
 		</div>	
     </div>
@@ -82,14 +86,8 @@ var oper=-1;
   	<textarea class="form-control q_title" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
 
-<!-- 객관식 선택 시 나타날 라디오 버튼 -->
-<div class="multiple choice">
-	<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-	<label class="form-check-label" for="flexRadioDefault1">
-		Default radio
-	</label>
-</div>
-		
+
+
 <!-- 제출 버튼 -->
 <div class="row">
     <div class="col"></div>
@@ -136,21 +134,11 @@ $(document).on('click', '.btn-close', function() {
 	});
 	
 // 객관식 선택시 multiple choice가 나오게
-$(document).ready(function() {
-	// 객관식 문항을 보여주는 함수
-	function showMultipleChoice() {
-		$(".multiple.choice").show();
-		console.log("객관식 문항을 표시합니다.");
-	}
-	
-	// 셀렉트 박스에 change 이벤트 바인딩
-	$('select').change(function() {
-		// 선택된 옵션의 값이 1일때 showMultipleChoice 함수 호출
-		if ($(this).val() == '1') {
-			showMultipleChoice();
-		}
-	});
+$(document).on('click', '.btn.btn-primary.1', function() {
+	console.log('객관식 입력 폼')
+	$(this).parent().next('.input-group.multiple').css('display','flex');
 });
+	
 
 
 
