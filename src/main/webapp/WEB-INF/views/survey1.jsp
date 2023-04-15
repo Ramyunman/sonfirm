@@ -36,6 +36,10 @@
 </div>
 &nbsp;
 
+<script type="text/javascript">
+var oper=-1;
+</script>
+
 <!-- 설문지 폼 -->
 <div class="row question_form" id="question_form_1" style="display:none;">
 	<div class="col"></div>
@@ -50,14 +54,16 @@
     				<div class="col"></div>
     				<div class="col"></div>
     				<div class="col">
-    					<div class="col-sm-auto">
-  							<select class="form-select q_type" aria-label="Default select example">
-  								<option selected>메뉴를 선택하세요</option>
-  								<option value="1">객관식</option>
-  								<option value="2">장문형</option>
-  								<option value="3">단답형</option>
-							</select>
-  						</div>
+    					<div class="dropdown">
+  							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    							Dropdown button
+  							</button>
+  							<ul class="dropdown-menu">
+    							<li><a class="dropdown-item" href="#">객관식</a></li>
+    							<li><a class="dropdown-item" href="#">장문형</a></li>
+    							<li><a class="dropdown-item" href="#">단답형</a></li>
+  							</ul>
+						</div>
     				</div>
   				</div>
 			</div>
