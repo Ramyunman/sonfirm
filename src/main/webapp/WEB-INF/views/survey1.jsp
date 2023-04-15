@@ -70,18 +70,20 @@
 </div>
 &nbsp;
 
+<!-- 장문형, 단답형 선택시 나오는 텍스트 -->
 <div class="mb-3">
   	<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
   	<textarea class="form-control q_title" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
-<div class="form-check">
+
+<!-- 객관식 선택 시 나타날 라디오 버튼 -->
+<div class="multiple choice">
 	<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
 	<label class="form-check-label" for="flexRadioDefault1">
 		Default radio
 	</label>
 </div>
 		
-
 <!-- 제출 버튼 -->
 <div class="row">
     <div class="col"></div>
@@ -91,7 +93,7 @@
     </div>
 </div>
 	
-<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- 
 	<div class="q">
 		<p>질문 제목</p>
 			<select class="q_type">
@@ -109,7 +111,7 @@
 			</select>
 		<input type="text" value="">
 	</div>
-	
+	-->
 <script>
 $(document).ready(function() {
 	  // 추가 버튼 클릭 이벤트 처리
@@ -122,10 +124,27 @@ $(document).ready(function() {
 		$('#question_form_' + form_count).after(new_form);
 	  });
 	});
-	
+
 $(document).on('click', '.btn-close', function() {
 	  $(this).closest('.question_form').hide();
 	});
+	
+// 객관식 선택시 multiple choice가 나오게
+$(document).ready(function() {
+	// 객관식 문항을 보여주는 함수
+	function showMultipleChoice() {
+		$(".multiple.choice").show();
+		console.log("객관식 문항을 표시합니다.");
+	}
+	
+	// 셀렉트 박스에 change 이벤트 바인딩
+	$('select').change(function() {
+		// 선택된 옵션의 값이 1일때 showMultipleChoice 함수 호출
+		if ($(this).val() == '1') {
+			showMultipleChoice();
+		}
+	});
+});
 
 
 
