@@ -30,17 +30,13 @@
 </div>
 &nbsp;
 
-<script type="text/javascript">
-var oper=-1;
-</script>
-
 <!-- 설문지 폼 -->
 <div class="row question_form" id="question_form_1" style="display:none;">
 	<div class="col"></div>
   	<div class="col">
   		<div class="card q" style="width: 53rem;">
   			<div class="card-header">
-    			<div class="mb-3">
+    			<div class="mb-3 q_title">
     				<label for="exampleFormControlInput1" class="form-label"></label>
   					<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="질문을 입력하세요.">
 				</div>
@@ -51,8 +47,8 @@ var oper=-1;
     				<div class="col"></div>
     				<div class="col"></div>
     				<div class="col">
-    					<select class="form-select" aria-label="Default select example">
-  							<option selected>Open this select menu</option>
+    					<select class="form-select q_type" aria-label="Default select example">
+  							<option selected>선택하세요</option>
   							<option value="1">객관식</option>
   							<option value="2">장문형</option>
   							<option value="3">단답형</option>
@@ -60,9 +56,9 @@ var oper=-1;
     				</div>
   				</div>
   				<!-- 장문형, 단답형 선택시 나오는 텍스트 -->
-				<div class="mb-3">
+				<div class="mb-3 i_content" >
   					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  					<textarea class="form-control q_title" id="exampleFormControlTextarea1" rows="3"></textarea>
+  					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				</div>
 			</div>
 		</div>	
