@@ -12,6 +12,7 @@
 <body>
 
 	<h1>Hello Survey~!</h1>
+	
 <div class="container">	
 	<div class="row">
 		<div class="col"></div>
@@ -22,6 +23,7 @@
 		<div class="col"></div>
 	</div>
 </div>
+
 &nbsp;
 <div class="d-grid gap-2 col-6 mx-auto">
   <button class="btn btn-outline-success" id="add_question_button" type="button">질문 추가하기</button>

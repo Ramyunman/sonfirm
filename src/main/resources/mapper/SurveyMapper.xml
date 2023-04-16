@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sonfirm.example.mapper.SurveyMapper">
+<!-- survey 등록 -->
+<insert id="createSurvey" parameterType="Survey">
+	INSERT INTO survey (
+		s_title,
+		s_desc
+	) VALUES (
+		#{sIdx},
+		#{sTitle}
+	)
+</insert>
 
 </mapper>
 
