@@ -12,24 +12,16 @@
 <body>
 
 	<h1>Hello Survey~!</h1>
-	
-<div class="row">
-	<div class="col">
+<div class="container">	
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+			<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="width: 53rem;">
+			<input class="form-control" type="text" placeholder="질문의 상세내용을 입력하세요." aria-label="default input example" style="width: 53rem;">
+   		</div>
+		<div class="col"></div>
 	</div>
-	<div class="col">
-		<div class="card" style="width: 53rem;">
-    		<div class="card-header">
-    			<h2>티셔츠신청</h2>
-  			</div>
-  			<ul class="list-group list-group-flush">
-    			<li class="list-group-item">티셔츠를 신청하려면 이름 및 사이즈를 입력하세요.</li>
-  			</ul>
-		</div>
-    </div>
-    <div class="col">
-    </div>
 </div>
-
 &nbsp;
 <div class="d-grid gap-2 col-6 mx-auto">
   <button class="btn btn-outline-success" id="add_question_button" type="button">질문 추가하기</button>
@@ -46,30 +38,30 @@ var oper=-1;
   	<div class="col">
   		<div class="card q" style="width: 53rem;">
   			<div class="card-header">
-    			질문을 입력하세요.
-    		<button type="button" class="btn-close" aria-label="Close"></button>
+    			<div class="mb-3">
+    				<label for="exampleFormControlInput1" class="form-label"></label>
+  					<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="질문을 입력하세요.">
+				</div>
+    			<button type="button" class="btn-close" aria-label="Close"></button>
 			</div>
 			<div class="container text-center">
   				<div class="row">
     				<div class="col"></div>
     				<div class="col"></div>
     				<div class="col">
-    					<div class="btn-group" role="group" aria-label="Basic example">
-  							<button type="button" class="btn btn-primary 1">객관식</button>
-  							<button type="button" class="btn btn-primary 2">장문형</button>
- 							<button type="button" class="btn btn-primary 3">단답형</button>
-						</div>
+    					<select class="form-select" aria-label="Default select example">
+  							<option selected>Open this select menu</option>
+  							<option value="1">객관식</option>
+  							<option value="2">장문형</option>
+  							<option value="3">단답형</option>
+						</select>
     				</div>
   				</div>
-  				<!-- 객관식 선택 시 나타날 라디오 버튼 -->
-				
-					<div class="input-group multiple" style="display:none">
-  						<div class="input-group-text">
-    						<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
-  						</div>
-  							<input type="text" class="form-control" aria-label="Text input with radio button">
-					</div>
-				
+  				<!-- 장문형, 단답형 선택시 나오는 텍스트 -->
+				<div class="mb-3">
+  					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  					<textarea class="form-control q_title" id="exampleFormControlTextarea1" rows="3"></textarea>
+				</div>
 			</div>
 		</div>	
     </div>
@@ -80,12 +72,16 @@ var oper=-1;
 </div>
 &nbsp;
 
-<!-- 장문형, 단답형 선택시 나오는 텍스트 -->
-<div class="mb-3">
-  	<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  	<textarea class="form-control q_title" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
 
+
+<!-- 객관식 선택 시 나타날 라디오 버튼 -->
+				
+<div class="input-group multiple" style="display:none">
+	<div class="input-group-text">
+    	<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  	</div>
+  		<input type="text" class="form-control" aria-label="Text input with radio button">
+</div>
 
 
 <!-- 제출 버튼 -->
@@ -117,6 +113,7 @@ var oper=-1;
 	</div>
 	-->
 <script>
+// 추가 버튼 클릭하면 질문 추가됨
 $(document).ready(function() {
 	  // 추가 버튼 클릭 이벤트 처리
 	  $('#add_question_button').click(function() {
@@ -129,18 +126,11 @@ $(document).ready(function() {
 	  });
 	});
 
+// 닫기 버튼
 $(document).on('click', '.btn-close', function() {
 	  $(this).closest('.question_form').hide();
 	});
 	
-// 객관식 선택시 multiple choice가 나오게
-$(document).on('click', '.btn.btn-primary.1', function() {
-	console.log('객관식 입력 폼')
-	$(this).parent().next('.input-group.multiple').css('display','flex');
-});
-	
-
-
 
 $(document).on('click','#btn_survey',function() {
 	let questions = [];
