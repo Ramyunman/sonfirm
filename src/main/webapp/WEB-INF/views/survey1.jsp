@@ -26,7 +26,7 @@
 		<div class="col">
 			<div class="card">
   				<div class="card-body">
-    				<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="width: 56rem;">
+    				<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="width: 56rem;  margin-bottom: 10px;">
 					<input class="form-control" type="text" placeholder="질문의 상세내용을 입력하세요." aria-label="default input example" style="width: 56rem;">
   				</div>
 			</div>
@@ -50,7 +50,7 @@
   				<div class="container">
     				<div class="row">
     					<div class="col-sm-11">
-    						<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example">
+    						<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="margin-bottom: 10px;">
     					</div>
     					<div class="col-sm-1">
     						<button type="button" class="btn-close q-close" aria-label="Close"></button>
@@ -60,7 +60,7 @@
     					<div class="col"></div>
     					<div class="col"></div>
     					<div class="col">
-    						<select class="form-select q_type" aria-label="Default select example">
+    						<select class="form-select q_type" aria-label="Default select example" style="margin-bottom: 10px;">
   								<option selected>선택하세요</option>
   								<option value="1">객관식</option>
   								<option value="2">단답형</option>
@@ -69,13 +69,13 @@
     					</div>
     				</div>
     				<!-- 객관식 선택 시 나타날 라디오 버튼 -->			
-					<div class="input-group multipleChoice" style="display:none;">
+					<div class="input-group multipleChoice" style="display:none; margin-bottom:10px">
 						<div class="input-group-text">
     						<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
   						</div>
-  						<input type="text" class="form-control" aria-label="Text input with radio button">
+  						<input type="text" class="form-control" aria-label="Text input with radio button" style="margin-right: 10px;">
   						<!-- 객관식에 대한 추가 버튼 -->
-    					<button type="button" class="btn btn-primary add-radio-input">추가</button>
+    					<button type="button" class="btn btn-dark add-radio-input">추가</button>
 					</div>	
 					
 					<!-- 단답형 선택시 나오는 텍스트 -->
@@ -181,8 +181,8 @@ $(document).on('click', '.q-close', function() {
 //객관식 추가 버튼 클릭 이벤트 핸들러
 $(document).on('click', '.add-radio-input', function() {
     // 추가할 라디오버튼과 입력텍스트 생성
-    var radio_button = $('<div class="input-group-text"><input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"></div>');
-    var input_text = $('<input type="text" class="form-control" aria-label="Text input with radio button">');
+    var radio_button = $('<div class="input-group-text" style="margin-bottom: 10px;"><input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"></div>');
+    var input_text = $('<input type="text" class="form-control" style="margin-bottom: 10px; margin-right: 10px" aria-label="Text input with radio button">');
  	// 객관식 요소 하단에 새로운 라디오버튼과 입력텍스트 추가
     $(this).parent().after($('<div class="input-group multipleChoice"></div>').append(radio_button).append(input_text).append($('<button type="button" class="btn-close i-close" aria-label="Close"></button>')));
 });
