@@ -9,6 +9,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<style>
+
+
+
+
+
+</style>
 <body>
 
 	<h1>Hello Survey~!</h1>
@@ -46,7 +53,7 @@
     						<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example">
     					</div>
     					<div class="col-sm-1">
-    						<button type="button" class="btn-close" aria-label="Close"></button>
+    						<button type="button" class="btn-close q-close" aria-label="Close"></button>
     					</div>
     				</div>	
   					<div class="row">
@@ -67,11 +74,18 @@
     						<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
   						</div>
   						<input type="text" class="form-control" aria-label="Text input with radio button">
+  						<!-- 객관식에 대한 추가 버튼 -->
+    					<button type="button" class="btn btn-primary add-radio-input">추가</button>
 					</div>	
 					
 					<!-- 단답형 선택시 나오는 텍스트 -->
 					<div class="mb-3 shortSentence" style="display:none;">
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="답변을 입력하세요."></textarea>
+					</div>
+					
+					<!-- 장문형 선택시 나오는 텍스트 -->
+					<div class="mb-3 longSentence" style="display:none;">
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="답변을 입력하세요."></textarea>
 					</div>
   				</div>
 			</div>
@@ -80,12 +94,11 @@
     <div class="col"></div>
 </div>
 
-<div class="row" id="question_forms">
-</div>
+<div class="row" id="question_forms"></div>
 &nbsp;
 
 <!-- 장문형 선택시 나오는 텍스트 -->
-<div class="mb-3 longSentence">
+<div class="mb-3 longSentence" style="display:none;">
 	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="답변을 입력하세요."></textarea>
 </div>
 
@@ -99,7 +112,7 @@
 	<div class="input-group-text">
     	<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
   	</div>
-  		<input type="text" class="form-control" aria-label="Text input with radio button">
+  	<input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
 
 
@@ -146,22 +159,36 @@ $(document).ready(function() {
 			$(this).closest('.question_form').find('.multipleChoice').hide();
 			$(this).closest('.question_form').find('.shortSentence').show();
 			$(this).closest('.question_form').find('.longSentence').hide();
-		} else {
+		} else if (selectedOption == '3'){
 			$(this).closest('.question_form').find('.multipleChoice').hide();
 			$(this).closest('.question_form').find('.shortSentence').hide();
 			$(this).closest('.question_form').find('.longSentence').show();
+		} else {
+			$(this).closest('.question_form').find('.multipleChoice').hide();
+		    $(this).closest('.question_form').find('.shortSentence').hide();
+		    $(this).closest('.question_form').find('.longSentence').hide();
 		}
 	});
 });
 
-// 닫기 버튼
-$(document).on('click', '.btn-close', function() {
+// Question 닫기 버튼
+$(document).on('click', '.q-close', function() {
 	  $(this).closest('.question_form').hide();
-	});
+});
 	
-// 객관식 누르면 객관식 질문지 나오게
+//객관식 추가 버튼 클릭 이벤트 핸들러
+$(document).on('click', '.add-radio-input', function() {
+    // 추가할 라디오버튼과 입력텍스트 생성
+    var radio_button = $('<div class="input-group-text"><input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"></div>');
+    var input_text = $('<input type="text" class="form-control" aria-label="Text input with radio button">');
+ 	// 객관식 요소 하단에 새로운 라디오버튼과 입력텍스트 추가
+    $(this).parent().after($('<div class="input-group multipleChoice"></div>').append(radio_button).append(input_text).append($('<button type="button" class="btn-close i-close" aria-label="Close"></button>')));
+});
 
-
+//Item 닫기 버튼 수정요망
+$(document).on('click', '.q-close', function() {
+	  $(this).closest('.question_form').hide();
+});
 <!-- 
 $(document).on('click','#btn_survey',function() {
 	let questions = [];
