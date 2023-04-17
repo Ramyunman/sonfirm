@@ -9,17 +9,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<style>
-
-
-
-
-
-</style>
 <body>
 
 	<h1>Hello Survey~!</h1>
-	
+
+<div id="surveyWeb">
 <div class="container">	
 	<div class="row">
 		<div class="col"></div>
@@ -94,39 +88,20 @@
     <div class="col"></div>
 </div>
 
-<div class="row" id="question_forms"></div>
-&nbsp;
-
-<!-- 장문형 선택시 나오는 텍스트 -->
-<div class="mb-3 longSentence" style="display:none;">
-	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="답변을 입력하세요."></textarea>
-</div>
-
-<!-- 단답형 선택시 나오는 텍스트 -->
-<div class="mb-3 shortSentence" style="display:none;">
-	<textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="답변을 입력하세요."></textarea>
-</div>
-
-<!-- 객관식 선택 시 나타날 라디오 버튼 -->			
-<div class="input-group multipleChoice" style="display:none;">
-	<div class="input-group-text">
-    	<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
-  	</div>
-  	<input type="text" class="form-control" aria-label="Text input with radio button">
-</div>
+<div class="row" id="question_forms" style="margin-bottom:10px;"></div>
 
 <button type="button" class="btn-close i-close" aria-label="Close" style="display:none;"></button>
-
 
 <!-- 제출 버튼 -->
 <div class="row">
     <div class="col"></div>
     <div class="col"></div>
     <div class="col">
-    	<button type="submit" class="btn btn-primary">제출</button>
+    	<button type="submit" class="btn btn-primary submit">제출</button>
     </div>
 </div>
-	
+
+</div>	
 <script>
 // 추가 버튼 클릭하면 질문 추가됨
 $(document).ready(function() {
@@ -187,10 +162,17 @@ $(document).on('click', '.add-radio-input', function() {
     $(this).parent().after($('<div class="input-group multipleChoice"></div>').append(radio_button).append(input_text).append($('<button type="button" class="btn-close i-close" aria-label="Close"></button>')));
 });
 
-//Item 닫기 버튼 수정요망
+//Item 닫기 버튼 
 $(document).on('click', '.i-close', function() {
 	  $(this).parent().remove();
 });
+
+//제출 버튼 실행
+$(document).on('click', '.submit', function(msg) {
+	console.log(msg);
+	$('#surveyWeb').html(msg);
+});
+
 <!-- 
 $(document).on('click','#btn_survey',function() {
 	let questions = [];
