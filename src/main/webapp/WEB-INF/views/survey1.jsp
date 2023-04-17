@@ -17,8 +17,12 @@
 	<div class="row">
 		<div class="col"></div>
 		<div class="col">
-			<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="width: 53rem;">
-			<input class="form-control" type="text" placeholder="질문의 상세내용을 입력하세요." aria-label="default input example" style="width: 53rem;">
+			<div class="card">
+  				<div class="card-body">
+    				<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="width: 56rem;">
+					<input class="form-control" type="text" placeholder="질문의 상세내용을 입력하세요." aria-label="default input example" style="width: 56rem;">
+  				</div>
+			</div>
    		</div>
 		<div class="col"></div>
 	</div>
@@ -34,32 +38,31 @@
 <div class="row question_form" id="question_form_1" style="display:none;">
 	<div class="col"></div>
   	<div class="col">
-  		<div class="card q" style="width: 53rem;">
-  			<div class="card-header">
-    			<div class="mb-3 q_title">
-    				<label for="exampleFormControlInput1" class="form-label"></label>
-  					<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="질문을 입력하세요.">
-				</div>
-    			<button type="button" class="btn-close" aria-label="Close"></button>
-			</div>
-			<div class="container text-center">
-  				<div class="row">
-    				<div class="col"></div>
-    				<div class="col"></div>
-    				<div class="col">
-    					<select class="form-select q_type" aria-label="Default select example">
-  							<option selected>선택하세요</option>
-  							<option value="1">객관식</option>
-  							<option value="2">장문형</option>
-  							<option value="3">단답형</option>
-						</select>
-    				</div>
+  		<div class="card" style="width:58rem;">
+  			<div class="card-body q" >
+  				<div class="container">
+    				<div class="row">
+    					<div class="col-sm-11">
+    						<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example">
+    					</div>
+    					<div class="col-sm-1">
+    						<button type="button" class="btn-close" aria-label="Close"></button>
+    					</div>
+    				</div>	
+    				&nbsp;
+  					<div class="row">
+    					<div class="col"></div>
+    					<div class="col"></div>
+    					<div class="col">
+    						<select class="form-select q_type" aria-label="Default select example">
+  								<option selected>선택하세요</option>
+  								<option value="1">객관식</option>
+  								<option value="2">장문형</option>
+  								<option value="3">단답형</option>
+							</select>
+    					</div>
+  					</div>
   				</div>
-  				<!-- 장문형, 단답형 선택시 나오는 텍스트 -->
-				<div class="mb-3 i_content" >
-  					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
 			</div>
 		</div>	
     </div>
@@ -70,11 +73,14 @@
 </div>
 &nbsp;
 
+<!-- 장문형, 단답형 선택시 나오는 텍스트 -->
+	<div class="mb-3 i_content" >
+  		<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+	</div>
 
-
-<!-- 객관식 선택 시 나타날 라디오 버튼 -->
-				
-<div class="input-group multiple" style="display:none">
+<!-- 객관식 선택 시 나타날 라디오 버튼 -->			
+<div class="input-group multiple">
 	<div class="input-group-text">
     	<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
   	</div>
