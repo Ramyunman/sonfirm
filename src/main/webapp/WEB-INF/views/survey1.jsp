@@ -115,6 +115,8 @@
   	<input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
 
+<button type="button" class="btn-close i-close" aria-label="Close" style="display:none;"></button>
+
 
 <!-- 제출 버튼 -->
 <div class="row">
@@ -186,8 +188,8 @@ $(document).on('click', '.add-radio-input', function() {
 });
 
 //Item 닫기 버튼 수정요망
-$(document).on('click', '.q-close', function() {
-	  $(this).closest('.question_form').hide();
+$(document).on('click', '.i-close', function() {
+	  $(this).parent().remove();
 });
 <!-- 
 $(document).on('click','#btn_survey',function() {
