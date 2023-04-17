@@ -49,7 +49,6 @@
     						<button type="button" class="btn-close" aria-label="Close"></button>
     					</div>
     				</div>	
-    				&nbsp;
   					<div class="row">
     					<div class="col"></div>
     					<div class="col"></div>
@@ -57,11 +56,23 @@
     						<select class="form-select q_type" aria-label="Default select example">
   								<option selected>선택하세요</option>
   								<option value="1">객관식</option>
-  								<option value="2">장문형</option>
-  								<option value="3">단답형</option>
+  								<option value="2">단답형</option>
+  								<option value="3">장문형</option>
 							</select>
     					</div>
-  					</div>
+    				</div>
+    				<!-- 객관식 선택 시 나타날 라디오 버튼 -->			
+					<div class="input-group multipleChoice" style="display:none;">
+						<div class="input-group-text">
+    						<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  						</div>
+  						<input type="text" class="form-control" aria-label="Text input with radio button">
+					</div>	
+					
+					<!-- 단답형 선택시 나오는 텍스트 -->
+					<div class="mb-3 shortSentence" style="display:none;">
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="답변을 입력하세요."></textarea>
+					</div>
   				</div>
 			</div>
 		</div>	
@@ -73,14 +84,18 @@
 </div>
 &nbsp;
 
-<!-- 장문형, 단답형 선택시 나오는 텍스트 -->
-	<div class="mb-3 i_content" >
-  		<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-	</div>
+<!-- 장문형 선택시 나오는 텍스트 -->
+<div class="mb-3 longSentence">
+	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="답변을 입력하세요."></textarea>
+</div>
+
+<!-- 단답형 선택시 나오는 텍스트 -->
+<div class="mb-3 shortSentence" style="display:none;">
+	<textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="답변을 입력하세요."></textarea>
+</div>
 
 <!-- 객관식 선택 시 나타날 라디오 버튼 -->			
-<div class="input-group multiple">
+<div class="input-group multipleChoice" style="display:none;">
 	<div class="input-group-text">
     	<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
   	</div>
@@ -97,45 +112,57 @@
     </div>
 </div>
 	
-<!-- ----------------------------------------------------------------------- 
-	<div class="q">
-		<p>질문 제목</p>
-			<select class="q_type">
-				<option value="1">주관식</option>
-				<option value="2">객관식</option>
-			</select>
-		<input type="text" value="" class="q_title">
-	</div>
-	
-	<div class="q">
-		<p>질문 제목</p>
-			<select class="q_type">
-				<option value="1">주관식</option>
-				<option value="2">객관식</option>
-			</select>
-		<input type="text" value="">
-	</div>
-	-->
 <script>
 // 추가 버튼 클릭하면 질문 추가됨
 $(document).ready(function() {
-	  // 추가 버튼 클릭 이벤트 처리
-	  $('#add_question_button').click(function() {
+	// 추가 버튼 클릭 이벤트 처리
+	$('#add_question_button').click(function() {
 		// 현재 폼 개수 확인
 		var form_count = $('.question_form').length;
 		// 새로운 폼 생성
 		var new_form = $('#question_form_1').clone().attr('id', 'question_form_' + (form_count + 1)).show();
+		// 새로운 객관식 요소 생성, 객관식 요소 추가
+		var multiple_choice = $('<div>').addClass('multipleChoice').hide();
+		new_form.find('.q_type').after(multiple_choice);
+		// 새로운 단답형 요소 생성, 단답형 요소 추가
+		var short_sentence = $('<div>').addClass('shortSentence').hide();
+		new_form.find('.q_type').after(short_sentence);
+		// 새로운 장문형 요소 생성, 장문형 요소 추가
+		var long_sentence = $('<div>').addClass('longSentence').hide();
+		new_form.find('.q_type').after(long_sentence);
+		
 		// 새로운 폼 추가
 		$('#question_form_' + form_count).after(new_form);
-	  });
 	});
+	
+	// 질문 형태에 따른 질문지 나오게
+	$(document).on('change', '.q_type', function() {
+		var selectedOption = $(this).val();
+		if (selectedOption == '1') {
+			$(this).closest('.question_form').find('.multipleChoice').show();
+			$(this).closest('.question_form').find('.shortSentence').hide();
+			$(this).closest('.question_form').find('.longSentence').hide();
+		} else if (selectedOption == '2') {
+			$(this).closest('.question_form').find('.multipleChoice').hide();
+			$(this).closest('.question_form').find('.shortSentence').show();
+			$(this).closest('.question_form').find('.longSentence').hide();
+		} else {
+			$(this).closest('.question_form').find('.multipleChoice').hide();
+			$(this).closest('.question_form').find('.shortSentence').hide();
+			$(this).closest('.question_form').find('.longSentence').show();
+		}
+	});
+});
 
 // 닫기 버튼
 $(document).on('click', '.btn-close', function() {
 	  $(this).closest('.question_form').hide();
 	});
 	
+// 객관식 누르면 객관식 질문지 나오게
 
+
+<!-- 
 $(document).on('click','#btn_survey',function() {
 	let questions = [];
 	
@@ -168,6 +195,7 @@ $(document).on('click','#btn_survey',function() {
 		}
 	});
 });
+-->
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
