@@ -215,69 +215,69 @@ $(document).on('click', '.submit', function(msg) {
 });
 
 var survey = {
-        sIdx: 1,
-        sTitle: "NBA",
-        sDesc: "22-23 시즌 Playoff 예상",
-        questions: [
-            {
-                qIdx: 1,
-                qTitle: "서부지역 챔피언은 어느팀이 될 것 같나요?",
-                qType: "multi",
-                items: [
-                    {
-                        iIdx: 1,
-                        iContent: "LA Lakers"
-                    },
-                    {
-                        iIdx: 2,
-                        iContent: "GoldenState Warriors"
-                    },
-                    {
-                        iIdx: 3,
-                        iContent: "Denver Nuggets"
-                    },
-                    {
-                        iIdx: 4,
-                        iContent: "LA Clippers"
-                    }
-                ]
-            },
-            {
-                qIdx: 2,
-                qTitle: "올 시즌 플레이오프에서 눈여겨 봐야할 선수는?(다중선택가능)",
-                qType: "check",
-                items: [
-                    {
-                        iIdx: 5,
-                        iContent: "오스틴 리브스"
-                    },
-                    {
-                        iIdx: 6,
-                        iContent: "디애런 팍스"
-                    },
-                    {
-                        iIdx: 7,
-                        iContent: "조엘 엠비드"
-                    },
-                    {
-                        iIdx: 8,
-                        iContent: "니콜라 요키치"
-                    }
-                ]
-            },
-            {
-                qIdx: 3,
-                qTitle: "어느 팀이 우승할 것 같은지, 이유는?",
-                qType: "subjective",
-                items: [
-                    {
-                        iIdx: 9,
-                        iContent: "레이커스가 우승할 것 같다. 왜냐하면 트레이드를 잘했고 팀워크가 좋아보여서"
-                    }
-                ]
-            }
-        ]
-    };
+	sIdx: 1,
+    sTitle: "NBA",
+    sDesc: "22-23 시즌 Playoff 예상",
+    questions: [
+        {
+            qIdx: 1,
+            qTitle: "서부지역 챔피언은 어느팀이 될 것 같나요?",
+            qType: "multi",
+            items: [
+                {
+                    iIdx: 1,
+                    iContent: "LA Lakers"
+                },
+                {
+                    iIdx: 2,
+                    iContent: "GoldenState Warriors"
+                },
+                {
+                    iIdx: 3,
+                    iContent: "Denver Nuggets"
+                },
+                {
+                    iIdx: 4,
+                    iContent: "LA Clippers"
+                }
+            ]
+        },
+        {
+            qIdx: 2,
+            qTitle: "올 시즌 플레이오프에서 눈여겨 봐야할 선수는?(다중선택가능)",
+            qType: "check",
+            items: [
+                {
+                    iIdx: 5,
+                    iContent: "오스틴 리브스"
+                },
+                {
+                    iIdx: 6,
+                    iContent: "디애런 팍스"
+                },
+                {
+                    iIdx: 7,
+                    iContent: "조엘 엠비드"
+                },
+                {
+                    iIdx: 8,
+                    iContent: "니콜라 요키치"
+                }
+            ]
+        },
+        {
+            qIdx: 3,
+            qTitle: "어느 팀이 우승할 것 같은지, 이유는?",
+            qType: "subjective",
+            items: [
+                {
+                    iIdx: 9,
+                    iContent: "레이커스가 우승할 것 같다. 왜냐하면 트레이드를 잘했고 팀워크가 좋아보여서"
+                }
+            ]
+        }
+    ]
+};
     
     console.log(survey); // JavaScript 객체를 콘솔에 출력
 <!-- 
