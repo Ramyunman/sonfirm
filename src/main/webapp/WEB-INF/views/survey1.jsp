@@ -81,9 +81,9 @@
     					<div class="col">
     						<select class="form-select q_type" aria-label="Default select example" style="margin-bottom: 10px;">
   								<option selected>선택하세요</option>
-  								<option value="1">객관식</option>
-  								<option value="2">체크박스</option>
-  								<option value="3">주관식</option>
+  								<option value="multi">객관식</option>
+  								<option value="check">체크박스</option>
+  								<option value="subjective">주관식</option>
 							</select>
     					</div>
     				</div>
@@ -156,15 +156,15 @@ $(document).ready(function() {
 	// 질문 형태에 따른 질문지 나오게
 	$(document).on('change', '.q_type', function() {
 		var selectedOption = $(this).val();
-		if (selectedOption == '1') {
+		if (selectedOption == 'multi') {
 			$(this).closest('.question_form').find('.multipleChoice').show();
 			$(this).closest('.question_form').find('.checkBox').hide();
 			$(this).closest('.question_form').find('.longSentence').hide();
-		} else if (selectedOption == '2') {
+		} else if (selectedOption == 'check') {
 			$(this).closest('.question_form').find('.multipleChoice').hide();
 			$(this).closest('.question_form').find('.checkBox').show();
 			$(this).closest('.question_form').find('.longSentence').hide();
-		} else if (selectedOption == '3'){
+		} else if (selectedOption == 'subjective'){
 			$(this).closest('.question_form').find('.multipleChoice').hide();
 			$(this).closest('.question_form').find('.checkBox').hide();
 			$(this).closest('.question_form').find('.longSentence').show();
@@ -214,6 +214,72 @@ $(document).on('click', '.submit', function(msg) {
 	console.log(msg);
 });
 
+var survey = {
+        sIdx: 1,
+        sTitle: "NBA",
+        sDesc: "22-23 시즌 Playoff 예상",
+        questions: [
+            {
+                qIdx: 1,
+                qTitle: "서부지역 챔피언은 어느팀이 될 것 같나요?",
+                qType: "multi",
+                items: [
+                    {
+                        iIdx: 1,
+                        iContent: "LA Lakers"
+                    },
+                    {
+                        iIdx: 2,
+                        iContent: "GoldenState Warriors"
+                    },
+                    {
+                        iIdx: 3,
+                        iContent: "Denver Nuggets"
+                    },
+                    {
+                        iIdx: 4,
+                        iContent: "LA Clippers"
+                    }
+                ]
+            },
+            {
+                qIdx: 2,
+                qTitle: "올 시즌 플레이오프에서 눈여겨 봐야할 선수는?(다중선택가능)",
+                qType: "check",
+                items: [
+                    {
+                        iIdx: 5,
+                        iContent: "오스틴 리브스"
+                    },
+                    {
+                        iIdx: 6,
+                        iContent: "디애런 팍스"
+                    },
+                    {
+                        iIdx: 7,
+                        iContent: "조엘 엠비드"
+                    },
+                    {
+                        iIdx: 8,
+                        iContent: "니콜라 요키치"
+                    }
+                ]
+            },
+            {
+                qIdx: 3,
+                qTitle: "어느 팀이 우승할 것 같은지, 이유는?",
+                qType: "subjective",
+                items: [
+                    {
+                        iIdx: 9,
+                        iContent: "레이커스가 우승할 것 같다. 왜냐하면 트레이드를 잘했고 팀워크가 좋아보여서"
+                    }
+                ]
+            }
+        ]
+    };
+    
+    console.log(survey); // JavaScript 객체를 콘솔에 출력
 <!-- 
 $(document).on('click','#btn_survey',function() {
 	let questions = [];
