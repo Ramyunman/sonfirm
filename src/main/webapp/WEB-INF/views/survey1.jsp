@@ -61,7 +61,7 @@
 &nbsp;
 
 <!-- 설문지 폼 -->
-<div class="row question_form" id="question_form_1" style="display:none;">
+<div class="row question_form" id="question_form_1" style="display:none; margin-bottom:10px;">
 	<div class="col"></div>
   	<div class="col">
   		<div class="card" style="width:58rem;">
