@@ -214,7 +214,7 @@ $(document).on('click', '.submit', function(msg) {
 	console.log(msg);
 });
 
-var survey = {
+let survey = {
 	sIdx: 1,
     sTitle: "NBA",
     sDesc: "22-23 시즌 Playoff 예상",
