@@ -65,11 +65,11 @@
 	<div class="col"></div>
   	<div class="col">
   		<div class="card" style="width:58rem;">
-  			<div class="card-body q" >
+  			<div class="card-body" >
   				<div class="container">
     				<div class="row">
     					<div class="col-sm-11">
-    						<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="margin-bottom: 10px;">
+    						<input class="form-control questionTitle" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="margin-bottom: 10px;">
     					</div>
     					<div class="col-sm-1">
     						<button type="button" class="btn-close q-close" aria-label="Close"></button>
@@ -79,7 +79,7 @@
     					<div class="col"></div>
     					<div class="col"></div>
     					<div class="col">
-    						<select class="form-select q_type" aria-label="Default select example" style="margin-bottom: 10px;">
+    						<select class="form-select selectType" aria-label="Default select example" style="margin-bottom: 10px;">
   								<option selected>선택하세요</option>
   								<option value="multi">객관식</option>
   								<option value="check">체크박스</option>
@@ -125,7 +125,7 @@
     <div class="col"></div>
     <div class="col"></div>
     <div class="col">
-    	<button type="submit" class="btn btn-primary submit">제출</button>
+    	<button type="submit" class="btn btn-primary submit-survey">제출</button>
     </div>
 </div>
 
@@ -141,20 +141,20 @@ $(document).ready(function() {
 		var new_form = $('#question_form_1').clone().attr('id', 'question_form_' + (form_count + 1)).show();
 		// 새로운 객관식 요소 생성, 객관식 요소 추가
 		var multiple_choice = $('<div>').addClass('multipleChoice').hide();
-		new_form.find('.q_type').after(multiple_choice);
+		new_form.find('.selectType').after(multiple_choice);
 		// 새로운 체크박스 요소 생성, 체크박스 요소 추가
 		var check_box = $('<div>').addClass('checkBox').hide();
-		new_form.find('.q_type').after(check_box);
+		new_form.find('.selectType').after(check_box);
 		// 새로운 주관식 요소 생성, 주관식 요소 추가
 		var long_sentence = $('<div>').addClass('longSentence').hide();
-		new_form.find('.q_type').after(long_sentence);
+		new_form.find('.selectType').after(long_sentence);
 		
 		// 새로운 폼 추가
 		$('#question_form_' + form_count).after(new_form);
 	});
 	
 	// 질문 형태에 따른 질문지 나오게
-	$(document).on('change', '.q_type', function() {
+	$(document).on('change', '.selectType', function() {
 		var selectedOption = $(this).val();
 		if (selectedOption == 'multi') {
 			$(this).closest('.question_form').find('.multipleChoice').show();
@@ -280,27 +280,42 @@ let survey = {
 };
     
     console.log(survey); // JavaScript 객체를 콘솔에 출력
-<!-- 
-$(document).on('click','#btn_survey',function() {
+
+$(document).on('click','submit-survey', function() {
 	let questions = [];
 	
-	$('.q').each(function() {
-		let q_title = $(this).find('.q_title').val();
-		let q_type = $(this).find('q_type:selected').val();
+	$('.question_form').each(function() {
+		let q_title = $(this).find('.questionTitle').val();
+		let q_type = $(this).find('.selectType').val();
 		let items = [];
 	
-		$('.item', this).each(function() {
-			let item_content = $(this).val();
-			let item = { content: item_content };
-			items.push(item);
-		});
-	
+		if (q_type === 'multi') {
+			$('.multipleChoice .form-control', this).each(function() {
+				let i_content = $(this).val();
+				let item = { content: i_content };
+				items.push(item);
+			});
+		} else if (q_type === 'check') {
+			$('.checkBox .form-control', this).each(function() {
+				let i_content = $(this).val();
+				let item = { content: i_content };
+				items.push(item);
+			});
+		} else (q_type === 'subjective') {
+			$('.longSentence .form-control', this).each(function() {
+				let i_content = $(this).val();
+				let item = { content: i_content };
+				items.push(item);
+			});
+		}
+		
 		let question = { title: q_title, type: q_type, items: items }
 		questions.push(question);
 	});
 	
 	let survey = { title: 'Survey Title', desc: 'Survey Description', questions: questions };
 	
+	<!-- 
 	$.ajax({
 		url: 'submit_survey.php',
 		method: 'POST',
@@ -312,8 +327,9 @@ $(document).on('click','#btn_survey',function() {
 			console.log(error);
 		}
 	});
+	-->
 });
--->
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
