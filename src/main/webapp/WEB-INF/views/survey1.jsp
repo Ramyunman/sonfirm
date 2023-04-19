@@ -45,8 +45,8 @@
 		<div class="col">
 			<div class="card">
   				<div class="card-body">
-    				<input class="form-control" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="width: 56rem;  margin-bottom: 10px;">
-					<input class="form-control" type="text" placeholder="질문의 상세내용을 입력하세요." aria-label="default input example" style="width: 56rem;">
+    				<input class="form-control surveyTitle" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="width: 56rem;  margin-bottom: 10px;">
+					<input class="form-control surveyDesc" type="text" placeholder="질문의 상세내용을 입력하세요." aria-label="default input example" style="width: 56rem;">
   				</div>
 			</div>
    		</div>
@@ -209,79 +209,8 @@ $(document).on('click', '.i-close', function() {
 	  $(this).parent().remove();
 });
 
-//제출 버튼 실행
-$(document).on('click', '.submit', function(msg) {
-	console.log(msg);
-});
-
-let survey = {
-	sIdx: 1,
-    sTitle: "NBA",
-    sDesc: "22-23 시즌 Playoff 예상",
-    questions: [
-        {
-            qIdx: 1,
-            qTitle: "서부지역 챔피언은 어느팀이 될 것 같나요?",
-            qType: "multi",
-            items: [
-                {
-                    iIdx: 1,
-                    iContent: "LA Lakers"
-                },
-                {
-                    iIdx: 2,
-                    iContent: "GoldenState Warriors"
-                },
-                {
-                    iIdx: 3,
-                    iContent: "Denver Nuggets"
-                },
-                {
-                    iIdx: 4,
-                    iContent: "LA Clippers"
-                }
-            ]
-        },
-        {
-            qIdx: 2,
-            qTitle: "올 시즌 플레이오프에서 눈여겨 봐야할 선수는?(다중선택가능)",
-            qType: "check",
-            items: [
-                {
-                    iIdx: 5,
-                    iContent: "오스틴 리브스"
-                },
-                {
-                    iIdx: 6,
-                    iContent: "디애런 팍스"
-                },
-                {
-                    iIdx: 7,
-                    iContent: "조엘 엠비드"
-                },
-                {
-                    iIdx: 8,
-                    iContent: "니콜라 요키치"
-                }
-            ]
-        },
-        {
-            qIdx: 3,
-            qTitle: "어느 팀이 우승할 것 같은지, 이유는?",
-            qType: "subjective",
-            items: [
-                {
-                    iIdx: 9,
-                    iContent: "레이커스가 우승할 것 같다. 왜냐하면 트레이드를 잘했고 팀워크가 좋아보여서"
-                }
-            ]
-        }
-    ]
-};
-    
-    console.log(survey); // JavaScript 객체를 콘솔에 출력
-
-$(document).on('click','submit-survey', function() {
+// 제출 버튼 실행
+$(document).on('click', '.submit-survey', function() {
 	let questions = [];
 	
 	$('.question_form').each(function() {
@@ -301,7 +230,7 @@ $(document).on('click','submit-survey', function() {
 				let item = { content: i_content };
 				items.push(item);
 			});
-		} else (q_type === 'subjective') {
+		} else if (q_type === 'subjective') {
 			$('.longSentence .form-control', this).each(function() {
 				let i_content = $(this).val();
 				let item = { content: i_content };
@@ -309,25 +238,16 @@ $(document).on('click','submit-survey', function() {
 			});
 		}
 		
-		let question = { title: q_title, type: q_type, items: items }
-		questions.push(question);
+		let questionObj = { title: q_title, type: q_type, items: items }
+		questions.push(questionObj);
 	});
 	
-	let survey = { title: 'Survey Title', desc: 'Survey Description', questions: questions };
+	let s_title = $('.surveyTitle').val();
+	let s_desc = $('.surveyDesc').val();
+	let survey = { SURVEYtitle: s_title, SURVEYdesc: s_desc, SURVEYquestions: questions };
 	
-	<!-- 
-	$.ajax({
-		url: 'submit_survey.php',
-		method: 'POST',
-		data: survey,
-		success: function(response) {
-			console.log(response);
-		},
-		error: function(xhr, status, error) {
-			console.log(error);
-		}
-	});
-	-->
+	console.log(survey);
+	
 });
 
 </script>
