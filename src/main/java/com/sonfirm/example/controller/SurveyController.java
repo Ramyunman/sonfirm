@@ -4,12 +4,15 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sonfirm.example.domain.Survey;
 import com.sonfirm.example.service.SurveyService;
 
 @org.springframework.stereotype.Controller
-public class Controller {
+public class SurveyController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -24,9 +27,9 @@ public class Controller {
 		logger.info("error");
 		return "/index";
 	}
-
-	@RequestMapping("/survey1")
-	public String survey1() {
+	
+	@PostMapping("/submit_survey")
+	public String submitSurvey(@RequestBody Survey survey) {
 		return "/survey1";
 	}
 	

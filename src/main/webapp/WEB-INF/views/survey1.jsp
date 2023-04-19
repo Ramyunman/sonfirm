@@ -252,17 +252,17 @@ $(document).on('click', '.submit-survey', function() {
 	console.log(survey);
 	
 	$.ajax({
-		type: 'POST',	// 전송 방식 설정
-		url: '/submit_survey',	// 서버 URL 설정
+		url: "/submit_survey",	// 서버 URL 설정
+		type: "POST",	// 전송 방식 설정
+		contentType: "application/json; charset=utf-8",	// 전송 데이터 타입 설정
 		data: JSON.stringify(survey),	// 전송할 데이터 설정
-		contentType: 'application/json',	// 전송 데이터 타입 설정
-		success: function(response) {
+		success: function(data) {
 			// 서버로부터 응답을 받았을 때 처리할 로직
-			console.log('설문조사 제출 완료', response);
+			console.log('설문조사 제출 완료');
 		},
 		error: function(xhr, status, error) {
 			// 서버 전송 중 오류가 발생했을 때 처리할 로직
-			console.log('설문조사 제출 오류', error);
+			console.log('설문조사 제출 오류');
 		}
 		
 	});
