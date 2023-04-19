@@ -7,7 +7,7 @@ public class Question {
 	private int qIdx;			//q_idx
 	private String qTitle;		//q_title
 	private String qType;		//q_type
-	private List<Item> items;
+	private List<Item> qItems;
 	
 	public int getqIdx() {
 		return qIdx;
@@ -27,16 +27,11 @@ public class Question {
 	public void setqType(String qType) {
 		this.qType = qType;
 	}
-	public List<Item> getItems() {
-		return items;
+	public List<Item> getqItems() {
+		return qItems;
 	}
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setqItems(List<Item> qItems) {
+		this.qItems = qItems;
 	}
-
 	
-	
-	
-	
-
 }

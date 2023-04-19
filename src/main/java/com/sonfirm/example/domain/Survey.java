@@ -7,7 +7,7 @@ public class Survey {
 	private int sIdx;						//s_idx
 	private String sTitle;					//s_title
 	private String sDesc;					//s_desc
-	private List<Question> questions;
+	private List<Question> sQuestions;
 	
 	public int getsIdx() {
 		return sIdx;
@@ -27,11 +27,12 @@ public class Survey {
 	public void setsDesc(String sDesc) {
 		this.sDesc = sDesc;
 	}
-	public List<Question> getQuestions() {
-		return questions;
+	public List<Question> getsQuestions() {
+		return sQuestions;
 	}
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
-	}		
+	public void setsQuestions(List<Question> sQuestions) {
+		this.sQuestions = sQuestions;
+	}
+	
 
 }

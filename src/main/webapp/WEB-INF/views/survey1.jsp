@@ -238,15 +238,34 @@ $(document).on('click', '.submit-survey', function() {
 			});
 		}
 		
-		let questionObj = { title: q_title, type: q_type, items: items }
-		questions.push(questionObj);
+		// 질문이 모두 채워져 있는지 확인 후 추가
+		if (q_title !== '' && q_type !== '' && items.length > 0) {
+			let questionObj = { qTitle: q_title, qType: q_type, qItems: items }
+			questions.push(questionObj);
+		}
 	});
 	
 	let s_title = $('.surveyTitle').val();
 	let s_desc = $('.surveyDesc').val();
-	let survey = { SURVEYtitle: s_title, SURVEYdesc: s_desc, SURVEYquestions: questions };
+	let survey = { sTitle: s_title, sDesc: s_desc, sQuestions: questions };
 	
 	console.log(survey);
+	
+	$.ajax({
+		type: 'POST',	// 전송 방식 설정
+		url: '/submit_survey',	// 서버 URL 설정
+		data: JSON.stringify(survey),	// 전송할 데이터 설정
+		contentType: 'application/json',	// 전송 데이터 타입 설정
+		success: function(response) {
+			// 서버로부터 응답을 받았을 때 처리할 로직
+			console.log('설문조사 제출 완료', response);
+		},
+		error: function(xhr, status, error) {
+			// 서버 전송 중 오류가 발생했을 때 처리할 로직
+			console.log('설문조사 제출 오류', error);
+		}
+		
+	});
 	
 });
 
