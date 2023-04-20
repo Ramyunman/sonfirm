@@ -31,7 +31,7 @@ public class SurveyController {
 	}
 	
 	@RequestMapping("/survey1")
-	public String survey2() {
+	public String survey1() {
 		return "/survey1";
 	}
 	

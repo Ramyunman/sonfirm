@@ -13,14 +13,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			// CSRF 방어 기능 활성화
-			.csrf()
-				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-			.and()
-			// 다른 설정 추가
+			.csrf().disable() // CSRF 방어 비활성화
 			.authorizeRequests()
-				.antMatchers("/submit_survey").authenticated()
-				.anyRequest().permitAll();
+			.antMatchers("/submit_survey").permitAll() // "/submit_survey" 경로에 대한 인증 필요 없음
+			.anyRequest().permitAll(); // 나머지 모든 요청에 대해 허용
+			
 	}
 
 }

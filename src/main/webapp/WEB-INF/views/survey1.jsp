@@ -260,11 +260,9 @@ $(document).on('click', '.submit-survey', function() {
 		url: "/submit_survey",	// 서버 URL 설정
 		type: "POST",	// 전송 방식 설정
 		contentType: "application/json",	// 전송 데이터 타입 설정
-		beforeSend: function(xhr) {
-			xhr.setRequestHeader('${_csrf.parameterName}', '${_csrf.token}');
-		},
+	  //headers: { "${_csrf.headerName}": "${_csrf.token}" },	// CSRF 토큰 헤더 설정
 		data: JSON.stringify(survey),	// 전송할 데이터 설정
-		success: function(data) {
+		success: function(response) {
 			// 서버로부터 응답을 받았을 때 처리할 로직
 			console.log('설문조사 제출 완료');
 		},
