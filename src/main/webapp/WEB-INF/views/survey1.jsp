@@ -259,7 +259,7 @@ $(document).on('click', '.submit-survey', function() {
 	$.ajax({
 		url: "/submit_survey",	// 서버 URL 설정
 		type: "POST",	// 전송 방식 설정
-		contentType: "application/json; charset=utf-8",	// 전송 데이터 타입 설정
+		contentType: "application/json",	// 전송 데이터 타입 설정
 		beforeSend: function(xhr) {
 			xhr.setRequestHeader('${_csrf.parameterName}', '${_csrf.token}');
 		},
