@@ -33,6 +33,10 @@ public class Survey {
 	public void setsQuestions(List<Question> sQuestions) {
 		this.sQuestions = sQuestions;
 	}
+	@Override
+	public String toString() {
+		return "Survey [sIdx=" + sIdx + ", sTitle=" + sTitle + ", sDesc=" + sDesc + ", sQuestions=" + sQuestions + "]";
+	}
 	
 
 }

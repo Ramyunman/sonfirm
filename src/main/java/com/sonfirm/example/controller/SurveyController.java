@@ -28,13 +28,15 @@ public class SurveyController {
 		return "/index";
 	}
 	
-	@PostMapping("/submit_survey")
-	public String submitSurvey(@RequestBody Survey survey) {
+	@RequestMapping("/survey1")
+	public String survey2() {
 		return "/survey1";
 	}
 	
-	@RequestMapping("/survey2")
-	public String survey2() {
-		return "/survey2";
+	@PostMapping("/submit_survey")
+	public Survey submitSurvey(@RequestBody Survey survey) {
+		return survey;
 	}
+	
+	
 }

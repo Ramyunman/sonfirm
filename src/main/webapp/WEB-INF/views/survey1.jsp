@@ -121,13 +121,18 @@
 <button type="button" class="btn-close i-close" aria-label="Close" style="display:none;"></button>
 
 <!-- 제출 버튼 -->
-<div class="row">
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col">
-    	<button type="submit" class="btn btn-primary submit-survey">제출</button>
+<form action="/submit_survey" method="post">
+    <!-- 폼 필드들... -->
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary submit-survey">제출</button>
+        </div>
     </div>
-</div>
+</form>
+
 
 	
 <script>
@@ -255,6 +260,9 @@ $(document).on('click', '.submit-survey', function() {
 		url: "/submit_survey",	// 서버 URL 설정
 		type: "POST",	// 전송 방식 설정
 		contentType: "application/json; charset=utf-8",	// 전송 데이터 타입 설정
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('${_csrf.parameterName}', '${_csrf.token}');
+		},
 		data: JSON.stringify(survey),	// 전송할 데이터 설정
 		success: function(data) {
 			// 서버로부터 응답을 받았을 때 처리할 로직
