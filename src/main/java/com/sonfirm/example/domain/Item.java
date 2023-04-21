@@ -4,7 +4,8 @@ public class Item {
 	
 	private int iIdx;			//i_idx
 	private String iContent;	//i_content
-	private Question question;	//question 객체 추가
+	private int qIdx;			//q_idx
+//	private Question question;	//question 객체 추가
 	
 	public int getiIdx() {
 		return iIdx;
@@ -18,12 +19,13 @@ public class Item {
 	public void setiContent(String iContent) {
 		this.iContent = iContent;
 	}
-	public Question getQuestion() {
-		return question;
+	public int getqIdx() {
+		return qIdx;
 	}
-	public void setQuestion(Question question) {
-		this.question = question;
+	public void setqIdx(int qIdx) {
+		this.qIdx = qIdx;
 	}
+	
 	
 	
 

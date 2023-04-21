@@ -8,7 +8,7 @@
 		q_idx
 	) VALUES (
 		#{iContent},
-		#{question.qIdx}
+		#{qIdx}
 	)
 	<selectKey keyProperty="iIdx" resultType="Integer">
 		SELECT		last_insert_id()
