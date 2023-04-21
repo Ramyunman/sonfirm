@@ -10,7 +10,7 @@
 	) VALUES (
 		#{qTitle},
 		#{qType},
-		#{sIdx}	
+		#{survey.sIdx}	
 	)
 	<selectKey keyProperty="qIdx" resultType="Integer">
 		SELECT		last_insert_id()

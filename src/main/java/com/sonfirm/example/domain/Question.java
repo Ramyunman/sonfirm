@@ -8,8 +8,7 @@ public class Question {
 	private String qTitle;		//q_title
 	private String qType;		//q_type	
 	private List<Item> qItems;
-	private int sIdx;			//s_idx
-//	private Survey survey;		//survey 객체 추가
+	private Survey survey;		//survey 객체 추가
 	
 	public int getqIdx() {
 		return qIdx;
@@ -29,19 +28,19 @@ public class Question {
 	public void setqType(String qType) {
 		this.qType = qType;
 	}
-
 	public List<Item> getqItems() {
 		return qItems;
 	}
 	public void setqItems(List<Item> qItems) {
 		this.qItems = qItems;
 	}
-	public int getsIdx() {
-		return sIdx;
+	public Survey getSurvey() {
+		return survey;
 	}
-	public void setsIdx(int sIdx) {
-		this.sIdx = sIdx;
+	public void setSurvey(Survey survey) {
+		this.survey = survey;
 	}
+
 	
 	
 }
