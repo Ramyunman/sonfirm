@@ -24,6 +24,8 @@ spring:
   session:
     jdbc:
       initialize-schema: always
+  
+  
       
 server:
   port: 8080

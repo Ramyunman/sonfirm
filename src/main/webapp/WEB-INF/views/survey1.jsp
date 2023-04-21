@@ -121,17 +121,14 @@
 <button type="button" class="btn-close i-close" aria-label="Close" style="display:none;"></button>
 
 <!-- 제출 버튼 -->
-<form action="/submit_survey" method="post">
-    <!-- 폼 필드들... -->
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-    <div class="row">
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col">
-            <button type="submit" class="btn btn-primary submit-survey">제출</button>
-        </div>
+<div class="row">
+	<div class="col"></div>
+    <div class="col"></div>
+    <div class="col">
+        <button type="button" class="btn btn-primary submit-survey">제출</button>
     </div>
-</form>
+</div>
+
 
 
 	
@@ -226,19 +223,19 @@ $(document).on('click', '.submit-survey', function() {
 		if (q_type === 'multi') {
 			$('.multipleChoice .form-control', this).each(function() {
 				let i_content = $(this).val();
-				let item = { content: i_content };
+				let item = { iContent: i_content };
 				items.push(item);
 			});
 		} else if (q_type === 'check') {
 			$('.checkBox .form-control', this).each(function() {
 				let i_content = $(this).val();
-				let item = { content: i_content };
+				let item = { iContent: i_content };
 				items.push(item);
 			});
 		} else if (q_type === 'subjective') {
 			$('.longSentence .form-control', this).each(function() {
 				let i_content = $(this).val();
-				let item = { content: i_content };
+				let item = { iContent: i_content };
 				items.push(item);
 			});
 		}
@@ -257,10 +254,9 @@ $(document).on('click', '.submit-survey', function() {
 	console.log(survey);
 	
 	$.ajax({
-		url: "/submit_survey",	// 서버 URL 설정
+		url: "/submitSurvey",	// 서버 URL 설정
 		type: "POST",	// 전송 방식 설정
 		contentType: "application/json",	// 전송 데이터 타입 설정
-	  //headers: { "${_csrf.headerName}": "${_csrf.token}" },	// CSRF 토큰 헤더 설정
 		data: JSON.stringify(survey),	// 전송할 데이터 설정
 		success: function(response) {
 			// 서버로부터 응답을 받았을 때 처리할 로직

@@ -10,7 +10,9 @@
 		#{sIdx},
 		#{sTitle}
 	)
+	<selectKey keyProperty="sIdx" resultType="Integer">
+   			SELECT 		last_insert_id()
+		</selectKey>
 </insert>
-
 </mapper>
 

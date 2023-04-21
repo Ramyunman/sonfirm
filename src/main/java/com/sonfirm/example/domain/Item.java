@@ -2,8 +2,9 @@ package com.sonfirm.example.domain;
 
 public class Item {
 	
-	private int iIdx;
-	private String iContent;
+	private int iIdx;			//i_idx
+	private String iContent;	//i_content
+	private int qIdx;			//q_idx
 	
 	public int getiIdx() {
 		return iIdx;
@@ -16,6 +17,12 @@ public class Item {
 	}
 	public void setiContent(String iContent) {
 		this.iContent = iContent;
+	}
+	public int getqIdx() {
+		return qIdx;
+	}
+	public void setqIdx(int qIdx) {
+		this.qIdx = qIdx;
 	}
 	
 
