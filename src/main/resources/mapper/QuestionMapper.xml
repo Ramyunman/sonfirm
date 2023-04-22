@@ -16,5 +16,29 @@
 		SELECT		last_insert_id()
 	</selectKey>
 </insert>
+
+<!-- Question 매퍼 XML 파일 -->
+<resultMap id="surveyResultMap" type="com.example.Survey">
+    <id property="sIdx" column="s_idx" />
+    <result property="sTitle" column="s_title" />
+    <result property="sDesc" column="s_desc" />
+    <collection property="sQuestions" resultMap="questionResultMap" /> 
+</resultMap>
+
+<resultMap id="questionResultMap" type="com.example.Question">
+    <id property="qIdx" column="q_idx" />
+    <result property="qTitle" column="q_title" />
+    <result property="qType" column="q_type" />
+    <collection property="qItems" resultMap="itemResultMap" /> 
+</resultMap>
+
+<select id="getSurveyWithQuestions" resultMap="surveyResultMap">
+    SELECT ta.*, tb.*
+    FROM survey ta
+    LEFT JOIN question tb ON ta.s_idx = tb.s_idx
+    WHERE ta.s_idx = #{sIdx}
+</select>
+
+
 </mapper>
 
