@@ -76,5 +76,11 @@ public class SurveyController {
 		return survey;
 	}
 	
+	@RequestMapping("/surveyList")
+	public String surveyList() {
+		return "/survey_list";
+		
+	}
+	
 	
 }
