@@ -2,6 +2,8 @@ package com.sonfirm.example.controller;
 
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,14 +25,9 @@ public class SurveyController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@Autowired 
-	SurveyService surveyservice;
-	
-	@Autowired
-	QuestionService questionservice;
-	
-	@Autowired
-	ItemService itemservice;
+	@Autowired SurveyService surveyservice;
+	@Autowired QuestionService questionservice;
+	@Autowired ItemService itemservice;
 	
 	@RequestMapping("/")
 	public String home(Model model) {
@@ -77,7 +74,10 @@ public class SurveyController {
 	}
 	
 	@RequestMapping("/surveyList")
-	public String surveyList() {
+	public String surveyList(Model model) {
+		
+		List<Survey> surveyList = surveyservice.listSurvey();
+		model.addAttribute("surveyList", surveyList);
 		return "/survey_list";
 		
 	}

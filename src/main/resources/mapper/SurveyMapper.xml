@@ -15,6 +15,20 @@
 	</selectKey>
 </insert>
 
+<!-- Survey 매퍼 XML 파일 -->
+<resultMap id="surveyMap" type="com.sonfirm.example.domain.Survey">
+    <id property="sIdx" column="s_idx" />
+    <result property="sTitle" column="s_title" />
+    <result property="sDesc" column="s_desc" />
+    <collection property="sQuestions" resultMap="questionResultMap" /> 
+</resultMap>
+
+<!-- survey 목록 -->
+<select id="listSurvey" resultMap="surveyMap">
+	SELECT		*
+	FROM		survey
+	ORDER BY	s_idx	DESC
+</select>
 
 </mapper>
 
