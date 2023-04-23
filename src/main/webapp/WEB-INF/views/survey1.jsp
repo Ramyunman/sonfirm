@@ -8,8 +8,13 @@
 <title>Survey</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <style>
+h1 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 /* .form-check 클래스에 대한 스타일 조정 */
 .form-check {
   display: flex;
@@ -37,12 +42,13 @@
 </style>
 <body>
 
-	<h1>Hello Survey~!</h1>
+	
 
 <div class="container">	
 	<div class="row">
 		<div class="col"></div>
 		<div class="col">
+		<h1>Hello Survey~!</h1>
 			<div class="card">
   				<div class="card-body">
     				<input class="form-control surveyTitle" type="text" placeholder="설문조사 질문을 입력하세요." aria-label="default input example" style="width: 56rem;  margin-bottom: 10px;">

@@ -7,40 +7,47 @@
 <meta charset="UTF-8">
 <title>Hello World</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-	<h1>Survey 목록</h1>
-	
+<style>
+h1 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+</style>
+<body>	
 <div class="container text-center">
   <div class="row">
     <div class="col"></div>
     <div class="col-10">
-	<table class="table">
-  		<thead>
-    		<tr class="table-dark">
-      			<th scope="col">No</th>
-      			<th scope="col">Title</th>
-      			<th scope="col">Desc</th>
-    		</tr>
-  		</thead>
-  		<c:forEach items="${surveyList }" var="survey" varStatus="status">
-  		<tbody>
-    		<tr>
-      			<td>${survey.sIdx }</td>
-      			<td>${survey.sTitle }</td>
-      			<td>${survey.sDesc }</td>
-    		</tr>
-   		</tbody>
-   		</c:forEach>
-	</table>
+    	<h1>Survey 목록</h1>
+		<table class="table">
+  			<thead>
+    			<tr class="table-dark">
+      				<th scope="col">No</th>
+      				<th scope="col">Title</th>
+      				<th scope="col">Desc</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+  				<c:forEach items="${surveyList }" var="survey" varStatus="status">
+    				<tr>
+      					<td>${survey.sIdx }</td>
+      					<td>${survey.sTitle }</td>
+      					<td>${survey.sDesc }</td>
+    				</tr>
+    			</c:forEach>
+   			</tbody>
+		</table>
 
 		<nav aria-label="Page navigation example">
   			<ul class="pagination">
     			<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    			<li class="page-item"><a class="page-link" href="#">1</a></li>
-    			<li class="page-item"><a class="page-link" href="#">2</a></li>
-    			<li class="page-item"><a class="page-link" href="#">3</a></li>
-    			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+   				<li class="page-item"><a class="page-link" href="#">1</a></li>
+   				<li class="page-item"><a class="page-link" href="#">2</a></li>
+   				<li class="page-item"><a class="page-link" href="#">3</a></li>
+   				<li class="page-item"><a class="page-link" href="#">Next</a></li>
   			</ul>
 		</nav>
 		

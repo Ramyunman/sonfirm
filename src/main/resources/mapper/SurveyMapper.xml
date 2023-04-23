@@ -20,7 +20,6 @@
     <id property="sIdx" column="s_idx" />
     <result property="sTitle" column="s_title" />
     <result property="sDesc" column="s_desc" />
-    <collection property="sQuestions" resultMap="questionResultMap" /> 
 </resultMap>
 
 <!-- survey 목록 -->
