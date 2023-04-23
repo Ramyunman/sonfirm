@@ -57,6 +57,7 @@ public class SurveyController {
 			Question newQuestion = new Question();
 			newQuestion.setqTitle(question.getqTitle());
 			newQuestion.setqType(question.getqType());
+			newQuestion.setSurvey(survey);
 			
 			// Question 객체 등록
 			questionservice.createQuestion(newQuestion);
@@ -65,6 +66,7 @@ public class SurveyController {
 				// Item 객체 생성
 				Item newItem = new Item();
 				newItem.setiContent(item.getiContent());
+				newItem.setQuestion(newQuestion);
 				
 				// Item 객체 등록
 				itemservice.createItem(newItem);

@@ -16,19 +16,19 @@
 </insert>
 
 <!-- Item 매퍼 XML 파일 -->
-<resultMap id="questionResultMap" type="com.example.Question">
+<resultMap id="questionResultMapForItem" type="com.sonfirm.example.domain.Question">
     <id property="qIdx" column="q_idx" />
     <result property="qTitle" column="q_title" />
     <result property="qType" column="q_type" />
     <collection property="qItems" resultMap="itemResultMap" /> <!-- Item 객체들의 리스트를 매핑 -->
 </resultMap>
 
-<resultMap id="itemResultMap" type="com.example.Item">
+<resultMap id="itemResultMap" type="com.sonfirm.example.domain.Item">
     <id property="iIdx" column="i_idx" />
     <result property="iContent" column="i_content" />
 </resultMap>
 
-<select id="getQuestionWithItems" resultMap="questionResultMap">
+<select id="getQuestionWithItems" resultMap="questionResultMapForItem">
     SELECT ta.*, tb.*
     FROM question ta
     LEFT JOIN item tb ON ta.q_idx = tb.q_idx

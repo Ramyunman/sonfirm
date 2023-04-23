@@ -18,14 +18,14 @@
 </insert>
 
 <!-- Question 매퍼 XML 파일 -->
-<resultMap id="surveyResultMap" type="com.example.Survey">
+<resultMap id="surveyResultMap" type="com.sonfirm.example.domain.Survey">
     <id property="sIdx" column="s_idx" />
     <result property="sTitle" column="s_title" />
     <result property="sDesc" column="s_desc" />
     <collection property="sQuestions" resultMap="questionResultMap" /> 
 </resultMap>
 
-<resultMap id="questionResultMap" type="com.example.Question">
+<resultMap id="questionResultMap" type="com.sonfirm.example.domain.Question">
     <id property="qIdx" column="q_idx" />
     <result property="qTitle" column="q_title" />
     <result property="qType" column="q_type" />
