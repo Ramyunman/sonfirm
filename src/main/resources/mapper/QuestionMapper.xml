@@ -17,8 +17,8 @@
 	</selectKey>
 </insert>
 
-<insert id="insertItemToQuestion" parameterType="java.util.List">
-	<foreach collection="list" item="item" separator=";">
+<insert id="insertItemToQuestion" parameterType="com.sonfirm.example.domain.Item">
+	<foreach collection="qItems" item="item" separator=";">
 		INSERT INTO	item (
 			i_content,
 			q_idx	
