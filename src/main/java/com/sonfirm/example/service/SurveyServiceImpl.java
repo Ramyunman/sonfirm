@@ -18,7 +18,7 @@ public class SurveyServiceImpl implements SurveyService {
 
 	@Autowired SurveyMapper surveyMapper;
 	@Autowired QuestionMapper questionMapper;
-	@Autowired ItemMapper itemMapper;
+//	@Autowired ItemMapper itemMapper;
 		
 	@Override		// survey 생성
 	public void createSurvey(Survey survey) {
@@ -27,11 +27,9 @@ public class SurveyServiceImpl implements SurveyService {
 		for (Question question : survey.getsQuestions()) {
 			question.setSurvey(survey);
 			questionMapper.createQuestion(question);
-			Item newItem = new Item();
-			newItem.setQuestion(question);
-			itemMapper.createItem(question.getqItems());
+			questionMapper.insertItemToQuestion(question.getqItems());
+						
 		}
-		
 	}
 
 	@Override		// survey 목록

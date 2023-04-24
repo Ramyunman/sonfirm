@@ -17,6 +17,18 @@
 	</selectKey>
 </insert>
 
+<insert id="insertItemToQuestion" parameterType="java.util.List">
+	<foreach collection="list" item="item" separator=";">
+		INSERT INTO	item (
+			i_content,
+			q_idx	
+		) VALUES (
+			#{item.iContent},
+			#{item.question.qIdx}
+		)
+	</foreach>
+</insert>
+
 <!-- Question 매퍼 XML 파일 -->
 <resultMap id="surveyResultMap" type="com.sonfirm.example.domain.Survey">
     <id property="sIdx" column="s_idx" />

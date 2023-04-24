@@ -15,8 +15,8 @@ public class ItemServiceImpl implements ItemService {
 	ItemMapper itemMapper;
 
 	@Override
-	public void createItem(List<Item> itemList) {
-		itemMapper.createItem(itemList);
+	public void createItem(Item item) {
+		itemMapper.createItem(item);
 	}
 	
 
