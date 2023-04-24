@@ -13,11 +13,12 @@ public class ItemServiceImpl implements ItemService {
 
 	@Autowired
 	ItemMapper itemMapper;
-	
+
 	@Override
-	public void createItem(List<Item> item) {
-		itemMapper.createItem(item);
-		
+	public void createItem(List<Item> itemList) {
+		itemMapper.createItem(itemList);
 	}
+	
+
 
 }

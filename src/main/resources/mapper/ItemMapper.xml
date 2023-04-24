@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sonfirm.example.mapper.ItemMapper">
-<!-- item 등록 -->
-<insert id="createItem" parameterType="Item">
+
+<insert id="createItem" parameterType="List">
 	INSERT INTO item (
 		i_content,
 		q_idx
 	) VALUES 
-	<foreach collection="qItems" item="item" separator=",">
+	<foreach collection="list" item="item" separator=",">
 	(
 		#{item.iContent},
 		#{item.question.qIdx}
@@ -15,12 +15,11 @@
 	</foreach>
 </insert>
 
-<!-- Item 매퍼 XML 파일 -->
 <resultMap id="questionResultMapForItem" type="com.sonfirm.example.domain.Question">
     <id property="qIdx" column="q_idx" />
     <result property="qTitle" column="q_title" />
     <result property="qType" column="q_type" />
-    <collection property="qItems" resultMap="itemResultMap" /> <!-- Item 객체들의 리스트를 매핑 -->
+    <collection property="qItems" resultMap="itemResultMap" /> 
 </resultMap>
 
 <resultMap id="itemResultMap" type="com.sonfirm.example.domain.Item">
@@ -34,6 +33,7 @@
     LEFT JOIN item tb ON ta.q_idx = tb.q_idx
     WHERE ta.q_idx = #{qIdx}
 </select>
+
 
 </mapper>
 

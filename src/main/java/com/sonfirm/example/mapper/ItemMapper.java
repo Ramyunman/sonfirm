@@ -10,6 +10,6 @@ import com.sonfirm.example.domain.Item;
 public interface ItemMapper {
 	
 	//item 생성
-	public void createItem(List<Item> list);
+	public void createItem(List<Item> itemList);
 
 }

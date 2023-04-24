@@ -7,6 +7,6 @@ import com.sonfirm.example.domain.Item;
 public interface ItemService {
 	
 	//item 생성
-	public void createItem(List<Item> item);
+	public void createItem(List<Item> itemList);
 
 }
