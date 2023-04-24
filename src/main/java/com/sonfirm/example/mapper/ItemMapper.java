@@ -1,5 +1,7 @@
 package com.sonfirm.example.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.sonfirm.example.domain.Item;
@@ -8,6 +10,6 @@ import com.sonfirm.example.domain.Item;
 public interface ItemMapper {
 	
 	//item 생성
-	public void createItem(Item item);
+	public void createItem(List<Item> list);
 
 }

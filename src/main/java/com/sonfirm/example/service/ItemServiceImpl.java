@@ -1,5 +1,7 @@
 package com.sonfirm.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ public class ItemServiceImpl implements ItemService {
 	ItemMapper itemMapper;
 	
 	@Override
-	public void createItem(Item item) {
+	public void createItem(List<Item> item) {
 		itemMapper.createItem(item);
 		
 	}

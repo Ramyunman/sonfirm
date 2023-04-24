@@ -6,13 +6,13 @@
 	INSERT INTO item (
 		i_content,
 		q_idx
-	) VALUES (
-		#{iContent},
-		#{question.qIdx}
+	) VALUES 
+	<foreach collection="qItems" item="item" separator=",">
+	(
+		#{item.iContent},
+		#{item.question.qIdx}
 	)
-	<selectKey keyProperty="iIdx" resultType="Integer">
-		SELECT		last_insert_id()
-	</selectKey>
+	</foreach>
 </insert>
 
 <!-- Item 매퍼 XML 파일 -->

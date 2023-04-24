@@ -26,8 +26,6 @@ public class SurveyController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired SurveyService surveyservice;
-	@Autowired QuestionService questionservice;
-	@Autowired ItemService itemservice;
 	
 	@RequestMapping("/")
 	public String home(Model model) {
@@ -46,36 +44,12 @@ public class SurveyController {
 	@RequestMapping("/submitSurvey")
 	@ResponseBody
 	public Survey submitSurvey(@RequestBody Survey survey) {
-		// Survey 데이터 등록
-		surveyservice.createSurvey(survey);
-		
-		for (Question question : survey.getsQuestions()) {
-			// Question 객체 생성
-			Question newQuestion = new Question();
-			newQuestion.setqTitle(question.getqTitle());
-			newQuestion.setqType(question.getqType());
-			newQuestion.setSurvey(survey);
-			
-			// Question 객체 등록
-			questionservice.createQuestion(newQuestion);
-			
-			for (Item item : question.getqItems()) {
-				// Item 객체 생성
-				Item newItem = new Item();
-				newItem.setiContent(item.getiContent());
-				newItem.setQuestion(newQuestion);
-				
-				// Item 객체 등록
-				itemservice.createItem(newItem);
-			}
-		}
-		
+		surveyservice.createSurvey(survey);		
 		return survey;
 	}
 	
 	@RequestMapping("/surveyList")
 	public String surveyList(Model model) {
-		
 		List<Survey> surveyList = surveyservice.listSurvey();
 		model.addAttribute("surveyList", surveyList);
 		return "/survey_list";
