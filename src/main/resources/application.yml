@@ -47,6 +47,7 @@ server:
     whitelabel:
       enabled: false
       
-mybatis:
+mybatis:      
   type-aliases-package: com.sonfirm.example.domain
   mapper-locations: mapper/**/*.xml
+  

@@ -15,7 +15,7 @@
 	</selectKey>
 </insert>
 
-<!-- Question 등록 -->
+<!-- Question, Item 등록 -->
 <insert id="createQuestion" parameterType="Question">
 	INSERT INTO question (
 		q_title,
@@ -41,7 +41,7 @@
 	</foreach>
 </insert>
 
-<!-- Survey 매퍼 XML 파일 -->
+<!-- Survey ResultMap -->
 <resultMap id="surveyMap" type="com.sonfirm.example.domain.Survey">
     <id property="sIdx" column="s_idx" />
     <result property="sTitle" column="s_title" />
@@ -53,6 +53,13 @@
 	SELECT		*
 	FROM		survey
 	ORDER BY	s_idx	DESC
+</select>
+
+<!-- survey 페이지네이션 -->
+<select id="paginationSurvey" resultMap="surveyMap">
+	SELECT 		*
+	FROM		survey
+	LIMIT		#{startIndex}, #{pageSize}
 </select>
 
 

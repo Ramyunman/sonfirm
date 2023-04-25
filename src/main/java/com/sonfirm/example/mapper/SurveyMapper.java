@@ -19,7 +19,7 @@ public interface SurveyMapper {
 	//question 생성
 	public void createQuestion(Question question);
 		
-	//question에서 item 생성
+	//item 생성
 	public void createItem(Question question);
 
 }
