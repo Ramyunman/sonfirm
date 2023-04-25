@@ -49,17 +49,11 @@
 </resultMap>
 
 <!-- survey 목록 -->
-<select id="listSurvey" resultMap="surveyMap">
+<select id="listSurvey" parameterType="Pagination" resultMap="surveyMap">
 	SELECT		*
 	FROM		survey
 	ORDER BY	s_idx	DESC
-</select>
-
-<!-- survey 페이지네이션 -->
-<select id="paginationSurvey" resultMap="surveyMap">
-	SELECT 		*
-	FROM		survey
-	LIMIT		#{startIndex}, #{pageSize}
+	LIMIT		#{pageNum}, #{perPage}
 </select>
 
 
