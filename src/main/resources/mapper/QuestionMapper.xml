@@ -17,15 +17,13 @@
 	</selectKey>
 </insert>
 
-<insert id="insertItemToQuestion" parameterType="com.sonfirm.example.domain.Item">
-	<foreach collection="qItems" item="item" separator=";">
-		INSERT INTO	item (
-			i_content,
-			q_idx	
-		) VALUES (
-			#{item.iContent},
-			#{item.question.qIdx}
-		)
+<insert id="insertItemToQuestion" parameterType="com.sonfirm.example.domain.Question">
+	INSERT INTO	item (
+		i_content,
+		q_idx	
+	) VALUES
+	<foreach collection="qItems" item="item" separator=",">
+		(#{item.iContent}, #{qIdx})
 	</foreach>
 </insert>
 

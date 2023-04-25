@@ -21,13 +21,11 @@ public class QuestionServiceImpl implements QuestionService {
 	@Override
 	public void createQuestion(Question question) {
 		questionMapper.createQuestion(question);
-		
-		}
+	}
 
 	@Override
-	public void insertItemToQuestion(List<Item> itemList) {
-		questionMapper.insertItemToQuestion(itemList);
-		
+	public void insertItemToQuestion(Question question) {
+		questionMapper.insertItemToQuestion(question);	
 	}
 
 

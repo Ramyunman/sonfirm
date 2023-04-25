@@ -14,5 +14,5 @@ public interface QuestionMapper {
 	public void createQuestion(Question question);
 	
 	//question에서 item 생성
-	public void insertItemToQuestion(List<Item> itemList);
+	public void insertItemToQuestion(Question question);
 }

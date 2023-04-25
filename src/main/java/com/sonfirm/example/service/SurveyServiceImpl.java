@@ -27,12 +27,11 @@ public class SurveyServiceImpl implements SurveyService {
 		for (Question question : survey.getsQuestions()) {
 			question.setSurvey(survey);
 			questionMapper.createQuestion(question);
-			
-			Item newItem = new Item();
-			newItem.setQuestion(question);
-			questionMapper.insertItemToQuestion(question.getqItems());
+			questionMapper.insertItemToQuestion(question);
 						
 		}
+		
+		System.out.println(survey);
 	}
 
 	@Override		// survey 목록
