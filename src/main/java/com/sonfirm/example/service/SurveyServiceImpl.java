@@ -25,7 +25,6 @@ public class SurveyServiceImpl implements SurveyService {
 			surveyMapper.createItem(question);		
 		}
 		
-//		System.out.println(survey);
 	}
 
 	@Override		// survey 목록
