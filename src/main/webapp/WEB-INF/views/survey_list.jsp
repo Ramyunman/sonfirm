@@ -19,38 +19,39 @@
 <div class="container text-center">
   <div class="row">
     <div class="col"></div>
-    <div class="col-10">
-    	<h1>Survey 목록</h1>
-		<table class="table">
-  			<thead>
-    			<tr class="table-dark">
-      				<th scope="col">No</th>
-      				<th scope="col">Title</th>
-      				<th scope="col">Desc</th>
-    			</tr>
-  			</thead>
-  			<tbody>
-  				<c:forEach items="${surveyList }" var="survey" varStatus="status">
-    				<tr>
-      					<td>${survey.sIdx }</td>
-      					<td>${survey.sTitle }</td>
-      					<td>${survey.sDesc }</td>
+    <div class="col-12">
+    	<div class="table-responsive">
+    		<h1>Survey 목록</h1>
+			<table class="table table-striped">
+  				<thead>
+    				<tr class="table">
+      					<th scope="col">No</th>
+      					<th scope="col">Title</th>
+      					<th scope="col">Desc</th>
     				</tr>
-    			</c:forEach>
-   			</tbody>
-		</table>
+  				</thead>
+  				<tbody class="table-group-divider">
+  					<c:forEach items="${surveyList }" var="survey" varStatus="status">
+    					<tr>
+      						<td>${survey.sIdx }</td>
+      						<td>${survey.sTitle }</td>
+      						<td>${survey.sDesc }</td>
+    					</tr>
+    				</c:forEach>
+   				</tbody>
+			</table>
 
-		<nav aria-label="Page navigation example">
-  			<ul class="pagination">
-    			<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-   				<li class="page-item"><a class="page-link" href="#">1</a></li>
-   				<li class="page-item"><a class="page-link" href="#">2</a></li>
-   				<li class="page-item"><a class="page-link" href="#">3</a></li>
-   				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-  			</ul>
-		</nav>
-		
-    </div>
+			<nav aria-label="Page navigation example">
+  				<ul class="pagination">
+    				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+   					<li class="page-item"><a class="page-link" href="#">1</a></li>
+   					<li class="page-item"><a class="page-link" href="#">2</a></li>
+   					<li class="page-item"><a class="page-link" href="#">3</a></li>
+   					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+  				</ul>
+			</nav>
+    	</div>
+    </div>	
     <div class="col"></div>
   </div>
 </div>
