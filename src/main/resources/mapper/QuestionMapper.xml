@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sonfirm.example.mapper.QuestionMapper">
-<!-- question 등록 -->
+<!-- question 등록
 <insert id="createQuestion" parameterType="Question">
 	INSERT INTO question (
 		q_title,
@@ -10,7 +10,7 @@
 	) VALUES (
 		#{qTitle},
 		#{qType},
-		#{survey.sIdx}	
+		#{sIdx}	
 	)
 	<selectKey keyProperty="qIdx" resultType="Integer">
 		SELECT		last_insert_id()
@@ -27,7 +27,8 @@
 	</foreach>
 </insert>
 
-<!-- Question 매퍼 XML 파일 -->
+-->
+<!-- Question 매퍼 XML 파일 
 <resultMap id="surveyResultMap" type="com.sonfirm.example.domain.Survey">
     <id property="sIdx" column="s_idx" />
     <result property="sTitle" column="s_title" />
@@ -49,6 +50,6 @@
     WHERE ta.s_idx = #{sIdx}
 </select>
 
-
+-->
 </mapper>
 

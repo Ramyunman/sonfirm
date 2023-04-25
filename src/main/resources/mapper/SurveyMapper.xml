@@ -15,6 +15,32 @@
 	</selectKey>
 </insert>
 
+<!-- Question 등록 -->
+<insert id="createQuestion" parameterType="Question">
+	INSERT INTO question (
+		q_title,
+		q_type,
+		s_idx
+	) VALUES (
+		#{qTitle},
+		#{qType},
+		#{sIdx}	
+	)
+	<selectKey keyProperty="qIdx" resultType="Integer">
+		SELECT		last_insert_id()
+	</selectKey>
+</insert>
+
+<insert id="createItem" parameterType="com.sonfirm.example.domain.Question">
+	INSERT INTO	item (
+		i_content,
+		q_idx	
+	) VALUES
+	<foreach collection="qItems" item="item" separator=",">
+		(#{item.iContent}, #{qIdx})
+	</foreach>
+</insert>
+
 <!-- Survey 매퍼 XML 파일 -->
 <resultMap id="surveyMap" type="com.sonfirm.example.domain.Survey">
     <id property="sIdx" column="s_idx" />
