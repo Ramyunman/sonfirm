@@ -257,7 +257,7 @@ $(document).on('click', '.submit-survey', function() {
 	console.log(survey);
 	
 	$.ajax({
-		url: "/submitSurvey",	// 서버 URL 설정
+		url: "/submit-survey",	// 서버 URL 설정
 		type: "POST",	// 전송 방식 설정
 		contentType: "application/json",	// 전송 데이터 타입 설정
 		data: JSON.stringify(survey),	// 전송할 데이터 설정

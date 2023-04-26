@@ -42,14 +42,14 @@ public class SurveyController {
 		return "/survey1";
 	}
 	
-	@RequestMapping("/submitSurvey")
+	@RequestMapping("/submit-survey")
 	@ResponseBody
 	public Survey submitSurvey(@RequestBody Survey survey) {
 		surveyservice.createSurvey(survey);		
 		return survey;
 	}
 		
-	@RequestMapping("/surveyList")
+	@RequestMapping("/survey-list")
 	public String surveyList(Pagination pagination, Model model) {
 		int totalSurveyCount = surveyservice.countSurvey();
 		pagination.setAmount(totalSurveyCount);

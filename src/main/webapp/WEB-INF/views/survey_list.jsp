@@ -31,10 +31,10 @@
     				</tr>
   				</thead>
   				<tbody class="table-group-divider">
-  					<c:forEach items="${surveyList }" var="survey" varStatus="status">
+  					<c:forEach items="${surveyList}" var="survey" varStatus="status">
     					<tr>
       						<td>${survey.sIdx }</td>
-      						<td>${survey.sTitle }</td>
+      						<td><a href="${pageContext.request.contextPath}/survey-paper/${survey.sTitle}">${survey.sTitle }</a></td>
       						<td>${survey.sDesc }</td>
     					</tr>
     				</c:forEach>
@@ -57,7 +57,7 @@
 							<li class="page-item" style="display:none"><a class="page-link" href="#">Prev</a></li>
 						</c:when>
 						<c:when test="${ pagination.prevPage <= pagination.endPage }">
-							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/surveyList?currentPage=${pagination.prevPage}">Prev</a></li>
+							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/survey-list?currentPage=${pagination.prevPage}">Prev</a></li>
 						</c:when>
 					</c:choose>
    					<c:forEach var="i" begin="${ pagination.startPage }" end="${ pagination.endPage }" step="1">
@@ -66,13 +66,13 @@
 								<li class="page-item" style="background-color:#ededed;"><a class="page-link" href="#">${i}</a></li>
 							</c:when>
 							<c:when test="${ pagination.currentPage != i }">	<%-- 현재페이지가 i와 같다면 회색으로 나오게 한다. --%>
-								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/surveyList?currentPage=${i}">${i}</a></li>
+								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/survey-list?currentPage=${i}">${i}</a></li>
 							</c:when>
 						</c:choose>
 					</c:forEach>
 					<c:choose>
 						<c:when test="${ pagination.nextPage <= pagination.lastPage }">
-							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/surveyList?currentPage=${pagination.nextPage}">Next</a></li>
+							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/survey-list?currentPage=${pagination.nextPage}">Next</a></li>
 						</c:when>
 					</c:choose>
 				</ul>
