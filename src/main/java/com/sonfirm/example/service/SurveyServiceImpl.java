@@ -6,6 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
 import com.sonfirm.example.mapper.SurveyMapper;
@@ -39,9 +42,11 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 	
 	@Override		// Survey 목록
-	public List<Survey> listSurvey() {
-		return surveyMapper.listSurvey();
+	public List<Survey> listSurvey(Pagination pagination) {
+		return surveyMapper.listSurvey(pagination);
 	}
+
+
 	
 
 }

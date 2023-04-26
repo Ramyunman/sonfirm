@@ -53,7 +53,7 @@
 	SELECT		*
 	FROM		survey
 	ORDER BY	s_idx	DESC
-	LIMIT		#{pageNum}, #{perPage}
+	LIMIT		#{startIndex}, #{itemsPerPage}
 </select>
 
 

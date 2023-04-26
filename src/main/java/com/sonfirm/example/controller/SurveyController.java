@@ -13,9 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Survey;
 import com.sonfirm.example.service.SurveyService;
 
@@ -48,8 +50,8 @@ public class SurveyController {
 	}
 		
 	@RequestMapping("/surveyList")
-	public String surveyList(Model model) {
-		List<Survey> surveyList = surveyservice.listSurvey();
+	public String surveyList(Pagination pagination, Model model) {
+		List<Survey> surveyList = surveyservice.listSurvey(pagination);
 		model.addAttribute("surveyList", surveyList);
 		return "/survey_list";
 		

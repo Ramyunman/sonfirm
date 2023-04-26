@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
 
@@ -14,7 +15,7 @@ public interface SurveyMapper {
 	public void createSurvey(Survey survey);
 	
 	//survey 목록
-	public List<Survey> listSurvey();
+	public List<Survey> listSurvey(Pagination pagination);
 	
 	//question 생성
 	public void createQuestion(Question question);
