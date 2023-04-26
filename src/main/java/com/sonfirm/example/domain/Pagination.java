@@ -10,7 +10,7 @@ public class Pagination {
 	private int prevPage;		// pagination의 이전 목록(이전 페이지 번호)
 	private int nextPage;		// pagination의 다음 목록(다음 페이지 번호)
 	public static final int pageUnit=5;			// 한번에 볼러 올 pagination 수
-	public static final int itemsPerPage=10;	// 한 페이지당 보여줄 데이터 수 
+	public static final int itemsPerPage=5;	// 한 페이지당 보여줄 데이터 수 
 	
 	public Pagination() {
 		this.currentPage = 1;

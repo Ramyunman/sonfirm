@@ -23,4 +23,6 @@ public interface SurveyMapper {
 	//item 생성
 	public void createItem(Question question);
 
+	//survey 갯수 카운트
+	public int countSurvey();
 }

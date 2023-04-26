@@ -51,6 +51,10 @@ public class SurveyController {
 		
 	@RequestMapping("/surveyList")
 	public String surveyList(Pagination pagination, Model model) {
+		int totalSurveyCount = surveyservice.countSurvey();
+		pagination.setAmount(totalSurveyCount);
+		pagination.init();
+		
 		List<Survey> surveyList = surveyservice.listSurvey(pagination);
 		model.addAttribute("surveyList", surveyList);
 		return "/survey_list";

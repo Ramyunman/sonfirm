@@ -46,6 +46,11 @@ public class SurveyServiceImpl implements SurveyService {
 		return surveyMapper.listSurvey(pagination);
 	}
 
+	@Override		//survey 갯수 카운트
+	public int countSurvey() {
+		return surveyMapper.countSurvey();
+	}
+
 
 	
 

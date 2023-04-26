@@ -19,8 +19,8 @@
 <div class="container text-center table">
   <div class="row">
     <div class="col"></div>
-    <div class="col-12">
-    	<div class="table-responsive">
+    <div class="col-10">
+    	
     		<h1>Survey 목록</h1>
 			<table class="table table-striped">
   				<thead>
@@ -40,22 +40,41 @@
     				</c:forEach>
    				</tbody>
 			</table>
-    	</div>
+    	
     </div>
     <div class="col"></div>
   </div>
 </div>
+
 <div class="container text-center paging">
 	<div class="row">
   		<div class="col"></div>
-   		<div class="col">
+   		<div class="col-10">
   			<nav aria-label="Page navigation example">
 				<ul class="pagination">
-   					<li class="page-item"><a class="page-link" href="#">Prev</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+					<c:choose>
+						<c:when test="${ pagination.prevPage < 0 }">
+							<li class="page-item" style="display:none"><a class="page-link" href="#">Prev</a></li>
+						</c:when>
+						<c:when test="${ pagination.prevPage <= pagination.endPage }">
+							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/surveyList?currentPage=${pagination.prevPage}">Prev</a></li>
+						</c:when>
+					</c:choose>
+   					<c:forEach var="i" begin="${ pagination.startPage }" end="${ pagination.endPage }" step="1">
+   						<c:choose>
+   							<c:when test="${ pagination.currentPage == i}">		<%-- 현재페이지가 i와 같다면 회색으로 나오게 한다. --%>
+								<li class="page-item" style="background-color:#ededed;"><a class="page-link" href="#">${i}</a></li>
+							</c:when>
+							<c:when test="${ pagination.currentPage != i }">	<%-- 현재페이지가 i와 같다면 회색으로 나오게 한다. --%>
+								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/surveyList?currentPage=${i}">${i}</a></li>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${ pagination.nextPage <= pagination.lastPage }">
+							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/surveyList?currentPage=${pagination.nextPage}">Next</a></li>
+						</c:when>
+					</c:choose>
 				</ul>
 			</nav>
    		</div>
