@@ -41,15 +41,8 @@
 	</foreach>
 </insert>
 
-<!-- Survey ResultMap -->
-<resultMap id="surveyMap" type="com.sonfirm.example.domain.Survey">
-    <id property="sIdx" column="s_idx" />
-    <result property="sTitle" column="s_title" />
-    <result property="sDesc" column="s_desc" />
-</resultMap>
-
 <!-- survey 목록 -->
-<select id="listSurvey" parameterType="Pagination" resultMap="surveyMap">
+<select id="listSurvey" parameterType="Pagination" resultMap="SurveyResultMap">
 	SELECT		*
 	FROM		survey
 	ORDER BY	s_idx	DESC
@@ -62,21 +55,30 @@
 	FROM		survey
 </select>
 
-
-<!-- Survey, Question ResultMap
-<resultMap id="surveyResultMap" type="com.sonfirm.example.domain.Survey">
-    <id property="sIdx" column="s_idx" />
-    <result property="sTitle" column="s_title" />
-    <result property="sDesc" column="s_desc" />
-    <collection property="sQuestions" resultMap="questionResultMap" /> 
-</resultMap>
-
-<resultMap id="questionResultMap" type="com.sonfirm.example.domain.Question">
+<!-- Define resultMap for Survey class -->
+<resultMap id="SurveyResultMap" type="com.sonfirm.example.domain.Survey">
+  <id property="sIdx" column="s_idx" />
+  <result property="sTitle" column="s_title" />
+  <result property="sDesc" column="s_desc" />
+  <collection property="sQuestions" ofType="com.sonfirm.example.domain.Question">
+    
+    <!-- Define resultMap for Question class -->
     <id property="qIdx" column="q_idx" />
     <result property="qTitle" column="q_title" />
     <result property="qType" column="q_type" />
-    <collection property="qItems" resultMap="itemResultMap" /> 
+    <collection property="qItems" ofType="com.sonfirm.example.domain.Item">
+      
+      <!-- Define resultMap for Item class -->
+      <id property="iIdx" column="i_idx" />
+      <result property="iContent" column="i_content" />
+    </collection>
+  </collection>
 </resultMap>
--->
+
+<!-- survey paper : survey, question, item 3개 테이블 조인 -->
+<select id="surveyPaper" parameterType="String" resultMap="SurveyResultMap">
+
+</select>
+
 </mapper>
 

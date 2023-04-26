@@ -61,5 +61,12 @@ public class SurveyController {
 		
 	}
 	
+	@RequestMapping("/survey-paper")
+	@ResponseBody
+	public Survey surveyPaper(@RequestBody Survey survey) {
+		surveyservice.createSurvey(survey);		
+		return survey;
+	}
+	
 	
 }
