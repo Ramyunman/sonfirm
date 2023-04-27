@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,11 +62,11 @@ public class SurveyController {
 		
 	}
 	
-	@RequestMapping("/survey-paper")
-	@ResponseBody
-	public Survey surveyPaper(@RequestBody Survey survey) {
-		surveyservice.createSurvey(survey);		
-		return survey;
+	@RequestMapping("/survey-paper/{sIdx}")
+	public String surveyPaper(@PathVariable("sIdx") int sIdx, Model model) {
+		Survey survey = surveyservice.showAllData(sIdx);
+		model.addAttribute("surveyPaper", survey);
+		return "/survey_paper";
 	}
 	
 	

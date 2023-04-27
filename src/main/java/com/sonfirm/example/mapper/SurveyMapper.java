@@ -25,4 +25,7 @@ public interface SurveyMapper {
 
 	//survey 갯수 카운트
 	public int countSurvey();
+	
+	//survey 모든 데이터 
+	public Survey showAllData(int sIdx);
 }

@@ -51,6 +51,11 @@ public class SurveyServiceImpl implements SurveyService {
 		return surveyMapper.countSurvey();
 	}
 
+	@Override		//survey 모든 데이터
+	public Survey showAllData(int sIdx) {
+		return surveyMapper.showAllData(sIdx);
+	}
+
 
 	
 

@@ -33,8 +33,8 @@
   				<tbody class="table-group-divider">
   					<c:forEach items="${surveyList}" var="survey" varStatus="status">
     					<tr>
-      						<td>${survey.sIdx }</td>
-      						<td><a href="${pageContext.request.contextPath}/survey-paper/${survey.sTitle}">${survey.sTitle }</a></td>
+      						<td><a href="${pageContext.request.contextPath}/survey-paper/${survey.sIdx}">${survey.sIdx }</a></td>
+      						<td>${survey.sTitle }</td>
       						<td>${survey.sDesc }</td>
     					</tr>
     				</c:forEach>

@@ -76,8 +76,12 @@
 </resultMap>
 
 <!-- survey paper : survey, question, item 3개 테이블 조인 -->
-<select id="surveyPaper" parameterType="String" resultMap="SurveyResultMap">
-
+<select id="showAllData" parameterType="Integer" resultMap="SurveyResultMap">
+	SELECT ta.*, tb.*, tc.*
+	FROM survey ta
+	LEFT JOIN question tb ON ta.s_idx = tb.s_idx
+	LEFT JOIN item tc ON tb.q_idx = tc.q_idx
+	WHERE ta.s_idx = #{sIdx}
 </select>
 
 </mapper>
