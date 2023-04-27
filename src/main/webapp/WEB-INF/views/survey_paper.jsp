@@ -14,9 +14,35 @@
 	margin-bottom: 20px;
 	text-align: center;
 }
+
 </style>
 <body>	
 <h1 class="header1">설문지</h1>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+    	<div style="display: flex; justify-content: center; margin-bottom:20px">
+    	<div class="card" style="width: 18rem;">
+  			<div class="card-body">
+    			<h5 class="card-title">${surveyPaper.sTitle }</h5>
+    			<p class="card-text">${surveyPaper.sDesc }</p>
+  			</div>
+		</div>
+		</div>
+		<div style="display: flex; justify-content: center;">
+    	<div class="card" style="width: 18rem;">
+  			<div class="card-body">
+    			<h5 class="card-title">${surveyPaper.sTitle }</h5>
+    			<p class="card-text">${surveyPaper.sDesc }</p>
+  			</div>
+		</div>
+		</div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
 
 
 <!-- c:forEach로 반복해서 question, item을 불러와야하나? -->
