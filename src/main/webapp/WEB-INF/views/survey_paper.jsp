@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>설문지 작성</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
 .header1 {
@@ -69,7 +70,7 @@
 		</c:forEach>
 		<div class="d-flex justify-content-end">
 			<button type="button" class="btn btn-primary surveyPaper-submit" style="margin-right: 10px">제출</button>
-			<button type="button" class="btn btn-secondary">취소</button>
+			<button type="button" class="btn btn-secondary" onclick="location.href='/survey-list'">취소</button>
 		</div>
     </div>
     <div class="col"></div>
