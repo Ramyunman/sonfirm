@@ -20,8 +20,8 @@
   <div class="row">
     <div class="col"></div>
     <div class="col-10">
-    	
-    		<h1>Survey 목록</h1>
+    	<button type="button" class="btn btn-outline-success btn-sm" style="float:left; margin-top:5px;" onclick="location.href='/'">Son</button>
+    		<h1>Survey 목록</h1>	
 			<table class="table table-striped">
   				<thead>
     				<tr class="table">
