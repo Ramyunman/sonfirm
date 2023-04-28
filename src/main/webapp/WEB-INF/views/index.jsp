@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-	<h1 style="margin-bottom:20px;">Soncompany Survey</h1>
+	<h1 style="margin-bottom:20px;">Survey HOme</h1>
 
 	<button type="button" class="btn btn-link" onclick="location.href='/survey1'">설문지 작성</button>
 	<button type="button" class="btn btn-link" onclick="location.href='/survey-list'">설문지 전체 목록</button>
