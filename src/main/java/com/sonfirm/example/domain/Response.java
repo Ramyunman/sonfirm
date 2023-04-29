@@ -6,7 +6,6 @@ public class Response {
 	private int sIdx;			// s_idx
 	private int qIdx;			// q_idx
 	private String qType;		// q_Type
-	private int iIdx;			// i_idx
 	private String rAnswer;		// r_answer
 	
 	public int getrIdx() {
@@ -32,12 +31,6 @@ public class Response {
 	}
 	public void setqType(String qType) {
 		this.qType = qType;
-	}
-	public int getiIdx() {
-		return iIdx;
-	}
-	public void setiIdx(int iIdx) {
-		this.iIdx = iIdx;
 	}
 	public String getrAnswer() {
 		return rAnswer;
