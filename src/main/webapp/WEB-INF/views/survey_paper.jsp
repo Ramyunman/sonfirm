@@ -29,6 +29,7 @@
   			<div class="card-body">
     			<h5 class="card-title">${surveyPaper.sTitle }</h5>
     			<p class="card-text">${surveyPaper.sDesc }</p>
+    			<p class="card-text" >${surveyPaper.sIdx }</p>   <!-- sIdx --> 			
   			</div>
 		</div>
 		</div>
@@ -38,6 +39,7 @@
   					<div class="card-body">
     					<h5 class="card-title">${question.qTitle }</h5>
     					<p class="card-text" hidden>${question.qType }</p>
+    					<p class="card-text" >${question.qIdx }</p>			<!-- qIdx -->
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
@@ -45,6 +47,9 @@
   											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
   											<label class="form-check-label" for="flexRadioDefault1">
     											${item.iContent }
+  											</label>
+  											<label class="form-check-label" for="flexRadioDefault1">	<!-- iIdx -->
+    											${item.iIdx}
   											</label>
 										</div>
     								</c:when>
@@ -54,11 +59,15 @@
   											<label class="form-check-label" for="flexCheckDefault">
     											${item.iContent }
   											</label>
+  											<label class="form-check-label" for="flexRadioDefault1">	<!-- iIdx -->
+    											${item.iIdx}
+  											</label>
 										</div>
     								</c:when>
     								<c:when test="${question.qType == 'subjective' }">
     									<div class="mb-3" style="text-align: left;">
   											<label for="exampleFormControlTextarea1" class="form-label">내용을 입력하세요.</label>
+  											<label for="exampleFormControlTextarea1" class="form-label">${item.iIdx}</label>	<!-- iIdx -->
   											<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 										</div>
     								</c:when>
