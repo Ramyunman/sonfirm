@@ -43,16 +43,17 @@
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
     								<div class="form-check" style="text-align: left;">
-  										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-  										<label class="form-check-label" for="flexRadioDefault1">
+  										<input class="form-check-input" type="radio" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}">
+  										<label class="form-check-label" for="q${question.qIdx}a${item.iIdx}">
    											${item.iContent }
   										</label>
 									</div>
+									
     								</c:when>
     								<c:when test="${question.qType == 'check' }">
     									<div class="form-check" style="text-align: left;">
-  											<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  											<label class="form-check-label" for="flexCheckDefault">
+  											<input class="form-check-input" type="checkbox" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}">
+  											<label class="form-check-label" for="q${question.qIdx}a{item.iIdx}">
     											${item.iContent }
   											</label>
   										</div>
@@ -91,19 +92,11 @@ $(document).on('click', '.surveyPaper-submit', function() {
 		let itemList = [];
 		
 		if (q_type === 'multi') {
-			$(this).find('.')
+			
 		} else if (q_type === 'check') {
-			$('.checkBox .form-control', this).each(function() {
-				let i_content = $(this).val();
-				let item = { iContent: i_content };
-				items.push(item);
-			});
+			
 		} else if (q_type === 'subjective') {
-			$('.longSentence .form-control', this).each(function() {
-				let i_content = $(this).val();
-				let item = { iContent: i_content };
-				items.push(item);
-			});
+		
 		}
 		
 		questionList.push({
