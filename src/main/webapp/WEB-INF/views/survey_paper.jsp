@@ -42,15 +42,12 @@
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
-    									<div class="form-check" style="text-align: left;">
-  											<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  											<label class="form-check-label" for="flexCheckDefault">
-    											${item.iContent }
-  											</label>
-  											<label class="form-check-label" for="flexCheckDefault">
-    											${item.iIdx }
-  											</label>
-										</div>
+    								<div class="form-check" style="text-align: left;">
+  										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  										<label class="form-check-label" for="flexRadioDefault1">
+   											${item.iContent }
+  										</label>
+									</div>
     								</c:when>
     								<c:when test="${question.qType == 'check' }">
     									<div class="form-check" style="text-align: left;">
@@ -58,15 +55,11 @@
   											<label class="form-check-label" for="flexCheckDefault">
     											${item.iContent }
   											</label>
-  											<label class="form-check-label" for="flexCheckDefault">
-    											${item.iIdx }
-  											</label>
   										</div>
     								</c:when>
     								<c:when test="${question.qType == 'subjective' }">
     									<div class="mb-3" style="text-align: left;">
   											<label for="exampleFormControlTextarea1" class="form-label">내용을 입력하세요.</label>
-  											<label for="exampleFormControlTextarea1" class="form-label">${item.iIdx }</label>
   											<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 										</div>
     								</c:when>
@@ -96,6 +89,22 @@ $(document).on('click', '.surveyPaper-submit', function() {
 		let q_type = $(this).find('.quesProp').attr('qType');
 		let q_title = $(this).find('.quesProp').attr('qTitle');
 		let itemList = [];
+		
+		if (q_type === 'multi') {
+			$(this).find('.')
+		} else if (q_type === 'check') {
+			$('.checkBox .form-control', this).each(function() {
+				let i_content = $(this).val();
+				let item = { iContent: i_content };
+				items.push(item);
+			});
+		} else if (q_type === 'subjective') {
+			$('.longSentence .form-control', this).each(function() {
+				let i_content = $(this).val();
+				let item = { iContent: i_content };
+				items.push(item);
+			});
+		}
 		
 		questionList.push({
 			qIdx: q_idx,

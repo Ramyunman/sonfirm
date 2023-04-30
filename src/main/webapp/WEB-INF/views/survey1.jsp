@@ -189,7 +189,7 @@ $(document).on('click', '.q-close', function() {
 	
 //객관식 추가 버튼 클릭 이벤트 핸들러
 $(document).on('click', '.add-radio-input', function() {
-    // 추가할 라디오버튼과 입력텍스트 생성
+    // 추가할 객관식버튼과 입력텍스트 생성
     var radio_button = $('<div class="input-group-text" style="margin-bottom: 10px;"><input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"></div>');
     var input_text = $('<input type="text" class="form-control" style="margin-bottom: 10px; margin-right: 10px" aria-label="Text input with radio button">');
  	// 객관식 요소 하단에 새로운 라디오버튼과 입력텍스트 추가
@@ -198,7 +198,7 @@ $(document).on('click', '.add-radio-input', function() {
 
 //체크박스 추가 버튼 클릭 이벤트 핸들러
 $(document).on('click', '.add-checkbox', function() {
-    // 추가할 라디오버튼과 입력텍스트 생성
+    // 추가할 체크박스 버튼과 입력텍스트 생성
     var checkbox_button = $('<input class="form-check-input" type="checkbox" value="" id="checkboxNoLabel" aria-label="...">');
     var input_text = $('<input type="text" class="form-control" id="exampleFormControlInput1">');
     var button = $('<button type="button" class="btn btn-close i-close" aria-label="Close"></button>');
