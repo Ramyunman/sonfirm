@@ -5,7 +5,6 @@ public class Response_checkbox {
 	private int rcIdx;			// c_idx
 	private int rIdx;			// r_idx
 	private int sIdx;			// s_idx
-	private int qIdx;			// q_idx
 	private String rcAnswer;		// c_answer
 	
 	
@@ -26,12 +25,6 @@ public class Response_checkbox {
 	}
 	public void setsIdx(int sIdx) {
 		this.sIdx = sIdx;
-	}
-	public int getqIdx() {
-		return qIdx;
-	}
-	public void setqIdx(int qIdx) {
-		this.qIdx = qIdx;
 	}
 	public String getRcAnswer() {
 		return rcAnswer;

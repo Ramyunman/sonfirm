@@ -38,7 +38,7 @@
     			<div class="card questionCard" style="width: 30rem;">
   					<div class="card-body">
     					<h5 class="card-title">${question.qTitle }</h5>
-    					<p class="card-text quesProp" rType="${question.qType}" qIdx="${question.qIdx}" rTitle="${question.qTitle}"></p>
+    					<p class="card-text quesProp" qIdx="${question.qIdx}" rType="${question.qType}" rTitle="${question.qTitle}"></p>
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
@@ -71,7 +71,7 @@
 			</div>
 		</c:forEach>
 		<div class="d-flex justify-content-end">
-			<button type="button" class="btn btn-primary surveyPaper-submit" style="margin-right: 10px">제출</button>
+			<button type="button" class="btn btn-primary surveyResponse-submit" style="margin-right: 10px">제출</button>
 			<button type="button" class="btn btn-secondary" onclick="location.href='/survey-list'">취소</button>
 		</div>
     </div>
@@ -81,7 +81,7 @@
 
 <script>
 // 설문지 사용자 제출 버튼 
-$(document).on('click', '.surveyPaper-submit', function() {
+$(document).on('click', '.surveyResponse-submit', function() {
 	let questionList = [];
 	
 	$('.questionCard').each(function() {
@@ -90,26 +90,26 @@ $(document).on('click', '.surveyPaper-submit', function() {
 		let r_title = $(this).find('.quesProp').attr('rTitle');
 		let itemList = [];
 		let r_answer;
+		let rc_answer;
 		
-		if (q_type === 'multi') {
+		if (r_type === 'multi') {
 			let r_answer = $(this).find('input[type="radio"]:checked').attr('iContent');
 			itemList.push(r_answer);
 			
-		} else if (q_type === 'check') {
+		} else if (r_type === 'check') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let rc_answer = $(this).attr('iContent');
 				itemList.push(rc_answer);
 			});
-		} else if (q_type === 'subjective') {
+		} else if (r_type === 'subjective') {
 			let r_answer = $(this).find('textarea').val();
 			itemList.push(r_answer);
 		}
 		
 		questionList.push({
-			qIdx: q_idx,
 			rType: r_type,
 			rTitle: r_title,
-			qItems: itemList,
+			rItems: itemList,
 		});
 	});
 	

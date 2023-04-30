@@ -84,17 +84,17 @@
 
 <!-- Surveyor 등록 -->
 <insert id="createResponse" parameterType="Response">
-	INSERT INTO surveyor (
+	INSERT INTO response (
 		s_idx,
 		q_idx,
-		q_title,
-		q_type,
+		r_title,
+		r_type,
 		r_answer
 	) VALUES (
 		#{sIdx},
 		#{qIdx},
-		#{qTitle},
-		#{qType},
+		#{rTitle},
+		#{rType},
 		#{rAnswer}
 	)
 	<selectKey keyProperty="rIdx" resultType="Integer">
