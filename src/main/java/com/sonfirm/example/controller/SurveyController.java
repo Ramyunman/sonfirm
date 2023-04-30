@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.sonfirm.example.domain.Pagination;
+import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
 import com.sonfirm.example.service.SurveyService;
 
@@ -66,6 +67,15 @@ public class SurveyController {
 	public String surveyPaper(@PathVariable("sIdx") int sIdx, Model model) {
 		Survey survey = surveyservice.showAllData(sIdx);
 		model.addAttribute("surveyPaper", survey);
+		
+		List<Question> questionList = survey.getsQuestions();
+		for (Question question : questionList) {
+			int qIdx = question.getqIdx();
+			String qType = question.getqType();
+			model.addAttribute("qIdx", qIdx);
+			model.addAttribute("qType", qType);
+		}
+		
 		return "/survey_paper";
 	}
 	

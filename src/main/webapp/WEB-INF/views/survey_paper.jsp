@@ -38,17 +38,16 @@
     			<div class="card" style="width: 30rem;">
   					<div class="card-body">
     					<h5 class="card-title">${question.qTitle }</h5>
-    					<p class="card-text" hidden>${question.qType }</p>
-    					<p class="card-text" >${question.qIdx }</p>			<!-- qIdx -->
+    					<p class="card-text ques" qType="${question.qType}" qIdx="${question.qIdx}"></p>
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
     									<div class="form-check" style="text-align: left;">
-  											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-  											<label class="form-check-label" for="flexRadioDefault1">
+  											<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  											<label class="form-check-label" for="flexCheckDefault">
     											${item.iContent }
   											</label>
-  											<label class="form-check-label" for="flexRadioDefault1">
+  											<label class="form-check-label" for="flexCheckDefault">
     											${item.iIdx }
   											</label>
 										</div>
@@ -90,8 +89,8 @@
 // 설문지 제출 버튼 
 $(document).on('click', '.surveyPaper-submit', function() {
 	let S_Idx = '${surveyPaper.sIdx}';
-	let Q_Idx = '${question.qIdx}';
-	let Q_Type = '${question.qType}';
+	let Q_Idx =	$('.ques').attr('qIdx');
+	let Q_Type = $('.ques').attr('qType');
 	let R_Answer = "";
 	
 	<c:forEach var="item" items="${question.qItems}">

@@ -1,12 +1,12 @@
 package com.sonfirm.example.domain;
 
-public class Response_Checkbox {
+public class ResponseCheckbox {
 
 	private int cIdx;			// c_idx
 	private int rIdx;			// r_idx
 	private int sIdx;			// s_idx
 	private int qIdx;			// q_idx
-	private String c_answer;	// c_answer
+	private String cAnswer;		// c_answer
 	
 	public int getcIdx() {
 		return cIdx;
@@ -32,12 +32,13 @@ public class Response_Checkbox {
 	public void setqIdx(int qIdx) {
 		this.qIdx = qIdx;
 	}
-	public String getC_answer() {
-		return c_answer;
+	public String getcAnswer() {
+		return cAnswer;
 	}
-	public void setC_answer(String c_answer) {
-		this.c_answer = c_answer;
+	public void setcAnswer(String cAnswer) {
+		this.cAnswer = cAnswer;
 	}
+	
 	
 	
 	
