@@ -29,7 +29,7 @@
   			<div class="card-body">
     			<h5 class="card-title">${surveyPaper.sTitle }</h5>
     			<p class="card-text">${surveyPaper.sDesc }</p>
-    			<p class="card-text" >${surveyPaper.sIdx }</p>   <!-- sIdx --> 			
+    			<p class="card-text survsIdx" >${surveyPaper.sIdx }</p>   <!-- sIdx --> 			
   			</div>
 		</div>
 		</div>
@@ -80,9 +80,9 @@
 </div>
 
 <script>
-// 설문지 제출 버튼 
+// 설문지 사용자 제출 버튼 
 $(document).on('click', '.surveyPaper-submit', function() {
-	let S_Idx = '${surveyPaper.sIdx}';
+	
 	let questionList = [];
 	
 	$('.questionCard').each(function() {
@@ -113,7 +113,8 @@ $(document).on('click', '.surveyPaper-submit', function() {
 		});
 	});
 	
-	let surveySubmit = {sQuestions : questionList};
+	let s_idx = '${surveyPaper.sIdx}';
+	let surveySubmit = { sIdx: s_idx, sQuestions : questionList };
 	
 	
 	
