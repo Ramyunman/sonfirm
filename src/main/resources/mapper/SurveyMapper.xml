@@ -83,7 +83,7 @@
 </select>
 
 <!-- Surveyor 등록 -->
-<insert id="createSurveyor" parameterType="Surveyor">
+<insert id="createResponse" parameterType="Response">
 	INSERT INTO surveyor (
 		s_idx,
 		q_idx,

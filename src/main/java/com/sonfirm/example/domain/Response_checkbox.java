@@ -1,18 +1,19 @@
 package com.sonfirm.example.domain;
 
-public class Surveyor_checkbox {
+public class Response_checkbox {
 
-	private int cIdx;			// c_idx
+	private int rcIdx;			// c_idx
 	private int rIdx;			// r_idx
 	private int sIdx;			// s_idx
 	private int qIdx;			// q_idx
-	private String cAnswer;		// c_answer
+	private String rcAnswer;		// c_answer
 	
-	public int getcIdx() {
-		return cIdx;
+	
+	public int getRcIdx() {
+		return rcIdx;
 	}
-	public void setcIdx(int cIdx) {
-		this.cIdx = cIdx;
+	public void setRcIdx(int rcIdx) {
+		this.rcIdx = rcIdx;
 	}
 	public int getrIdx() {
 		return rIdx;
@@ -32,12 +33,13 @@ public class Surveyor_checkbox {
 	public void setqIdx(int qIdx) {
 		this.qIdx = qIdx;
 	}
-	public String getcAnswer() {
-		return cAnswer;
+	public String getRcAnswer() {
+		return rcAnswer;
 	}
-	public void setcAnswer(String cAnswer) {
-		this.cAnswer = cAnswer;
+	public void setRcAnswer(String rcAnswer) {
+		this.rcAnswer = rcAnswer;
 	}
+	
 	
 	
 	

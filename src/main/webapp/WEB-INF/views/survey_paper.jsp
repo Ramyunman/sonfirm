@@ -38,7 +38,7 @@
     			<div class="card questionCard" style="width: 30rem;">
   					<div class="card-body">
     					<h5 class="card-title">${question.qTitle }</h5>
-    					<p class="card-text quesProp" qType="${question.qType}" qIdx="${question.qIdx}" qTitle="${question.qTitle}"></p>
+    					<p class="card-text quesProp" rType="${question.qType}" qIdx="${question.qIdx}" rTitle="${question.qTitle}"></p>
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
@@ -86,8 +86,8 @@ $(document).on('click', '.surveyPaper-submit', function() {
 	
 	$('.questionCard').each(function() {
 		let q_idx = $(this).find('.quesProp').attr('qIdx');
-		let q_type = $(this).find('.quesProp').attr('qType');
-		let q_title = $(this).find('.quesProp').attr('qTitle');
+		let r_type = $(this).find('.quesProp').attr('rType');
+		let r_title = $(this).find('.quesProp').attr('rTitle');
 		let itemList = [];
 		let r_answer;
 		
@@ -97,8 +97,8 @@ $(document).on('click', '.surveyPaper-submit', function() {
 			
 		} else if (q_type === 'check') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
-				let c_answer = $(this).attr('iContent');
-				itemList.push(c_answer);
+				let rc_answer = $(this).attr('iContent');
+				itemList.push(rc_answer);
 			});
 		} else if (q_type === 'subjective') {
 			let r_answer = $(this).find('textarea').val();
@@ -107,28 +107,20 @@ $(document).on('click', '.surveyPaper-submit', function() {
 		
 		questionList.push({
 			qIdx: q_idx,
-			qType: q_type,
-			qTitle: q_title,
+			rType: r_type,
+			rTitle: r_title,
 			qItems: itemList,
 		});
 	});
 	
 	let s_idx = '${surveyPaper.sIdx}';
 	let surveySubmit = { sIdx: s_idx, sQuestions : questionList };
-	let questions = surveySubmit.sQuestions.map(function(question) {
-		return {
-			qIdx: question.qIdx,
-			qType: question.qType,
-			qTitle: question.qTitle,
-			qItems: question.qItems
-		};
-	});
 		
 	console.log('설문지 작성 제출');
 	console.log(surveySubmit);
 	
 	$.ajax({
-		url: '/submit-surveyor',
+		url: '/submit-response',
 		type: 'POST',
 		data: JSON.stringify(surveySubmit),
 		contentType: 'application/json',
