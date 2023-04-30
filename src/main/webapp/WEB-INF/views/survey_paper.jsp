@@ -82,7 +82,6 @@
 <script>
 // 설문지 사용자 제출 버튼 
 $(document).on('click', '.surveyPaper-submit', function() {
-	
 	let questionList = [];
 	
 	$('.questionCard').each(function() {
@@ -90,6 +89,7 @@ $(document).on('click', '.surveyPaper-submit', function() {
 		let q_type = $(this).find('.quesProp').attr('qType');
 		let q_title = $(this).find('.quesProp').attr('qTitle');
 		let itemList = [];
+		let r_answer;
 		
 		if (q_type === 'multi') {
 			let r_answer = $(this).find('input[type="radio"]:checked').attr('iContent');
@@ -109,18 +109,36 @@ $(document).on('click', '.surveyPaper-submit', function() {
 			qIdx: q_idx,
 			qType: q_type,
 			qTitle: q_title,
-			qItems: itemList
+			qItems: itemList,
 		});
 	});
 	
 	let s_idx = '${surveyPaper.sIdx}';
 	let surveySubmit = { sIdx: s_idx, sQuestions : questionList };
-	
-	
-	
+	let questions = surveySubmit.sQuestions.map(function(question) {
+		return {
+			qIdx: question.qIdx,
+			qType: question.qType,
+			qTitle: question.qTitle,
+			qItems: question.qItems
+		};
+	});
+		
 	console.log('설문지 작성 제출');
 	console.log(surveySubmit);
 	
+	$.ajax({
+		url: '/submit-surveyor',
+		type: 'POST',
+		data: JSON.stringify(surveySubmit),
+		contentType: 'application/json',
+		success: function(response) {
+			console.log('설문 조사자 제출 완료');
+		},
+		error: function(error) {
+			console.log('설문 조사자 제출 실패');
+		}
+	});
 });
 </script>
 

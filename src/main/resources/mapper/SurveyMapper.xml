@@ -82,5 +82,24 @@
 	WHERE ta.s_idx = #{sIdx}
 </select>
 
+<!-- Surveyor 등록 -->
+<insert id="createSurveyor" parameterType="Surveyor">
+	INSERT INTO surveyor (
+		s_idx,
+		q_idx,
+		q_title,
+		q_type,
+		r_answer
+	) VALUES (
+		#{sIdx},
+		#{qIdx},
+		#{qTitle},
+		#{qType},
+		#{rAnswer}
+	)
+	<selectKey keyProperty="rIdx" resultType="Integer">
+		SELECT		last_insert_id()
+	</selectKey>
+</insert>
 </mapper>
 

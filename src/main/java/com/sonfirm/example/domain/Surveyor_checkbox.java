@@ -1,13 +1,19 @@
 package com.sonfirm.example.domain;
 
-public class Response {
+public class Surveyor_checkbox {
 
+	private int cIdx;			// c_idx
 	private int rIdx;			// r_idx
 	private int sIdx;			// s_idx
 	private int qIdx;			// q_idx
-	private String qType;		// q_Type
-	private String rAnswer;		// r_answer
+	private String cAnswer;		// c_answer
 	
+	public int getcIdx() {
+		return cIdx;
+	}
+	public void setcIdx(int cIdx) {
+		this.cIdx = cIdx;
+	}
 	public int getrIdx() {
 		return rIdx;
 	}
@@ -26,18 +32,16 @@ public class Response {
 	public void setqIdx(int qIdx) {
 		this.qIdx = qIdx;
 	}
-	public String getqType() {
-		return qType;
+	public String getcAnswer() {
+		return cAnswer;
 	}
-	public void setqType(String qType) {
-		this.qType = qType;
+	public void setcAnswer(String cAnswer) {
+		this.cAnswer = cAnswer;
 	}
-	public String getrAnswer() {
-		return rAnswer;
-	}
-	public void setrAnswer(String rAnswer) {
-		this.rAnswer = rAnswer;
-	}
+	
+	
+	
+	
 	
 	
 }

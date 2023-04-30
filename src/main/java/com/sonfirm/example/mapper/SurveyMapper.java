@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
+import com.sonfirm.example.domain.Surveyor;
 
 @Mapper
 public interface SurveyMapper {
@@ -28,4 +29,7 @@ public interface SurveyMapper {
 	
 	//survey 모든 데이터 
 	public Survey showAllData(int sIdx);
+	
+	//surveyor 생성
+	public void createSurveyor(Surveyor surveyor);
 }

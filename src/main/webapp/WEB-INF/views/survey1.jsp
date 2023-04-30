@@ -264,11 +264,11 @@ $(document).on('click', '.submit-survey', function() {
 		data: JSON.stringify(survey),	// 전송할 데이터 설정
 		success: function(response) {
 			// 서버로부터 응답을 받았을 때 처리할 로직
-			console.log('설문조사 제출 완료');
+			console.log('설문조사 작성 완료');
 		},
 		error: function(xhr, status, error) {
 			// 서버 전송 중 오류가 발생했을 때 처리할 로직
-			console.log('설문조사 제출 오류');
+			console.log('설문조사 작성 오류');
 		}
 		
 	});
