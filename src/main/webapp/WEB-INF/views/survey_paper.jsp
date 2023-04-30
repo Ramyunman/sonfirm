@@ -43,7 +43,7 @@
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
     								<div class="form-check" style="text-align: left;">
-  										<input class="form-check-input" type="radio" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}">
+  										<input class="form-check-input" type="radio" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iContent="${item.iContent}">
   										<label class="form-check-label" for="q${question.qIdx}a${item.iIdx}">
    											${item.iContent }
   										</label>
@@ -52,7 +52,7 @@
     								</c:when>
     								<c:when test="${question.qType == 'check' }">
     									<div class="form-check" style="text-align: left;">
-  											<input class="form-check-input" type="checkbox" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}">
+  											<input class="form-check-input" type="checkbox" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iContent="${item.iContent}">
   											<label class="form-check-label" for="q${question.qIdx}a{item.iIdx}">
     											${item.iContent }
   											</label>
@@ -92,11 +92,17 @@ $(document).on('click', '.surveyPaper-submit', function() {
 		let itemList = [];
 		
 		if (q_type === 'multi') {
+			let r_answer = $(this).find('input[type="radio"]:checked').attr('iContent');
+			itemList.push(r_answer);
 			
 		} else if (q_type === 'check') {
-			
+			$(this).find('input[type="checkbox"]:checked').each(function() {
+				let c_answer = $(this).attr('iContent');
+				itemList.push(c_answer);
+			});
 		} else if (q_type === 'subjective') {
-		
+			let r_answer = $(this).find('textarea').val();
+			itemList.push(r_answer);
 		}
 		
 		questionList.push({
