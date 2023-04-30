@@ -35,10 +35,10 @@
 		</div>
 		<c:forEach var="question" items="${surveyPaper.sQuestions}">
 			<div style="display: flex; justify-content: center; margin-bottom:20px" >
-    			<div class="card" style="width: 30rem;">
+    			<div class="card questionCard" style="width: 30rem;">
   					<div class="card-body">
     					<h5 class="card-title">${question.qTitle }</h5>
-    					<p class="card-text ques" qType="${question.qType}" qIdx="${question.qIdx}"></p>
+    					<p class="card-text quesProp" qType="${question.qType}" qIdx="${question.qIdx}" qTitle="${question.qTitle}"></p>
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
@@ -89,33 +89,29 @@
 // 설문지 제출 버튼 
 $(document).on('click', '.surveyPaper-submit', function() {
 	let S_Idx = '${surveyPaper.sIdx}';
-	let Q_Idx =	$('.ques').attr('qIdx');
-	let Q_Type = $('.ques').attr('qType');
-	let R_Answer = "";
+	let questionList = [];
 	
-	<c:forEach var="item" items="${question.qItems}">
-		<c:choose>
-			<c:when test="${question.qType == 'multi' }">
-				if ($('#' + '${item.iIdx}').is(':checked')) {
-					R_Answer += '${item.iContent }' + ",";
-				}
-			</c:when>
-			<c:when test="${question.qType == 'check' }">
-				$('input[name="${item.iIdx}"]:checked').each(function() {
-					R_Answer += $(this).val() + ",";
-				});
-			</c:when>
-			<c:when test="${question.qType == 'subjective' }">
-				R_Answer += $('#${item.iIdx}').val() + ",";
-			</c:when>
-		</c:choose>
-	</c:forEach>
+	$('.questionCard').each(function() {
+		let q_idx = $(this).find('.quesProp').attr('qIdx');
+		let q_type = $(this).find('.quesProp').attr('qType');
+		let q_title = $(this).find('.quesProp').attr('qTitle');
+		let itemList = [];
+		
+		questionList.push({
+			qIdx: q_idx,
+			qType: q_type,
+			qTitle: q_title,
+			qItems: itemList
+		});
+	});
+	
+	let surveySubmit = {sQuestions : questionList};
+	
+	
 	
 	console.log('설문지 작성 제출');
-	console.log('S_Idx:', S_Idx);
-	console.log('Q_Idx:', Q_Idx);
-	console.log('Q_Type:', Q_Type);
-	console.log('R_Answer:', R_Answer);
+	console.log(surveySubmit);
+	
 });
 </script>
 
