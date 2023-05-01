@@ -1,6 +1,6 @@
 package com.sonfirm.example.domain;
 
-public class Response_survey {
+public class Response {
 
 	private int rIdx;			// r_idx
 	private int sIdx;			// s_idx

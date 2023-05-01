@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
-import com.sonfirm.example.domain.Response_survey;
+import com.sonfirm.example.domain.Response;
 import com.sonfirm.example.mapper.SurveyMapper;
 
 @Service
@@ -55,8 +55,8 @@ public class SurveyServiceImpl implements SurveyService {
 		return surveyMapper.showAllData(sIdx);
 	}
 
-	@Override		//surveyor 생성
-	public void createResponse(Response_survey response) {
+	@Override		//response survey 생성
+	public void createResponse(Response response) {
 		surveyMapper.createResponse(response);
 		
 	}

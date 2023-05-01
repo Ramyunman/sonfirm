@@ -15,7 +15,7 @@
 	</selectKey>
 </insert>
 
-<!-- Question, Item 등록 -->
+<!-- Question 등록 -->
 <insert id="createQuestion" parameterType="Question">
 	INSERT INTO question (
 		q_title,
@@ -31,6 +31,7 @@
 	</selectKey>
 </insert>
 
+<!-- Item 등록 -->
 <insert id="createItem" parameterType="com.sonfirm.example.domain.Question">
 	INSERT INTO	item (
 		i_content,
@@ -85,17 +86,21 @@
 <!-- Response 등록 -->
 <insert id="createResponse" parameterType="Response">
 	INSERT INTO response (
-		s_idx,
-		q_idx,
-		r_title,
-		r_type,
-		r_answer
+		s_idx
 	) VALUES (
-		#{sIdx},
-		#{qIdx},
-		#{rTitle},
-		#{rType},
-		#{rAnswer}
+		#{sIdx}
+	)
+	<selectKey keyProperty="rIdx" resultType="Integer">
+		SELECT		last_insert_id()
+	</selectKey>
+</insert>
+
+<!-- Response_question 등록 -->
+<insert id="createResponseQuestion" parameterType="Response">
+	INSERT INTO response (
+		s_idx
+	) VALUES (
+		#{sIdx}
 	)
 	<selectKey keyProperty="rIdx" resultType="Integer">
 		SELECT		last_insert_id()
