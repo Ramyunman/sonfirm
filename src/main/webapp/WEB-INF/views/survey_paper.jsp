@@ -38,7 +38,7 @@
     			<div class="card questionCard" style="width: 30rem;">
   					<div class="card-body">
     					<h5 class="card-title">${question.qTitle }</h5>
-    					<p class="card-text quesProp" qIdx="${question.qIdx}"></p>
+    					<p class="card-text quesProp" qIdx="${question.qIdx}" qType="${question.qType}"></p>
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
@@ -85,19 +85,21 @@ $(document).on('click', '.surveyResponse-submit', function() {
 	let questionList = [];
 	
 	$('.questionCard').each(function() {
+		let question = $(this);
 		let q_idx = $(this).find('.quesProp').attr('qIdx');
+		let q_Type = $(this).find('.quesProp').attr('qType');
 		let itemList = [];
 
-		if (question.qType === 'multi') {
+		if (q_Type === 'multi') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
 			itemList.push(i_idx);
 			
-		} else if (question.qType === 'check') {
+		} else if (q_Type === 'check') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let i_idx = $(this).attr('iIdx');
 				itemList.push(i_idx);
 			});
-		} else if (question.qType === 'subjective') {
+		} else if (q_Type === 'subjective') {
 			let i_idx = $(this).find('.form-label').attr('iIdx');
 			let r_subjective = $(this).find('textarea').val();
 			itemList.push({
