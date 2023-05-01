@@ -8,6 +8,8 @@ import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
 import com.sonfirm.example.domain.Response;
+import com.sonfirm.example.domain.ResponseItem;
+import com.sonfirm.example.domain.ResponseQuestion;
 
 @Mapper
 public interface SurveyMapper {
@@ -32,4 +34,10 @@ public interface SurveyMapper {
 	
 	//response survey 생성
 	public void createResponse(Response response);
+	
+	//response question 생성
+	public void createResponseQuestion(ResponseQuestion responseQuestion);
+		
+	//response question 생성
+	public void createResponseItem(ResponseItem responseItem);
 }

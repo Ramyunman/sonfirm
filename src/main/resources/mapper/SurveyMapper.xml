@@ -96,15 +96,30 @@
 </insert>
 
 <!-- Response_question 등록 -->
-<insert id="createResponseQuestion" parameterType="Response">
-	INSERT INTO response (
-		s_idx
+<insert id="createResponseQuestion" parameterType="Response_question">
+	INSERT INTO response_question (
+		r_idx,
+		q_idx
 	) VALUES (
-		#{sIdx}
+		#{rIdx},
+		#{qIdx}
 	)
-	<selectKey keyProperty="rIdx" resultType="Integer">
-		SELECT		last_insert_id()
-	</selectKey>
 </insert>
+
+<!-- Response_item 등록 -->
+<insert id="createResponseItem" parameterType="Response_item">
+	INSERT INTO response_item (
+		r_idx,
+		q_idx,
+		i_idx,
+		r_subjective
+	) VALUES (
+		#{rIdx},
+		#{qIdx},
+		#{iIdx},
+		#{rSubjective}
+	)
+</insert>
+
 </mapper>
 

@@ -43,7 +43,7 @@
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
     								<div class="form-check" style="text-align: left;">
-  										<input class="form-check-input" type="radio" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iContent="${item.iContent}">
+  										<input class="form-check-input" type="radio" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iIdx="${item.iIdx}">
   										<label class="form-check-label" for="q${question.qIdx}a${item.iIdx}">
    											${item.iContent }
   										</label>
@@ -52,7 +52,7 @@
     								</c:when>
     								<c:when test="${question.qType == 'check' }">
     									<div class="form-check" style="text-align: left;">
-  											<input class="form-check-input" type="checkbox" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iContent="${item.iContent}">
+  											<input class="form-check-input" type="checkbox" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iIdx="${item.iIdx}">
   											<label class="form-check-label" for="q${question.qIdx}a{item.iIdx}">
     											${item.iContent }
   											</label>
@@ -60,7 +60,7 @@
     								</c:when>
     								<c:when test="${question.qType == 'subjective' }">
     									<div class="mb-3" style="text-align: left;">
-  											<label for="exampleFormControlTextarea1" class="form-label" iIdx="${item.iIdx }" >내용을 입력하세요.</label>
+  											<div class="form-label" iIdx="${item.iIdx }">내용을 입력하세요.</div>
   											<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 										</div>
     								</c:when>
@@ -88,29 +88,31 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		let q_idx = $(this).find('.quesProp').attr('qIdx');
 		let itemList = [];
 
-		if (r_type === 'multi') {
-			let r_answer = $(this).find('input[type="radio"]:checked').attr('iContent');
-			itemList.push(r_answer);
+		if (question.qType === 'multi') {
+			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
+			itemList.push(i_idx);
 			
-		} else if (r_type === 'check') {
+		} else if (question.qType === 'check') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
-				let rc_answer = $(this).attr('iContent');
-				itemList.push(rc_answer);
+				let i_idx = $(this).attr('iIdx');
+				itemList.push(i_idx);
 			});
-		} else if (r_type === 'subjective') {
-			let r_answer = $(this).find('textarea').val();
-			itemList.push(r_answer);
+		} else if (question.qType === 'subjective') {
+			let i_idx = $(this).find('.form-label').attr('iIdx');
+			let r_subjective = $(this).find('textarea').val();
+			itemList.push({
+				iIdx: i_idx,
+				rSubjective: r_subjective,	
+			});
 		}
 		
 		questionList.push({
-			rType: r_type,
-			rTitle: r_title,
 			rItems: itemList,
 		});
 	});
 	
 	let s_idx = '${surveyPaper.sIdx}';
-	let surveySubmit = { sIdx: s_idx, sQuestions : questionList };
+	let surveySubmit = { sIdx: s_idx, sQuestions: questionList };
 		
 	console.log('설문지 작성 제출');
 	console.log(surveySubmit);

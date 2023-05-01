@@ -7,6 +7,8 @@ import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
 import com.sonfirm.example.domain.Response;
+import com.sonfirm.example.domain.ResponseItem;
+import com.sonfirm.example.domain.ResponseQuestion;
 
 public interface SurveyService {
 	
@@ -28,6 +30,12 @@ public interface SurveyService {
 	//survey 모든 데이터 
 	public Survey showAllData(int sIdx);
 	
-	//response survey 생성
+	//response 생성
 	public void createResponse(Response response);
+	
+	//response question 생성
+	public void createResponseQuestion(ResponseQuestion responseQuestion);
+	
+	//response question 생성
+	public void createResponseItem(ResponseItem responseItem);
 }

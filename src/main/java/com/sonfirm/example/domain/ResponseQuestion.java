@@ -1,6 +1,6 @@
 package com.sonfirm.example.domain;
 
-public class Response_question {
+public class ResponseQuestion {
 	
 	private int rIdx;		// r_idx
 	private int qIdx;		// q_idx
