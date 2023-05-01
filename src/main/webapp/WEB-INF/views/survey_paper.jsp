@@ -112,7 +112,7 @@ $(document).on('click', '.surveyResponse-submit', function() {
 	});
 	
 	let s_idx = '${surveyPaper.sIdx}';
-	let surveySubmit = { sIdx: s_idx, sQuestions: questionList };
+	let surveySubmit = { sIdx: s_idx, rQuestions: questionList };
 		
 	console.log('설문지 작성 제출');
 	console.log(surveySubmit);

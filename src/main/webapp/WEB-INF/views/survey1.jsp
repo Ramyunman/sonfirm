@@ -143,14 +143,18 @@ $(document).ready(function() {
 	$('#add_question_button').click(function() {
 		// 현재 폼 개수 확인
 		var form_count = $('.question_form').length;
+		
 		// 새로운 폼 생성
 		var new_form = $('#question_form_1').clone().attr('id', 'question_form_' + (form_count + 1)).show();
+		
 		// 새로운 객관식 요소 생성, 객관식 요소 추가
 		var multiple_choice = $('<div>').addClass('multipleChoice').hide();
 		new_form.find('.selectType').after(multiple_choice);
+		
 		// 새로운 체크박스 요소 생성, 체크박스 요소 추가
 		var check_box = $('<div>').addClass('checkBox').hide();
 		new_form.find('.selectType').after(check_box);
+		
 		// 새로운 주관식 요소 생성, 주관식 요소 추가
 		var long_sentence = $('<div>').addClass('longSentence').hide();
 		new_form.find('.selectType').after(long_sentence);

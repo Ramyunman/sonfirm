@@ -96,7 +96,7 @@
 </insert>
 
 <!-- Response_question 등록 -->
-<insert id="createResponseQuestion" parameterType="Response_question">
+<insert id="createResponseQuestion" parameterType="ResponseQuestion">
 	INSERT INTO response_question (
 		r_idx,
 		q_idx
@@ -107,7 +107,7 @@
 </insert>
 
 <!-- Response_item 등록 -->
-<insert id="createResponseItem" parameterType="Response_item">
+<insert id="createResponseItem" parameterType="ResponseItem">
 	INSERT INTO response_item (
 		r_idx,
 		q_idx,
