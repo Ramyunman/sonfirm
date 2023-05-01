@@ -128,7 +128,7 @@
 	<div class="col"></div>
     <div class="col"></div>
     <div class="col">
-        <button type="button" class="btn btn-primary submit-survey" style="margin-right:5px;">제출</button>
+        <button type="button" class="btn btn-primary submit-survey" style="margin-right:5px;" onclick="location.href='/survey-list'">제출</button>
         <button type="button" class="btn btn-secondary" onclick="location.href='/'">취소</button>
     </div>
 </div>
@@ -238,7 +238,7 @@ $(document).on('click', '.submit-survey', function() {
 			});
 		} else if (q_type === 'subjective') {
 			$('.longSentence .form-control', this).each(function() {
-				let i_content = $(this).val();
+				let i_content = $(this);
 				let item = { iContent: i_content };
 				items.push(item);
 			});

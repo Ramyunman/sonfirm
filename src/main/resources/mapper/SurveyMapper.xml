@@ -82,7 +82,7 @@
 	WHERE ta.s_idx = #{sIdx}
 </select>
 
-<!-- Surveyor 등록 -->
+<!-- Response 등록 -->
 <insert id="createResponse" parameterType="Response">
 	INSERT INTO response (
 		s_idx,

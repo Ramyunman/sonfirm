@@ -6,7 +6,7 @@ import java.util.List;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
-import com.sonfirm.example.domain.Response;
+import com.sonfirm.example.domain.Response_survey;
 
 public interface SurveyService {
 	
@@ -29,5 +29,5 @@ public interface SurveyService {
 	public Survey showAllData(int sIdx);
 	
 	//surveyor 생성
-	public void createResponse(Response response);
+	public void createResponse(Response_survey response);
 }

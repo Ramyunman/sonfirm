@@ -29,7 +29,7 @@
   			<div class="card-body">
     			<h5 class="card-title">${surveyPaper.sTitle }</h5>
     			<p class="card-text">${surveyPaper.sDesc }</p>
-    			<p class="card-text survsIdx" >${surveyPaper.sIdx }</p>   <!-- sIdx --> 			
+    			<p class="card-text survsIdx" hidden="${surveyPaper.sIdx }"></p>   <!-- sIdx --> 			
   			</div>
 		</div>
 		</div>
@@ -38,7 +38,7 @@
     			<div class="card questionCard" style="width: 30rem;">
   					<div class="card-body">
     					<h5 class="card-title">${question.qTitle }</h5>
-    					<p class="card-text quesProp" qIdx="${question.qIdx}" rType="${question.qType}" rTitle="${question.qTitle}"></p>
+    					<p class="card-text quesProp" qIdx="${question.qIdx}"></p>
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
     								<c:when test="${question.qType == 'multi' }">
@@ -60,7 +60,7 @@
     								</c:when>
     								<c:when test="${question.qType == 'subjective' }">
     									<div class="mb-3" style="text-align: left;">
-  											<label for="exampleFormControlTextarea1" class="form-label">내용을 입력하세요.</label>
+  											<label for="exampleFormControlTextarea1" class="form-label" iIdx="${item.iIdx }" >내용을 입력하세요.</label>
   											<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 										</div>
     								</c:when>
@@ -86,12 +86,8 @@ $(document).on('click', '.surveyResponse-submit', function() {
 	
 	$('.questionCard').each(function() {
 		let q_idx = $(this).find('.quesProp').attr('qIdx');
-		let r_type = $(this).find('.quesProp').attr('rType');
-		let r_title = $(this).find('.quesProp').attr('rTitle');
 		let itemList = [];
-		let r_answer;
-		let rc_answer;
-		
+
 		if (r_type === 'multi') {
 			let r_answer = $(this).find('input[type="radio"]:checked').attr('iContent');
 			itemList.push(r_answer);

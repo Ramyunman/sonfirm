@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
-import com.sonfirm.example.domain.Response;
+import com.sonfirm.example.domain.Response_survey;
 import com.sonfirm.example.domain.Survey;
 import com.sonfirm.example.service.SurveyService;
 
@@ -73,7 +73,7 @@ public class SurveyController {
 	
 	@RequestMapping("/submit-response")
 	@ResponseBody
-	public Response submitResponse(@RequestBody Response response) {
+	public Response_survey submitResponse(@RequestBody Response_survey response) {
 		surveyservice.createResponse(response);		
 		return response;
 	}
