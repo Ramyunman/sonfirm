@@ -115,7 +115,7 @@
 		r_subjective
 	) VALUES 
 	<foreach collection="rItems" item="ritem" separator=",">
-	(#{rIdx}, #{qIdx}, #{iIdx}, #{ritem.rSubjective})
+	(#{ritem.rIdx}, #{ritem.qIdx}, #{ritem.iIdx}, #{ritem.rSubjective})
 	</foreach>
 </insert>
 
