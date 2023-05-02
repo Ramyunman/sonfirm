@@ -26,6 +26,7 @@ public class Response {
 	public void setrQuestions(List<ResponseQuestion> rQuestions) {
 		this.rQuestions = rQuestions;
 	}
+
 	
 	
 }
