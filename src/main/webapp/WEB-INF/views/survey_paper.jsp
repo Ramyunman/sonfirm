@@ -92,12 +92,16 @@ $(document).on('click', '.surveyResponse-submit', function() {
 
 		if (q_Type === 'multi') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
-			itemList.push(i_idx);
+			itemList.push({
+				iIdx: i_idx
+			});
 			
 		} else if (q_Type === 'check') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let i_idx = $(this).attr('iIdx');
-				itemList.push(i_idx);
+				itemList.push({
+					iIdx: i_idx,
+				});
 			});
 		} else if (q_Type === 'subjective') {
 			let i_idx = $(this).find('.form-label').attr('iIdx');
@@ -109,6 +113,7 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		}
 		
 		questionList.push({
+			qIdx: q_idx,
 			rItems: itemList,
 		});
 	});
@@ -125,10 +130,10 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		data: JSON.stringify(surveySubmit),
 		contentType: 'application/json',
 		success: function(response) {
-			console.log('설문 조사자 제출 완료');
+			console.log('설문 작성 제출 완료');
 		},
 		error: function(error) {
-			console.log('설문 조사자 제출 실패');
+			console.log('설문 작성 제출 실패');
 		}
 	});
 });

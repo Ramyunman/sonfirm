@@ -37,5 +37,5 @@ public interface SurveyService {
 	public void createResponseQuestion(ResponseQuestion responseQuestion);
 	
 	//response question 생성
-	public void createResponseItem(ResponseItem responseItem);
+	public void createResponseItem(ResponseQuestion responseQuestion);
 }

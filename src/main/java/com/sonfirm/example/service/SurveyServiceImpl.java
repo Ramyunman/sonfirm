@@ -64,12 +64,9 @@ public class SurveyServiceImpl implements SurveyService {
 		for (ResponseQuestion rq : response.getrQuestions()) {
 			rq.setrIdx(response.getrIdx());
 			surveyMapper.createResponseQuestion(rq);
-			for (ResponseItem ri : rq.getrItems()) {
-				ri.setrIdx(rq.getrIdx());
-				surveyMapper.createResponseItem(ri);
-			}
+			surveyMapper.createResponseItem(rq);
+			
 		}
-		
 	}
 
 	@Override		//response question 생성
@@ -79,8 +76,8 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	@Override		//response item 생성
-	public void createResponseItem(ResponseItem responseItem) {
-		surveyMapper.createResponseItem(responseItem);
+	public void createResponseItem(ResponseQuestion responseQuestion) {
+		surveyMapper.createResponseItem(responseQuestion);
 		
 	}
 
