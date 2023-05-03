@@ -6,6 +6,7 @@ public class Response {
 
 	private int rIdx;			// r_idx
 	private int sIdx;			// s_idx
+	private int rDatetime;		// r_datetime
 	private List<ResponseQuestion> rQuestions;
 	
 	public int getrIdx() {
@@ -19,6 +20,12 @@ public class Response {
 	}
 	public void setsIdx(int sIdx) {
 		this.sIdx = sIdx;
+	}
+	public int getrDatetime() {
+		return rDatetime;
+	}
+	public void setrDatetime(int rDatetime) {
+		this.rDatetime = rDatetime;
 	}
 	public List<ResponseQuestion> getrQuestions() {
 		return rQuestions;

@@ -107,15 +107,15 @@
 </insert>
 
 <!-- Response_item 등록 -->
-<insert id="createResponseItem" parameterType="ResponseQuestion">
+<insert id="createResponseItem" parameterType="com.sonfirm.example.domain.ResponseQuestion">
 	INSERT INTO response_item (
 		r_idx,
 		q_idx,
 		i_idx,
 		r_subjective
 	) VALUES 
-	<foreach collection="rItems" item="ritem" separator=",">
-	(#{ritem.rIdx}, #{ritem.qIdx}, #{ritem.iIdx}, #{ritem.rSubjective})
+	<foreach collection="rItems" item="item" separator=",">
+	(#{rIdx}, #{qIdx}, #{item.iIdx}, #{item.rSubjective})
 	</foreach>
 </insert>
 
