@@ -28,6 +28,7 @@
       					<th scope="col">No</th>
       					<th scope="col">Title</th>
       					<th scope="col">Desc</th>
+      					<th scope="col">통계</th>
     				</tr>
   				</thead>
   				<tbody class="table-group-divider">
@@ -36,6 +37,7 @@
       						<td><a href="${pageContext.request.contextPath}/survey-paper/${survey.sIdx}">${survey.sIdx }</a></td>
       						<td>${survey.sTitle }</td>
       						<td>${survey.sDesc }</td>
+      						<td><button type="button" class="btn btn-primary btn-sm">결과보기</button></td>
     					</tr>
     				</c:forEach>
    				</tbody>
