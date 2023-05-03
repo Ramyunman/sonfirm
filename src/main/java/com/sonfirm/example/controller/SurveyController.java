@@ -40,22 +40,22 @@ public class SurveyController {
 		return "/index";
 	}
 	
-	@RequestMapping("/survey-create")
+	@RequestMapping("/survey-create")		// 설문 작성
 	public String surveyCreate() {
 		return "/survey_create";
 	}
 	
-	@RequestMapping("/survey-complete")
+	@RequestMapping("/survey-complete")		// 설문 작성 완료	
 	public String surveyComplete() {
 		return "/survey_complete";
 	}
 	
-	@RequestMapping("/response-complete")
+	@RequestMapping("/response-complete")	// 설문지 응답 완료
 	public String responseComplete() {
 		return "/response_complete";
 	}
 	
-	@RequestMapping("/response-chart")
+	@RequestMapping("/response-chart")		// 설문지 결과차트 
 	public String responseChart() {
 		return "/response_chart";
 	}
