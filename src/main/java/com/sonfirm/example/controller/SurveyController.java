@@ -40,9 +40,19 @@ public class SurveyController {
 		return "/index";
 	}
 	
-	@RequestMapping("/survey1")
-	public String survey1() {
-		return "/survey1";
+	@RequestMapping("/survey-create")
+	public String surveyCreate() {
+		return "/survey_create";
+	}
+	
+	@RequestMapping("/survey-complete")
+	public String surveyComplete() {
+		return "/survey_complete";
+	}
+	
+	@RequestMapping("/response-complete")
+	public String responseComplete() {
+		return "/response_complete";
 	}
 	
 	@RequestMapping("/submit-survey")

@@ -110,7 +110,7 @@
 					
 					<!-- 주관식 선택시 나오는 박스 -->
 					<div class="mb-3 longSentence" style="display:none;">
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="답변을 입력하세요."></textarea>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 					</div>
   				</div>
 			</div>
@@ -128,7 +128,7 @@
 	<div class="col"></div>
     <div class="col"></div>
     <div class="col">
-        <button type="button" class="btn btn-primary submit-survey" style="margin-right:5px;" onclick="location.href='/survey-list'">제출</button>
+        <button type="button" class="btn btn-primary submit-survey" style="margin-right:5px;" onclick="location.href='/survey-complete'">제출</button>
         <button type="button" class="btn btn-secondary" onclick="location.href='/'">취소</button>
     </div>
 </div>
@@ -242,7 +242,7 @@ $(document).on('click', '.submit-survey', function() {
 			});
 		} else if (q_type === 'subjective') {
 			$('.longSentence .form-control', this).each(function() {
-				let i_content = $(this);
+				let i_content = $(this).val();
 				let item = { iContent: i_content };
 				items.push(item);
 			});
