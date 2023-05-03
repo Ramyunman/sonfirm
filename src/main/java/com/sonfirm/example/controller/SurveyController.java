@@ -55,6 +55,11 @@ public class SurveyController {
 		return "/response_complete";
 	}
 	
+	@RequestMapping("/response-chart")
+	public String responseChart() {
+		return "/response_chart";
+	}
+	
 	@RequestMapping("/submit-survey")
 	@ResponseBody
 	public Survey submitSurvey(@RequestBody Survey survey) {

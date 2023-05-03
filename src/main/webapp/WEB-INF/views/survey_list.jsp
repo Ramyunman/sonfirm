@@ -37,7 +37,7 @@
       						<td><a href="${pageContext.request.contextPath}/survey-paper/${survey.sIdx}">${survey.sIdx }</a></td>
       						<td>${survey.sTitle }</td>
       						<td>${survey.sDesc }</td>
-      						<td><button type="button" class="btn btn-primary btn-sm">결과보기</button></td>
+      						<td><button type="button" class="btn btn-primary btn-sm resultStats" onclick="location.href='/response-chart'">결과보기</button></td>
     					</tr>
     				</c:forEach>
    				</tbody>
