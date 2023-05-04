@@ -35,12 +35,12 @@
 </head>
 <body>
 	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
-	<c:forEach var="surveyChart" items="${survey.sQuestions}">
+	<c:forEach var="chart" items="${surveyChart}" varStatus="status">
 		<c:choose>
-			<c:when test="${surveyChart.qType == 'objective' }">
+			<c:when test="${chart.qType == 'objective' }">
 				<div id="piechart" style="width: 900px; height: 500px;"></div>
 			</c:when>
-			<c:when test="${surveyChart.qType == 'checkbox' }">
+			<c:when test="${chart.qType == 'checkbox' }">
 				<div id="piechart" style="width: 900px; height: 500px;"></div>
 			</c:when>
 		</c:choose>
