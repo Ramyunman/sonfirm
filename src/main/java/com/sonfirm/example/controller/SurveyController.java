@@ -57,8 +57,8 @@ public class SurveyController {
 	
 	@RequestMapping("/response-chart/{sIdx}")		// 설문지 결과차트 
 	public String responseChart(@PathVariable("sIdx") int sIdx, Model model) {
-		Survey survey = surveyservice.showChart(sIdx);
-		model.addAttribute("surveyChart", survey);
+		List<Survey> surveyList2 = surveyservice.showChart(sIdx);
+		model.addAttribute("surveyChart", surveyList2);
 		return "/response_chart";
 	}
 	

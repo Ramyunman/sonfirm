@@ -2,8 +2,7 @@ package com.sonfirm.example.service;
 
 import java.util.List;
 
-
-
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sonfirm.example.domain.Pagination;
@@ -82,11 +81,9 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	@Override		// survey 차트 데이터
-	public Survey showChart(int sIdx) {
+	public List<Survey> showChart(int sIdx) {
 		return surveyMapper.showChart(sIdx);
 	}
-
-
-	
+		
 
 }
