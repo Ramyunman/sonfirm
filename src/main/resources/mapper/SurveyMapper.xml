@@ -119,5 +119,24 @@
 	</foreach>
 </insert>
 
+<resultMap id="QuestionWithResponseItem" type="Question">
+  <id property="qIdx" column="q_idx"/>
+  <result property="qTitle" column="q_title"/>
+  <result property="qType" column="q_type"/>
+  <result property="sIdx" column="s_idx"/>
+  <collection property="responseItems" ofType="ResponseItem">
+    <result property="rIdx" column="r_idx"/>
+    <result property="iIdx" column="i_idx"/>
+    <result property="rSubjective" column="r_subjective"/>
+  </collection>
+</resultMap>
+
+<!-- 차트 보여주는 테이블 -->
+<select id="showChart" parameterType="Integer" resultMap="QuestionWithResponseItem">
+	SELECT ta.q_title, ta.q_type, ta.s_idx, tb.r_idx, tb.i_idx
+	FROM question ta
+	LEFT JOIN response_item tb ON ta.q_idx = tb.q_idx
+	WHERE ta.s_idx = #{sIdx};
+</select>
 </mapper>
 

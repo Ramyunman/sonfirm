@@ -38,4 +38,7 @@ public interface SurveyService {
 	
 	//response question 생성
 	public void createResponseItem(ResponseQuestion responseQuestion);
+	
+	//survey 차트 데이터 
+	public Survey showChart(int sIdx);
 }

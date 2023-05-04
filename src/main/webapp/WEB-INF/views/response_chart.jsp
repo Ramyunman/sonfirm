@@ -35,8 +35,17 @@
 </head>
 <body>
 	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
-
-	<div id="piechart" style="width: 900px; height: 500px;"></div>
+	<c:forEach var="surveyChart" items="${survey.sQuestions}">
+		<c:choose>
+			<c:when test="${question.qType == 'objective' }">
+				<div id="piechart" style="width: 900px; height: 500px;"></div>
+			</c:when>
+			<c:when test="${question.qType == 'checkbox' }">
+				<div id="piechart" style="width: 900px; height: 500px;"></div>
+			</c:when>
+		</c:choose>
+	</c:forEach>
+	
 	
 	<button type="button" class="btn btn-link" onclick="location.href='/survey-list'">설문지 전체 목록</button>
 

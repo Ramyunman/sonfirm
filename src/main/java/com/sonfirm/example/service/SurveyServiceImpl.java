@@ -81,6 +81,11 @@ public class SurveyServiceImpl implements SurveyService {
 		
 	}
 
+	@Override		// survey 차트 데이터
+	public Survey showChart(int sIdx) {
+		return surveyMapper.showChart(sIdx);
+	}
+
 
 	
 

@@ -55,8 +55,10 @@ public class SurveyController {
 		return "/response_complete";
 	}
 	
-	@RequestMapping("/response-chart")		// 설문지 결과차트 
-	public String responseChart() {
+	@RequestMapping("/response-chart/{sIdx}")		// 설문지 결과차트 
+	public String responseChart(@PathVariable("sIdx") int sIdx, Model model) {
+		Survey survey = surveyservice.showChart(sIdx);
+		model.addAttribute("surveyChart", survey);
 		return "/response_chart";
 	}
 	
