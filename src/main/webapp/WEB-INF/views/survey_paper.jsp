@@ -41,7 +41,7 @@
     					<p class="card-text quesProp" qIdx="${question.qIdx}" qType="${question.qType}"></p>
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
-    								<c:when test="${question.qType == 'multi' }">
+    								<c:when test="${question.qType == 'objective' }">
     								<div class="form-check" style="text-align: left;">
   										<input class="form-check-input" type="radio" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iIdx="${item.iIdx}">
   										<label class="form-check-label" for="q${question.qIdx}a${item.iIdx}">
@@ -50,7 +50,7 @@
 									</div>
 									
     								</c:when>
-    								<c:when test="${question.qType == 'check' }">
+    								<c:when test="${question.qType == 'checkbox' }">
     									<div class="form-check" style="text-align: left;">
   											<input class="form-check-input" type="checkbox" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iIdx="${item.iIdx}">
   											<label class="form-check-label" for="q${question.qIdx}a{item.iIdx}">
@@ -90,13 +90,13 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		let q_Type = $(this).find('.quesProp').attr('qType');
 		let itemList = [];
 
-		if (q_Type === 'multi') {
+		if (q_Type === 'objective') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
 			itemList.push({
 				iIdx: i_idx
 			});
 			
-		} else if (q_Type === 'check') {
+		} else if (q_Type === 'checkbox') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let i_idx = $(this).attr('iIdx');
 				itemList.push({

@@ -84,14 +84,14 @@
     					<div class="col">
     						<select class="form-select selectType" aria-label="Default select example" style="margin-bottom: 10px;">
   								<option selected>선택하세요</option>
-  								<option value="multi">객관식</option>
-  								<option value="check">체크박스</option>
+  								<option value="objective">객관식</option>
+  								<option value="checkbox">체크박스</option>
   								<option value="subjective">주관식</option>
 							</select>
     					</div>
     				</div>
     				<!-- 객관식 선택 시 나타날 박스 -->			
-					<div class="input-group multipleChoice" style="display:none; margin-bottom:10px">
+					<div class="input-group objectiveBox" style="display:none; margin-bottom:10px">
 						<div class="input-group-text">
     						<input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
   						</div>
@@ -109,7 +109,7 @@
 					</div>
 					
 					<!-- 주관식 선택시 나오는 박스 -->
-					<div class="mb-3 longSentence" style="display:none;">
+					<div class="mb-3 subjectiveBox" style="display:none;">
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 					</div>
   				</div>
@@ -148,7 +148,7 @@ $(document).ready(function() {
 		var new_form = $('#question_form_1').clone().attr('id', 'question_form_' + (form_count + 1)).show();
 		
 		// 새로운 객관식 요소 생성, 객관식 요소 추가
-		var multiple_choice = $('<div>').addClass('multipleChoice').hide();
+		var multiple_choice = $('<div>').addClass('objectiveBox').hide();
 		new_form.find('.selectType').after(multiple_choice);
 		
 		// 새로운 체크박스 요소 생성, 체크박스 요소 추가
@@ -156,7 +156,7 @@ $(document).ready(function() {
 		new_form.find('.selectType').after(check_box);
 		
 		// 새로운 주관식 요소 생성, 주관식 요소 추가
-		var long_sentence = $('<div>').addClass('longSentence').hide();
+		var long_sentence = $('<div>').addClass('subjectiveBox').hide();
 		new_form.find('.selectType').after(long_sentence);
 		
 		// 새로운 폼 추가
@@ -166,22 +166,22 @@ $(document).ready(function() {
 	// 질문 형태에 따른 질문지 나오게
 	$(document).on('change', '.selectType', function() {
 		var selectedOption = $(this).val();
-		if (selectedOption == 'multi') {
-			$(this).closest('.question_form').find('.multipleChoice').show();
+		if (selectedOption == 'objective') {
+			$(this).closest('.question_form').find('.objectiveBox').show();
 			$(this).closest('.question_form').find('.checkBox').hide();
-			$(this).closest('.question_form').find('.longSentence').hide();
-		} else if (selectedOption == 'check') {
-			$(this).closest('.question_form').find('.multipleChoice').hide();
+			$(this).closest('.question_form').find('.subjectiveBox').hide();
+		} else if (selectedOption == 'checkbox') {
+			$(this).closest('.question_form').find('.objectiveBox').hide();
 			$(this).closest('.question_form').find('.checkBox').show();
-			$(this).closest('.question_form').find('.longSentence').hide();
+			$(this).closest('.question_form').find('.subjectiveBox').hide();
 		} else if (selectedOption == 'subjective'){
-			$(this).closest('.question_form').find('.multipleChoice').hide();
+			$(this).closest('.question_form').find('.objectiveBox').hide();
 			$(this).closest('.question_form').find('.checkBox').hide();
-			$(this).closest('.question_form').find('.longSentence').show();
+			$(this).closest('.question_form').find('.subjectiveBox').show();
 		} else {
-			$(this).closest('.question_form').find('.multipleChoice').hide();
+			$(this).closest('.question_form').find('.objectiveBox').hide();
 		    $(this).closest('.question_form').find('.checkBox').hide();
-		    $(this).closest('.question_form').find('.longSentence').hide();
+		    $(this).closest('.question_form').find('.subjectiveBoxe').hide();
 		}
 	});
 });
@@ -197,7 +197,7 @@ $(document).on('click', '.add-radio-input', function() {
     var radio_button = $('<div class="input-group-text" style="margin-bottom: 10px;"><input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"></div>');
     var input_text = $('<input type="text" class="form-control" style="margin-bottom: 10px; margin-right: 10px" aria-label="Text input with radio button">');
  	// 객관식 요소 하단에 새로운 라디오버튼과 입력텍스트 추가
-    $(this).parent().after($('<div class="input-group multipleChoice"></div>').append(radio_button).append(input_text).append($('<button type="button" class="btn-close i-close" aria-label="Close"></button>')));
+    $(this).parent().after($('<div class="input-group objectiveBox"></div>').append(radio_button).append(input_text).append($('<button type="button" class="btn-close i-close" aria-label="Close"></button>')));
 });
 
 //체크박스 추가 버튼 클릭 이벤트 핸들러
@@ -228,20 +228,20 @@ $(document).on('click', '.submit-survey', function() {
 		let q_type = $(this).find('.selectType').val();
 		let items = [];
 	
-		if (q_type === 'multi') {
-			$('.multipleChoice .form-control', this).each(function() {
+		if (q_type === 'objective') {
+			$('.objectiveBox .form-control', this).each(function() {
 				let i_content = $(this).val();
 				let item = { iContent: i_content };
 				items.push(item);
 			});
-		} else if (q_type === 'check') {
+		} else if (q_type === 'checkbox') {
 			$('.checkBox .form-control', this).each(function() {
 				let i_content = $(this).val();
 				let item = { iContent: i_content };
 				items.push(item);
 			});
 		} else if (q_type === 'subjective') {
-			$('.longSentence .form-control', this).each(function() {
+			$('.subjectiveBox .form-control', this).each(function() {
 				let i_content = $(this).val();
 				let item = { iContent: i_content };
 				items.push(item);
