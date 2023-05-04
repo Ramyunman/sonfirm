@@ -4,11 +4,12 @@ import java.util.List;
 
 public class Question {
 	
-	private int qIdx;				//q_idx
-	private String qTitle;			//q_title
+	private int qIdx;			//q_idx
+	private String qTitle;		//q_title
 	private String qType;		//q_type	
-	private int sIdx;				//s_idx
+	private int sIdx;			//s_idx
 	private List<Item> qItems;
+	private List<ResponseItem> responseItems;
 	
 	public int getqIdx() {
 		return qIdx;
@@ -39,6 +40,12 @@ public class Question {
 	}
 	public void setqItems(List<Item> qItems) {
 		this.qItems = qItems;
+	}
+	public List<ResponseItem> getResponseItems() {
+		return responseItems;
+	}
+	public void setResponseItems(List<ResponseItem> responseItems) {
+		this.responseItems = responseItems;
 	}
 	
 	

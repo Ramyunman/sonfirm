@@ -37,10 +37,10 @@
 	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
 	<c:forEach var="surveyChart" items="${survey.sQuestions}">
 		<c:choose>
-			<c:when test="${question.qType == 'objective' }">
+			<c:when test="${surveyChart.qType == 'objective' }">
 				<div id="piechart" style="width: 900px; height: 500px;"></div>
 			</c:when>
-			<c:when test="${question.qType == 'checkbox' }">
+			<c:when test="${surveyChart.qType == 'checkbox' }">
 				<div id="piechart" style="width: 900px; height: 500px;"></div>
 			</c:when>
 		</c:choose>

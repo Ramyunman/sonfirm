@@ -124,8 +124,8 @@
   <result property="qTitle" column="q_title"/>
   <result property="qType" column="q_type"/>
   <result property="sIdx" column="s_idx"/>
-  <collection property="responseItems" ofType="ResponseItem">
-    <result property="rIdx" column="r_idx"/>
+  <collection property="responseItems" ofType="com.sonfirm.example.domain.ResponseItem">
+    <id property="rIdx" column="r_idx"/>
     <result property="iIdx" column="i_idx"/>
     <result property="rSubjective" column="r_subjective"/>
   </collection>
