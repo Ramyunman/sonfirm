@@ -63,6 +63,7 @@ public class SurveyController {
 	}
 	
 	@RequestMapping("/submit-survey")
+	
 	@ResponseBody
 	public Survey submitSurvey(@RequestBody Survey survey) {
 		surveyservice.createSurvey(survey);		

@@ -34,6 +34,14 @@ public class Survey {
 		this.sQuestions = sQuestions;
 	}
 	
+	public int getTotalCount() {	// chart
+		int count = 0;
+		for(Question question : sQuestions) {
+			count += question.getTotalCount();
+		}
+		return count;
+		
+	}
 	
 
 }
