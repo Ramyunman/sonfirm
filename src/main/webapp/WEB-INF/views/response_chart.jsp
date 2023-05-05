@@ -13,7 +13,9 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+    	var chartInfo = ${surveyChart};
 
+    	// chartInfo를 사용하여 데이터 구성
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
           ['Work',     11],
@@ -24,7 +26,7 @@
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: chartInfo.qTitle
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
