@@ -110,6 +110,13 @@ public class SurveyServiceImpl implements SurveyService {
 				
 		return questions;
 	}
+
+	@Override
+	public List<ResponseItem> getResponsesBySIdx(int sIdx) {
+		return surveyMapper.getResponsesBySIdx(sIdx);
+	}
+	
+	
 		
 
 }

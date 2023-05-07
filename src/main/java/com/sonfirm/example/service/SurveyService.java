@@ -41,4 +41,7 @@ public interface SurveyService {
 	
 	//survey 차트 데이터 
 	public List<Question> showChart(int sIdx);
+	
+	//survey 차트 데이터2
+	public List<ResponseItem> getResponsesBySIdx(int sIdx);
 }

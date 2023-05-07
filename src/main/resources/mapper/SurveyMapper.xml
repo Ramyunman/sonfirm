@@ -134,20 +134,19 @@
 </resultMap>
  -->
  
-<!-- 차트1 question, reponse_item 조인 -->
+<!-- 차트 불러오기1 question, reponse_item 조인 -->
 <select id="showChart" parameterType="Integer" resultType="Question">
-	SELECT ta.q_idx, ta.q_type, ta.q_title, tb.i_idx, tb.i_content
+	SELECT *
 	FROM question ta
 	LEFT JOIN response_item tb ON ta.q_idx = tb.q_idx
 	WHERE ta.s_idx = #{sIdx};
 </select>
 
-<!-- 차트2 response, response_question, reponse_item 조인 -->
+<!-- 차트 불러오기2 response, reponse_item 조인 -->
 <select id="getResponsesBySIdx" parameterType="Integer" resultType="ResponseItem">
 	SELECT *
 	FROM response ta
-	LEFT JOIN response_question tb ON ta.r_idx = tb.r_idx
-	LEFT JOIN response_item tc ON tb.q_idx = tc.q_idx
+	LEFT JOIN response_item tb ON ta.r_idx = tb.r_idx
 	WHERE ta.s_idx = #{sIdx};
 </select>
 </mapper>
