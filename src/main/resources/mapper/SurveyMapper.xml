@@ -135,7 +135,7 @@
  -->
  
 <!-- 차트 보여주는 테이블 -->
-<select id="showChart" parameterType="Integer" resultType="Survey">
+<select id="showChart" parameterType="Integer" resultType="Question">
 	SELECT *
 	FROM question ta
 	LEFT JOIN response_item tb ON ta.q_idx = tb.q_idx

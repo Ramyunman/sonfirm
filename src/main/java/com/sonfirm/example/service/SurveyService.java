@@ -40,5 +40,5 @@ public interface SurveyService {
 	public void createResponseItem(ResponseQuestion responseQuestion);
 	
 	//survey 차트 데이터 
-	public List<Survey> showChart(int sIdx);
+	public List<Question> showChart(int sIdx);
 }

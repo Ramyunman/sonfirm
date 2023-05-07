@@ -83,12 +83,9 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	@Override		// survey 차트 데이터
-	public List<Survey> showChart(int sIdx) {
-		List<Survey> surveys = surveyMapper.showChart(sIdx);
+	public List<Question> showChart(int sIdx) {
+		List<Question> questions = surveyMapper.showChart(sIdx);
 		
-		surveys.forEach(survey -> {
-			List<Question> questions = survey.getsQuestions();
-			
 			questions.forEach(question -> {
 				String qType = question.getqType();
 				String qTitle = question.getqTitle();
@@ -99,12 +96,10 @@ public class SurveyServiceImpl implements SurveyService {
 					int iIdx = responseItem.getiIdx();
 					String iContent = responseItem.getiContent();
 					
-				});
-				
-				
+				});				
 			});
-		});
-		return surveys;
+		
+		return questions;
 	}
 		
 
