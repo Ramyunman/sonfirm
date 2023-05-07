@@ -1,6 +1,9 @@
 package com.sonfirm.example.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,20 +88,26 @@ public class SurveyServiceImpl implements SurveyService {
 	@Override		// survey 차트 데이터
 	public List<Question> showChart(int sIdx) {
 		List<Question> questions = surveyMapper.showChart(sIdx);
+		Map<Integer, Question> questionMap = new HashMap<>();
 		
-			questions.forEach(question -> {
-				String qType = question.getqType();
-				String qTitle = question.getqTitle();
-				int qIdx = question.getqIdx();
+		for (Question question : questions) {
+			if (!questionMap.containsKey(question.getqIdx())) {
+				List<ResponseItem> responseItems = new ArrayList<>();
+				question.setResponseItems(responseItems);
+				questionMap.put(question.getqIdx(), question);
+			}
+		}
+		
+		for (ResponseItem responseItem : surveyMapper.getResponsesBySIdx(sIdx)) {
+			Question question = questionMap.get(responseItem.getqIdx());
+			if (question != null) {
+				ResponseItem newResponseItem = new ResponseItem();
+				newResponseItem.setiIdx(responseItem.getiIdx());
+				newResponseItem.setiContent(responseItem.getiContent());
+				question.getResponseItems().add(newResponseItem);
+			}
+		}
 				
-				List<ResponseItem> responseItems = question.getResponseItems();
-				responseItems.forEach(responseItem -> {
-					int iIdx = responseItem.getiIdx();
-					String iContent = responseItem.getiContent();
-					
-				});				
-			});
-		
 		return questions;
 	}
 		

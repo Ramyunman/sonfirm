@@ -136,7 +136,7 @@
  
 <!-- 차트 보여주는 테이블 -->
 <select id="showChart" parameterType="Integer" resultType="Question">
-	SELECT *
+	SELECT ta.q_idx, ta.q_type, ta.q_title, tb.i_idx, tb.i_content
 	FROM question ta
 	LEFT JOIN response_item tb ON ta.q_idx = tb.q_idx
 	WHERE ta.s_idx = #{sIdx};
