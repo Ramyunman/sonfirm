@@ -112,10 +112,11 @@
 		r_idx,
 		q_idx,
 		i_idx,
-		r_subjective
+		r_subjective,
+		i_content
 	) VALUES 
 	<foreach collection="rItems" item="item" separator=",">
-	(#{rIdx}, #{qIdx}, #{item.iIdx}, #{item.rSubjective})
+	(#{rIdx}, #{qIdx}, #{item.iIdx}, #{item.rSubjective}, #{item.iContent})
 	</foreach>
 </insert>
 

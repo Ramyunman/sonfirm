@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.sonfirm.example.domain.Item;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
@@ -82,7 +84,27 @@ public class SurveyServiceImpl implements SurveyService {
 
 	@Override		// survey 차트 데이터
 	public List<Survey> showChart(int sIdx) {
-		return surveyMapper.showChart(sIdx);
+		List<Survey> surveys = surveyMapper.showChart(sIdx);
+		
+		surveys.forEach(survey -> {
+			List<Question> questions = survey.getsQuestions();
+			
+			questions.forEach(question -> {
+				String qType = question.getqType();
+				String qTitle = question.getqTitle();
+				int qIdx = question.getqIdx();
+				
+				List<ResponseItem> responseItems = question.getResponseItems();
+				responseItems.forEach(responseItem -> {
+					int iIdx = responseItem.getiIdx();
+					String iContent = responseItem.getiContent();
+					
+				});
+				
+				
+			});
+		});
+		return surveys;
 	}
 		
 

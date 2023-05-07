@@ -92,15 +92,19 @@ $(document).on('click', '.surveyResponse-submit', function() {
 
 		if (q_Type === 'objective') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
+			let i_content = $(this).find('input[type="radio"]:checked').siblings('label').text();
 			itemList.push({
-				iIdx: i_idx
+				iIdx: i_idx,
+				iContent: i_content,
 			});
 			
 		} else if (q_Type === 'checkbox') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let i_idx = $(this).attr('iIdx');
+				let i_content = $(this).siblings('label').text();
 				itemList.push({
 					iIdx: i_idx,
+					iContent: i_content,
 				});
 			});
 		} else if (q_Type === 'subjective') {

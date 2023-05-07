@@ -47,13 +47,7 @@ public class Question {
 	public void setResponseItems(List<ResponseItem> responseItems) {
 		this.responseItems = responseItems;
 	}
-	public int getTotalCount() {		// new
-		int totalCount = 0;
-		for (ResponseItem item : responseItems) {
-			totalCount += item.getItemCount();
-		}
-		return totalCount;
-	}
+
 	
 	
 }

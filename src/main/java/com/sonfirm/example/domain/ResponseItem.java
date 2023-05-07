@@ -6,7 +6,8 @@ public class ResponseItem {
 	private int qIdx;				// q_idx
 	private int iIdx;				// i_idx
 	private String rSubjective;		// r_subjective
-	private int itemCount;			// new
+	private String iContent;		// i_content
+	
 	
 	public int getrIdx() {
 		return rIdx;
@@ -32,14 +33,13 @@ public class ResponseItem {
 	public void setrSubjective(String rSubjective) {
 		this.rSubjective = rSubjective;
 	}
-	public int getItemCount() {			// new
-		return itemCount;
+	public String getiContent() {
+		return iContent;
 	}
-	public void setItemCount(int itemCount) {	// new
-		this.itemCount = itemCount;
+	public void setiContent(String iContent) {
+		this.iContent = iContent;
 	}
-	
-	
+
 	
 	
 
