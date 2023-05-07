@@ -21,14 +21,20 @@
         		google.charts.load('current', {'packages':['corechart']});
         		google.charts.setOnLoadCallback(function() {
         			// chartInfo를 사용하여 데이터 구성
-        	        var data = google.visualization.arrayToDataTable([
-        	          ['Task', 'Hours per Day'],
-        	          ['Work',     11],
-        	          ['Eat',      2],
-        	          ['Commute',  2],
-        	          ['Watch TV', 2],
-        	          ['Sleep',    7]
-        	        ]);
+        	        var data = new google.visualization.DataTable();
+        			data.addColumn('string', 'qType');
+        			data.addColumn('string', 'qTitle');
+        			data.addColumn('number', 'qIdx');
+        			data.addColumn('number', 'iIdx');
+        			data.addColumn('string', 'iContent');
+        			
+        	        <c:forEach var="survey" items="${surveys}">
+        	        	<c:forEach var="question" items="${survey.sQuestions}">
+        	        		<c:forEach var="responseItem" items="${question.responseItems}">
+        	        		data.addRow(['${question.qType}', '${question.qTitle}', ${question.qIdx}, ${responseItem.iIdx}, '${responseItem.iContent}']);
+        	        		</c:forEach>
+        	        	</c:forEach>
+        	        </c:forEach>
 
         	        var options = {
         	          title: chartInfo.qTitle
