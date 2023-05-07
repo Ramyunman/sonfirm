@@ -17,6 +17,7 @@
         	url: "/survey-chartData",
         	type: "GET",
         	dataType: "json",
+        	data: { sIdx: s_idx },
         	success: function(chartInfo) {
         		google.charts.load('current', {'packages':['corechart']});
         		google.charts.setOnLoadCallback(function() {
@@ -28,16 +29,16 @@
         			data.addColumn('number', 'iIdx');
         			data.addColumn('string', 'iContent');
         			
-        	        <c:forEach var="survey" items="${surveys}">
-        	        	<c:forEach var="question" items="${survey.sQuestions}">
-        	        		<c:forEach var="responseItem" items="${question.responseItems}">
-        	        		data.addRow(['${question.qType}', '${question.qTitle}', ${question.qIdx}, ${responseItem.iIdx}, '${responseItem.iContent}']);
-        	        		</c:forEach>
-        	        	</c:forEach>
-        	        </c:forEach>
+        			for (let i = 0; i < chartInfo.length; i++) {
+        		    	let question = chartInfo[i];
+        		        for (let j = 0; j < question.responseItems.length; j++) {
+        		    		let responseItem = question.responseItems[j];
+        		           	data.addRow([question.qType, question.qTitle, question.qIdx, responseItem.iIdx, responseItem.iContent]);
+        		       	}
+        		    }
 
         	        var options = {
-        	          title: chartInfo.qTitle
+        	          title: chartInfo[0].qTitle
         	        };
 
         	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));

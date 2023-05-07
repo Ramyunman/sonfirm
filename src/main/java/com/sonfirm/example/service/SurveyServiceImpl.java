@@ -95,6 +95,9 @@ public class SurveyServiceImpl implements SurveyService {
 				List<ResponseItem> responseItems = new ArrayList<>();
 				question.setResponseItems(responseItems);
 				questionMap.put(question.getqIdx(), question);
+			} else {
+				// 이미 questionMap에 저장된 question이면 해당 객체를 가져옴
+		        question = questionMap.get(question.getqIdx()); 
 			}
 		}
 		
