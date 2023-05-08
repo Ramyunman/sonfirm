@@ -55,8 +55,21 @@
 <body>
 	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
 	
-	<div id="piechart1" style="width: 450px; height: 250px;"></div>
-	<div id="piechart2" style="width: 450px; height: 250px;"></div>
+	<div class="container text-center">
+  		<div class="row">
+    		<div class="col">
+      			<div id="piechart1" style="width: 600px; height: 350px;"></div>
+    		</div>
+    		<div class="col">
+     			<div id="piechart2" style="width: 600px; height: 350px;"></div>
+    		</div>
+    		<div class="col">
+      			Column
+    		</div>
+  		</div>
+	</div>
+	
+	
 		
 	<button type="button" class="btn btn-link" onclick="location.href='/survey-list'">설문지 전체 목록</button>
 
