@@ -11,10 +11,10 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart1);
+    google.charts.setOnLoadCallback(drawChart2);
 
-    function drawChart() {
-
+    function drawChart1() {
       var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Day'],
         ['Work',     11],
@@ -28,9 +28,26 @@
         title: 'My Daily Activities'
       };
 
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
+      var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
       chart.draw(data, options);
+    }
+    
+    function drawChart2() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     8],
+          ['Eat',      3],
+          ['Commute',  2],
+          ['Watch TV', 3],
+          ['Sleep',    8]
+        ]);
+        
+        var options = {
+   			title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+        chart.draw(data, options);
     }
     
     </script>
@@ -38,7 +55,8 @@
 <body>
 	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
 	
-	<div id="piechart" style="width: 900px; height: 500px;"></div>
+	<div id="piechart1" style="width: 450px; height: 250px;"></div>
+	<div id="piechart2" style="width: 450px; height: 250px;"></div>
 		
 	<button type="button" class="btn btn-link" onclick="location.href='/survey-list'">설문지 전체 목록</button>
 
