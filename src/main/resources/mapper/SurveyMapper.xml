@@ -137,8 +137,8 @@
 <!-- 차트 불러오기 -->
 <select id="showChart" parameterType="Integer" resultType="ResponseItem">
 	SELECT		q_idx, i_idx, COUNT(i_idx) cnt
-	FROM		response_item ta
-	LEFT JOIN 	response tb ON ta.r_idx = tb.r_idx
+	FROM		response ta
+	LEFT JOIN 	response_item tb ON ta.r_idx = tb.r_idx
 	WHERE s_idx = #{sIdx}
 	GROUP BY 	q_idx, i_idx
 </select>
