@@ -14,6 +14,9 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+    	  $(document).on('click', '.lookChart', function() {
+    	  	let sIdx = $(this).attr('sIdx');
+    	  	
     	  $.ajax({
     		  url: "/survey-chartData/" + sIdx,
     		  type: "GET",
