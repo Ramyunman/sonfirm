@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.sonfirm.example.domain.Chart;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Response;
@@ -58,7 +59,7 @@ public class SurveyController {
 	
 	@RequestMapping("/survey-chartData/{sIdx}")		// 설문지 결과차트 
 	public String responseChart(@PathVariable("sIdx") int sIdx, Model model) {
-		List<ResponseItem> chartInfo = surveyservice.showChart(sIdx);
+		List<Chart> chartInfo = surveyservice.showChart(sIdx);
 		model.addAttribute("surveyChart", chartInfo);
 		return "/survey_chart";
 	}

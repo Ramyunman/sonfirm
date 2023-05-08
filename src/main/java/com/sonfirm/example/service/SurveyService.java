@@ -2,7 +2,7 @@ package com.sonfirm.example.service;
 
 import java.util.List;
 
-
+import com.sonfirm.example.domain.Chart;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
@@ -40,6 +40,6 @@ public interface SurveyService {
 	public void createResponseItem(ResponseQuestion responseQuestion);
 	
 	//survey 차트 데이터 
-	public List<ResponseItem> showChart(int sIdx);
+	public List<Chart> showChart(int sIdx);
 	
 }

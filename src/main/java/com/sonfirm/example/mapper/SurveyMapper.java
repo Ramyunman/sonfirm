@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.sonfirm.example.domain.Chart;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Survey;
@@ -42,6 +43,6 @@ public interface SurveyMapper {
 	public void createResponseItem(ResponseQuestion responseQuestion);
 	
 	//survey 차트 데이터 
-	public List<ResponseItem> showChart(int sIdx);
+	public List<Chart> showChart(int sIdx);
 
 }

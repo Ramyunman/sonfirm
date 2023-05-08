@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sonfirm.example.domain.Chart;
 import com.sonfirm.example.domain.Item;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
@@ -85,10 +86,12 @@ public class SurveyServiceImpl implements SurveyService {
 		
 	}
 
-	@Override		// survey 차트
-	public List<ResponseItem> showChart(int sIdx) {
+	@Override
+	public List<Chart> showChart(int sIdx) {
 		return surveyMapper.showChart(sIdx);
 	}
+
+
 
 
 }
