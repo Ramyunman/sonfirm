@@ -4,52 +4,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Hello World</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-    
-    $(document).on('click', '.lookChart', function() {
-    	let s_idx = $(this).attr('sIdx');
-    	$.ajax({
-        	url: "/survey-chartData",
-        	type: "GET",
-        	dataType: "json",
-        	data: { sIdx: s_idx },
-        	success: function(chartInfo) {
-        		google.charts.load('current', {'packages':['corechart']});
-        		google.charts.setOnLoadCallback(function() {
-        			// chartInfo를 사용하여 데이터 구성
-        	        var data = new google.visualization.DataTable();
-        			data.addColumn('string', 'qType');
-        			data.addColumn('string', 'qTitle');
-        			data.addColumn('number', 'qIdx');
-        			data.addColumn('number', 'iIdx');
-        			data.addColumn('string', 'iContent');
-        			
-        			for (let i = 0; i < chartInfo.length; i++) {
-        		    	let question = chartInfo[i];
-        		        for (let j = 0; j < question.responseItems.length; j++) {
-        		    		let responseItem = question.responseItems[j];
-        		           	data.addRow([question.qType, question.qTitle, question.qIdx, responseItem.iIdx, responseItem.iContent]);
-        		       	}
-        		    }
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-        	        var options = {
-        	          title: chartInfo[0].qTitle
-        	        };
-
-        	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        	        chart.draw(data, options);
-        		});
-        	},
-        	error: function(jqxHR, textStatus, erorThrown) {
-        		console.log("Error:", errorThrown);
-        	}
-    	});  
-    });
+      function drawChart() {
+    	  $.ajax({
+    		  url: "/survey-chartData/" + sIdx,
+    		  type: "GET",
+    		  dataType: "json",
+    		  success: function(response) {
+    			  var data = new google.visualization.DataTable();
+    			  data.addColumn('number','Question');
+    			  data.addColumn('number', 'Option');
+    			  data.addColumn('number', 'Count');
+    			  $.each(response, function(i, item) {
+    				  data.addRow([item.qIdx, item.iIdx, item.cnt]);
+    			  });
+    			  
+    			  var options = {
+    			  	title: 'Survey Results',
+    			  	is3D: true
+    			  };
+    			  
+    			  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+				  chart.draw(data, options);	  
+    		  },
+    		  error: function(jqXHR, textStatus, errorThrown) {
+    			  console.log("Error:", errorThrown);
+    		  }
+    	  });       
+      }
     </script>
 </head>
 <body>

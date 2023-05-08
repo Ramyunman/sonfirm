@@ -85,41 +85,10 @@ public class SurveyServiceImpl implements SurveyService {
 		
 	}
 
-	@Override		// survey 차트 데이터
-	public List<Question> showChart(int sIdx) {
-		List<Question> questions = surveyMapper.showChart(sIdx);
-		Map<Integer, Question> questionMap = new HashMap<>();
-		
-		for (Question question : questions) {
-			if (!questionMap.containsKey(question.getqIdx())) {
-				List<ResponseItem> responseItems = new ArrayList<>();
-				question.setResponseItems(responseItems);
-				questionMap.put(question.getqIdx(), question);
-			} else {
-				// 이미 questionMap에 저장된 question이면 해당 객체를 가져옴
-		        question = questionMap.get(question.getqIdx()); 
-			}
-		}
-		
-		for (ResponseItem responseItem : surveyMapper.getResponsesBySIdx(sIdx)) {
-			Question question = questionMap.get(responseItem.getqIdx());
-			if (question != null) {
-				ResponseItem newResponseItem = new ResponseItem();
-				newResponseItem.setiIdx(responseItem.getiIdx());
-				newResponseItem.setiContent(responseItem.getiContent());
-				question.getResponseItems().add(newResponseItem);
-			}
-		}
-				
-		return questions;
+	@Override		// survey 차트
+	public List<ResponseItem> showChart(int sIdx) {
+		return surveyMapper.showChart(sIdx);
 	}
 
-	@Override
-	public List<ResponseItem> getResponsesBySIdx(int sIdx) {
-		return surveyMapper.getResponsesBySIdx(sIdx);
-	}
-	
-	
-		
 
 }

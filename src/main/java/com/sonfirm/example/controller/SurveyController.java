@@ -21,6 +21,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Response;
+import com.sonfirm.example.domain.ResponseItem;
 import com.sonfirm.example.domain.Survey;
 import com.sonfirm.example.service.SurveyService;
 
@@ -57,7 +58,7 @@ public class SurveyController {
 	
 	@RequestMapping("/survey-chartData/{sIdx}")		// 설문지 결과차트 
 	public String responseChart(@PathVariable("sIdx") int sIdx, Model model) {
-		List<Question> chartInfo = surveyservice.showChart(sIdx);
+		List<ResponseItem> chartInfo = surveyservice.showChart(sIdx);
 		model.addAttribute("surveyChart", chartInfo);
 		return "/survey_chart";
 	}

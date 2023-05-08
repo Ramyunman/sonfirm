@@ -134,20 +134,14 @@
 </resultMap>
  -->
  
-<!-- 차트 불러오기1 question, reponse_item 조인 -->
-<select id="showChart" parameterType="Integer" resultType="Question">
-	SELECT *
-	FROM question ta
-	LEFT JOIN response_item tb ON ta.q_idx = tb.q_idx
-	WHERE ta.s_idx = #{sIdx};
+<!-- 차트 불러오기 -->
+<select id="showChart" parameterType="Integer" resultType="ResponseItem">
+	SELECT		q_idx, i_idx, COUNT(i_idx) cnt
+	FROM		response_item ta
+	LEFT JOIN 	response tb ON ta.r_idx = tb.r_idx
+	WHERE s_idx = #{sIdx}
+	GROUP BY 	q_idx, i_idx
 </select>
 
-<!-- 차트 불러오기2 response, reponse_item 조인 -->
-<select id="getResponsesBySIdx" parameterType="Integer" resultType="ResponseItem">
-	SELECT *
-	FROM response ta
-	LEFT JOIN response_item tb ON ta.r_idx = tb.r_idx
-	WHERE ta.s_idx = #{sIdx};
-</select>
 </mapper>
 
