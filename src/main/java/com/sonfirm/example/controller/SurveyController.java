@@ -2,9 +2,9 @@ package com.sonfirm.example.controller;
 
 import org.slf4j.LoggerFactory;
 
-
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sonfirm.example.domain.Chart;
 import com.sonfirm.example.domain.Pagination;
 import com.sonfirm.example.domain.Question;
@@ -94,9 +97,17 @@ public class SurveyController {
 	
 	@RequestMapping("/submit-response")
 	@ResponseBody
-	public Response submitResponse(@RequestBody Response response) {
+	public Map<String, Object> submitResponse(@RequestBody String jsonData) throws JsonMappingException, JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		Response response = mapper.treeToValue(mapper.readTree(jsonData).get("response"), Response.class);
+		Chart chart = mapper.treeToValue(mapper.readTree(jsonData).get("chart"), Chart.class);
 		surveyservice.createResponse(response);
-		return response;
+		surveyservice.insertChartInfo(chart);
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("response", response);
+		result.put("chart", chart);
+		return result;
 	}
 	
 }
