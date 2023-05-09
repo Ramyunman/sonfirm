@@ -37,7 +37,7 @@
 			<div style="display: flex; justify-content: center; margin-bottom:20px" >
     			<div class="card questionCard" style="width: 30rem;">
   					<div class="card-body">
-    					<h5 class="card-title">${question.qTitle }</h5>
+    					<h5 class="card-title qTitle">${question.qTitle }</h5>
     					<p class="card-text quesProp" qIdx="${question.qIdx}" qType="${question.qType}"></p>
     						<c:forEach var="item" items="${question.qItems}">
     							<c:choose>
@@ -87,17 +87,18 @@ $(document).on('click', '.surveyResponse-submit', function() {
 	$('.questionCard').each(function() {
 		let question = $(this);
 		let q_idx = $(this).find('.quesProp').attr('qIdx');
-		let q_Type = $(this).find('.quesProp').attr('qType');
+		let q_type = $(this).find('.quesProp').attr('qType');
+		let q_title = $(this).find('.qTitle').text();
 		let itemList = [];
 
-		if (q_Type === 'objective') {
+		if (q_type === 'objective') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
 			let i_content = $(this).find('input[type="radio"]:checked').siblings('label').text();
 			itemList.push({
 				iIdx: i_idx,
 			});
 			
-		} else if (q_Type === 'checkbox') {
+		} else if (q_type === 'checkbox') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let i_idx = $(this).attr('iIdx');
 				let i_content = $(this).siblings('label').text();
@@ -105,7 +106,7 @@ $(document).on('click', '.surveyResponse-submit', function() {
 					iIdx: i_idx,
 				});
 			});
-		} else if (q_Type === 'subjective') {
+		} else if (q_type === 'subjective') {
 			let i_idx = $(this).find('.form-label').attr('iIdx');
 			let r_subjective = $(this).find('textarea').val();
 			itemList.push({
@@ -120,16 +121,16 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		});
 	});
 	
-	let s_idx = '${surveyPaper.sIdx}';
-	let surveySubmit = { sIdx: s_idx, rQuestions: questionList,
-						chart : {
-							qIdx: q_idx,
-							iIdx: i_idx,
-							iContent: iContent,
-							qTitle: qTitle,
-							qType: q_Type
-						}
+	let chart = {
+			qIdx: q_idx,
+			iIdx: i_idx,
+			iContent: i_content,
+			qTitle: q_title,
+			qType: q_type
 	};
+	
+	let s_idx = '${surveyPaper.sIdx}';
+	let surveySubmit = { sIdx: s_idx, rQuestions: questionList, chart: chart };
 		
 	console.log('설문지 작성 제출');
 	console.log(surveySubmit);

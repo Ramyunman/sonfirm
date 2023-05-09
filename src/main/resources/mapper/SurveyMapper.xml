@@ -112,11 +112,10 @@
 		r_idx,
 		q_idx,
 		i_idx,
-		r_subjective,
-		i_content
+		r_subjective
 	) VALUES 
 	<foreach collection="rItems" item="item" separator=",">
-	(#{rIdx}, #{qIdx}, #{item.iIdx}, #{item.rSubjective}, #{item.iContent})
+	(#{rIdx}, #{qIdx}, #{item.iIdx}, #{item.rSubjective})
 	</foreach>
 </insert>
  
@@ -132,7 +131,7 @@
 	) VALUES (
 		#{qIdx},
 		#{iIdx},
-		#{cnt},
+		(SELECT COUNT(i_idx) FROM response WHERE q_idx = #{qIdx} AND i_idx = #{iIdx}),
 		#{iContent},
 		#{qTitle},
 		#{qType}
@@ -141,13 +140,12 @@
 
 <!-- 차트 불러오기 -->
 <select id="showChart" parameterType="Integer" resultType="Chart">
-	SELECT		td.q_idx, tb.i_idx, COUNT(tb.i_idx) cnt, tc.i_content, td.q_title, td.q_type
+	SELECT		tc.q_idx, i_idx, COUNT(i_idx) cnt, i_content, q_title, q_type
 	FROM		response ta
-	LEFT JOIN 	response_item tb ON ta.r_idx = tb.r_idx
-	LEFT JOIN 	item tc ON tb.q_idx = tc.q_idx AND tb.i_idx = tc.i_idx
-	LEFT JOIN 	question td ON tb.q_idx = td.q_idx
-	WHERE 		ta.s_idx = #{sIdx}
-	GROUP BY 	td.q_idx, tb.i_idx, tc.i_content, td.q_title, td.q_type
+	LEFT JOIN 	response_question tb ON ta.r_idx = tb.r_idx
+	LEFT JOIN 	chart tc ON tb.q_idx = tc.q_idx 
+	WHERE s_idx = #{sIdx}
+	GROUP BY tc.q_idx
 </select>
 
 </mapper>
