@@ -92,17 +92,6 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		let q_title = $(this).find('.qTitle').text();
 		let itemList = [];
 		
-		// chart 객체를 배열에 추가하는 함수 추가
-		function addToChart(i_idx, i_content) {
-			let chartItem = {
-					qIdx: q_idx,
-					iIdx: i_idx,
-					iContent: i_content,
-					qTitle: q_title,
-					qType: q_type
-			};
-			chart.push(chartItem);
-		}
 
 		if (q_type === 'objective') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
@@ -111,7 +100,6 @@ $(document).on('click', '.surveyResponse-submit', function() {
 				iIdx: i_idx,
 			});
 			
-			addToChart(i_idx, i_content);		// chart 객체에 데이터 추가
 			
 		} else if (q_type === 'checkbox') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
@@ -121,7 +109,6 @@ $(document).on('click', '.surveyResponse-submit', function() {
 					iIdx: i_idx,
 				});
 				
-				addToChart(i_idx, i_content);		// chart 객체에 데이터 추가
 			});
 		
 		} else if (q_type === 'subjective') {
@@ -142,11 +129,10 @@ $(document).on('click', '.surveyResponse-submit', function() {
 	
 	
 	let s_idx = '${surveyPaper.sIdx}';
-	let surveySubmit = { sIdx: s_idx, rQuestions: questionList, chart: chart };
+	let surveySubmit = { sIdx: s_idx, rQuestions: questionList };
 		
 	console.log('설문지 작성 제출');
 	console.log(surveySubmit);
-	console.log(chart);		//chart 객체 로그 출력
 	
 	$.ajax({
 		url: '/submit-response',

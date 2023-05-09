@@ -3,6 +3,7 @@ package com.sonfirm.example.controller;
 import org.slf4j.LoggerFactory;
 
 
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -24,7 +25,6 @@ import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Response;
 import com.sonfirm.example.domain.ResponseItem;
 import com.sonfirm.example.domain.Survey;
-import com.sonfirm.example.domain.SurveySubmit;
 import com.sonfirm.example.service.SurveyService;
 
 @Controller
@@ -94,10 +94,9 @@ public class SurveyController {
 	
 	@RequestMapping("/submit-response")
 	@ResponseBody
-	public SurveySubmit submitSurvey(@RequestBody SurveySubmit surveySubmit) {
-		surveyservice.createResponse(surveySubmit.getResponse());
-		surveyservice.insertChartInfo(surveySubmit.getChart());
-		return surveySubmit;
+	public Response submitResponse(@RequestBody Response response) {
+		surveyservice.createResponse(response);
+		return response;
 	}
 	
 }
