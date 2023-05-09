@@ -11,45 +11,30 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart1);
-    google.charts.setOnLoadCallback(drawChart2);
+    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart1() {
-      var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
-      ]);
+    function drawChart() {
+      // Chart 클래스에서 가져온 데이터 가공
+	  var chartData = [['i_content', 'cnt']];
+      <c:forEach var="data" items="${surveyChart}">
+      	chartData.push(['${data.iContent}', ${data.cnt}]);
+      </c:forEach>
+      
+      // Chart 데이터를 DataTable 형태로 변환
+      var dataTable = google.visualization.arrayToDataTable(chartData);
 
+      //차트 옵션 설정
       var options = {
-        title: 'My Daily Activities'
+        title: '설문조사 결과'
       };
 
-      var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-      chart.draw(data, options);
+      // PieChart 객체 생성
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      
+      // 차트 그리기
+      chart.draw(dataTable, options);
     }
-    
-    function drawChart2() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     8],
-          ['Eat',      3],
-          ['Commute',  2],
-          ['Watch TV', 3],
-          ['Sleep',    8]
-        ]);
-        
-        var options = {
-   			title: 'My Daily Activities'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
-        chart.draw(data, options);
-    }
-    
+      
     </script>
 </head>
 <body>
@@ -58,10 +43,10 @@
 	<div class="container text-center">
   		<div class="row">
     		<div class="col">
-      			<div id="piechart1" style="width: 600px; height: 350px;"></div>
+      			<div id="piechart" style="width: 600px; height: 350px;"></div>
     		</div>
     		<div class="col">
-     			<div id="piechart2" style="width: 600px; height: 350px;"></div>
+     			Chart
     		</div>
     		<div class="col">
       			Column
