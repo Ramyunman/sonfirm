@@ -11,46 +11,39 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawCharts);
 
-    function drawChart() {
+    function drawCharts() {
       // Chart 클래스에서 가져온 데이터 가공
-	  var chartData = [['i_content', 'cnt']];
-      <c:forEach var="data" items="${surveyChart}">
-      	chartData.push(['${data.iContent}', ${data.cnt}]);
-      </c:forEach>
-      
-      // Chart 데이터를 DataTable 형태로 변환
-      var dataTable = google.visualization.arrayToDataTable(chartData);
-
-      //차트 옵션 설정
-      var options = {
-        title: '설문조사 결과'
-      };
-
-      // PieChart 객체 생성
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-      
-      // 차트 그리기
-      chart.draw(dataTable, options);
+	  var chartDataList = [
+      	<c:forEach var="data" items="${surveyChart}" varStatus="status">
+      		['${data.iContent}', ${data.cnt}]${not status.last ? ',' : ''}
+      	</c:forEach>
+      ];
+     
+      // PieChart 차트 그리기
+      chartDataList.forEach(function(chartData, index) {
+    	  var options = {
+    		title: chartData[0]
+    	  };
+    	  var dataTable = google.visualization.arrayToDataTable([['Answer', 'Count']].concat([chartData]));
+          var chart = new google.visualization.PieChart(document.getElementById('piechart' + index));
+          chart.draw(dataTable, options);
+      });      
     }
-      
     </script>
 </head>
+
 <body>
 	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
 	
 	<div class="container text-center">
   		<div class="row">
-    		<div class="col">
-      			<div id="piechart" style="width: 600px; height: 350px;"></div>
-    		</div>
-    		<div class="col">
-     			Chart
-    		</div>
-    		<div class="col">
-      			Column
-    		</div>
+  			<c:forEach var="data" items="${surveyChart}" varStatus="status">
+    			<div class="col">
+      				<div id="piechart${status.index}" style="width: 600px; height: 350px;"></div>
+    			</div>
+    		</c:forEach>
   		</div>
 	</div>
 	
