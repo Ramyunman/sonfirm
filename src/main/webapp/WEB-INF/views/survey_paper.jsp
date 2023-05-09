@@ -82,8 +82,7 @@
 <script>
 // 설문지 사용자 제출 버튼 
 $(document).on('click', '.surveyResponse-submit', function() {
-	let questionList = [];
-	let chart = [];		
+	let questionList = [];	
 	
 	$('.questionCard').each(function() {
 		let question = $(this);
