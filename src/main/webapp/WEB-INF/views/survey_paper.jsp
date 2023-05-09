@@ -92,6 +92,7 @@ $(document).on('click', '.surveyResponse-submit', function() {
 
 		if (q_Type === 'objective') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
+			let i_content = $(this).find('input[type="radio"]:checked').siblings('label').text();
 			itemList.push({
 				iIdx: i_idx,
 			});
@@ -99,6 +100,7 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		} else if (q_Type === 'checkbox') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let i_idx = $(this).attr('iIdx');
+				let i_content = $(this).siblings('label').text();
 				itemList.push({
 					iIdx: i_idx,
 				});
@@ -119,7 +121,15 @@ $(document).on('click', '.surveyResponse-submit', function() {
 	});
 	
 	let s_idx = '${surveyPaper.sIdx}';
-	let surveySubmit = { sIdx: s_idx, rQuestions: questionList };
+	let surveySubmit = { sIdx: s_idx, rQuestions: questionList,
+						chart : {
+							qIdx: q_idx,
+							iIdx: i_idx,
+							iContent: iContent,
+							qTitle: qTitle,
+							qType: q_Type
+						}
+	};
 		
 	console.log('설문지 작성 제출');
 	console.log(surveySubmit);

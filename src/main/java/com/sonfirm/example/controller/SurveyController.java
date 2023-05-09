@@ -24,6 +24,7 @@ import com.sonfirm.example.domain.Question;
 import com.sonfirm.example.domain.Response;
 import com.sonfirm.example.domain.ResponseItem;
 import com.sonfirm.example.domain.Survey;
+import com.sonfirm.example.domain.SurveySubmit;
 import com.sonfirm.example.service.SurveyService;
 
 @Controller
@@ -93,9 +94,10 @@ public class SurveyController {
 	
 	@RequestMapping("/submit-response")
 	@ResponseBody
-	public Response submitResponse(@RequestBody Response response) {
-		surveyservice.createResponse(response);		
-		return response;
+	public SurveySubmit submitSurvey(@RequestBody SurveySubmit surveySubmit) {
+		surveyservice.createResponse(surveySubmit.getResponse());
+		surveyservice.insertChartInfo(surveySubmit.getChart());
+		return surveySubmit;
 	}
 	
 }

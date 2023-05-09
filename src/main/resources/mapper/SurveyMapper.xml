@@ -119,21 +119,26 @@
 	(#{rIdx}, #{qIdx}, #{item.iIdx}, #{item.rSubjective}, #{item.iContent})
 	</foreach>
 </insert>
-
- <!-- 
-<resultMap id="QuestionWithResponseItem" type="Question">
-  <id property="qIdx" column="q_idx"/>
-  <result property="qTitle" column="q_title"/>
-  <result property="qType" column="q_type"/>
-  <result property="sIdx" column="s_idx"/>
-  <collection property="responseItems" ofType="com.sonfirm.example.domain.ResponseItem">
-    <id property="rIdx" column="r_idx"/>
-    <result property="iIdx" column="i_idx"/>
-    <result property="rSubjective" column="r_subjective"/>
-  </collection>
-</resultMap>
- -->
  
+<!-- chart 테이블에 db 입력 -->
+<insert id="insertChartInfo" parameterType="com.sonfirm.example.domain.Chart">
+	INSERT INTO chart (
+		q_idx,
+		i_idx,
+		cnt,
+		i_content,
+		q_title,
+		q_type
+	) VALUES (
+		#{qIdx},
+		#{iIdx},
+		#{cnt},
+		#{iContent},
+		#{qTitle},
+		#{qType}
+	)
+</insert>
+
 <!-- 차트 불러오기 -->
 <select id="showChart" parameterType="Integer" resultType="Chart">
 	SELECT		td.q_idx, tb.i_idx, COUNT(tb.i_idx) cnt, tc.i_content, td.q_title, td.q_type

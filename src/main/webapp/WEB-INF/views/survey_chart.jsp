@@ -15,18 +15,32 @@
 
     function drawCharts() {
       // Chart 클래스에서 가져온 데이터 가공
-	  var chartDataList = [
+	  var surveyChart = [
       	<c:forEach var="data" items="${surveyChart}" varStatus="status">
-      		['${data.iContent}', ${data.cnt}]${not status.last ? ',' : ''}
+      		{'iContent': '${data.iContent}', 'qIdx': ${data.qIdx}, 'cnt': ${data.cnt}}${not status.last ? ',' : ''}
       	</c:forEach>
       ];
+      
+      // qIdx 별로 그룹핑
+      var groupedData = {};
+      surveyChart.forEach(function(data) {
+    	  if (!groupedData[data.qIdx]) {
+    		  groupedData[data.qIdx] = [];
+    	  }
+    	  groupedData[data.qIdx].push([data.iContent, data.cnt]);
+      });
+      
+      var chartDataList = [];
+      for (var qIdx in groupedData) {
+    	  chartDataList.push(groupedData[qIdx]);
+      }
      
       // PieChart 차트 그리기
       chartDataList.forEach(function(chartData, index) {
     	  var options = {
-    		title: chartData[0]
+    		title: 'Question' + (parseInt(index) + 1)
     	  };
-    	  var dataTable = google.visualization.arrayToDataTable([['Answer', 'Count']].concat([chartData]));
+    	  var dataTable = google.visualization.arrayToDataTable([['Answer', 'Count']].concat(chartData));
           var chart = new google.visualization.PieChart(document.getElementById('piechart' + index));
           chart.draw(dataTable, options);
       });      
