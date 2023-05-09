@@ -83,6 +83,7 @@
 // 설문지 사용자 제출 버튼 
 $(document).on('click', '.surveyResponse-submit', function() {
 	let questionList = [];
+	let chart = [];		
 	
 	$('.questionCard').each(function() {
 		let question = $(this);
@@ -90,6 +91,18 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		let q_type = $(this).find('.quesProp').attr('qType');
 		let q_title = $(this).find('.qTitle').text();
 		let itemList = [];
+		
+		// chart 객체를 배열에 추가하는 함수 추가
+		function addToChart(i_idx, i_content) {
+			let chartItem = {
+					qIdx: q_idx,
+					iIdx: i_idx,
+					iContent: i_content,
+					qTitle: q_title,
+					qType: q_type
+			};
+			chart.push(chartItem);
+		}
 
 		if (q_type === 'objective') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
@@ -98,6 +111,8 @@ $(document).on('click', '.surveyResponse-submit', function() {
 				iIdx: i_idx,
 			});
 			
+			addToChart(i_idx, i_content);		// chart 객체에 데이터 추가
+			
 		} else if (q_type === 'checkbox') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let i_idx = $(this).attr('iIdx');
@@ -105,7 +120,10 @@ $(document).on('click', '.surveyResponse-submit', function() {
 				itemList.push({
 					iIdx: i_idx,
 				});
+				
+				addToChart(i_idx, i_content);		// chart 객체에 데이터 추가
 			});
+		
 		} else if (q_type === 'subjective') {
 			let i_idx = $(this).find('.form-label').attr('iIdx');
 			let r_subjective = $(this).find('textarea').val();
@@ -113,6 +131,7 @@ $(document).on('click', '.surveyResponse-submit', function() {
 				iIdx: i_idx,
 				rSubjective: r_subjective,	
 			});
+			
 		}
 		
 		questionList.push({
@@ -121,19 +140,13 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		});
 	});
 	
-	let chart = {
-			qIdx: q_idx,
-			iIdx: i_idx,
-			iContent: i_content,
-			qTitle: q_title,
-			qType: q_type
-	};
 	
 	let s_idx = '${surveyPaper.sIdx}';
 	let surveySubmit = { sIdx: s_idx, rQuestions: questionList, chart: chart };
 		
 	console.log('설문지 작성 제출');
 	console.log(surveySubmit);
+	console.log(chart);		//chart 객체 로그 출력
 	
 	$.ajax({
 		url: '/submit-response',
