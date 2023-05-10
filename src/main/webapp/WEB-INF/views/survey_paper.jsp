@@ -71,7 +71,7 @@
 			</div>
 		</c:forEach>
 		<div class="d-flex justify-content-end">
-			<button type="button" class="btn btn-primary surveyResponse-submit" style="margin-right: 10px" onclick="location.href='/response-complete'">제출</button>
+			<button type="button" class="btn btn-primary surveyResponse-submit" style="margin-right: 10px">제출</button>
 			<button type="button" class="btn btn-secondary" onclick="location.href='/survey-list'">취소</button>
 		</div>
     </div>

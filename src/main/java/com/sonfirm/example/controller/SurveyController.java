@@ -51,21 +51,11 @@ public class SurveyController {
 		return "/survey_create";
 	}
 	
-	@RequestMapping("/survey-complete")		// 설문 작성 완료	
-	public String surveyComplete() {
-		return "/survey_complete";
-	}
-	
-	@RequestMapping("/response-complete")	// 설문지 응답 완료
-	public String responseComplete() {
-		return "/response_complete";
-	}
-	
 	@RequestMapping("/survey-chartData/{sIdx}")		// 설문지 결과차트 
-	public String responseChart(@PathVariable("sIdx") int sIdx, Model model) {
+	public List<Chart> responseChart(@PathVariable("sIdx") int sIdx, Model model) {
 		List<Chart> chartInfo = surveyservice.showChart(sIdx);
 		model.addAttribute("surveyChart", chartInfo);
-		return "/survey_chart";
+		return chartInfo;
 	}
 	
 	@RequestMapping("/submit-survey")	
