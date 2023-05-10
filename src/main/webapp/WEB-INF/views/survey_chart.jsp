@@ -8,14 +8,7 @@
 <title>Hello World</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-
-<body>
-	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
-	
-    <div id="piechart" style="width: 600px; height: 350px;"></div>
-    
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -101,6 +94,12 @@
     }
     
 </script>
+</head>
+
+<body>
+	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
+	
+    <div id="piechart" style="width: 600px; height: 350px;"></div>
     	
 	<button type="button" class="btn btn-link" onclick="location.href='/survey-list'">설문지 전체 목록</button>
 
