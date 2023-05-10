@@ -15,7 +15,12 @@
 
     function drawChart() {
       var data = new google.visualization.DataTable(
-      {
+      
+      data.addColumn('string', 'qIdx');
+      data.addColumn('string', 'qTitle');
+      data.addColumn('string', 'qType');
+      data.addColumn('array', 'items');
+    		  {
     	  "sIdx": s_idx,
     	  "questions" : [
     		  
