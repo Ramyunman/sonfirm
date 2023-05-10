@@ -11,37 +11,62 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawCharts);
+    google.charts.setOnLoadCallback(drawChart1);
+    google.charts.setOnLoadCallback(drawChart2);
+    google.charts.setOnLoadCallback(drawChart3);
 
-    function drawCharts() {
-      // Chart 클래스에서 가져온 데이터 가공
-	  var surveyChart = [
-      	<c:forEach var="data" items="${surveyChart}" varStatus="status">
-      		{'iContent': '${data.iContent}', 'qIdx': ${data.qIdx}, 'cnt': ${data.cnt}}${not status.last ? ',' : ''}
-      	</c:forEach>
-      ];
-      
-      // qIdx 별로 그룹핑
-      var groupedData = {};
-      surveyChart.forEach(function(data) {
-    	  if (!groupedData[data.qIdx]) {
-    		  groupedData[data.qIdx] = [];
-    	  }
-    	  groupedData[data.qIdx].push([data.iContent, data.cnt]);
-      });
-      
-      // PieChart 차트 그리기
-      for (var qIdx in groupedData) {
-    	  var chartData = groupedData[qIdx];
-    	  var options = {
-    	  	title: 'Question' + qIdx
-    	  };
-    	  var dataTable = google.visualization.arrayToDataTable([['Answer', 'Count']].concat(chartData));
-          var chart = new google.visualization.PieChart(document.getElementById('piechart' + qIdx));
-          chart.draw(dataTable, options);
+    function drawChart1() {
+
+      var data = google.visualization.arrayToDataTable([
+    	  ['i_content', 'cnt'],
+    	  ['덴버 너기츠', 4],
+    	  ['피닉스 선즈', 2],
+      ]);
+
+      var options = {
+        title: '1.누가 이길까? q_idx, q_title'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+    
+    function drawChart2() {
+
+        var data = google.visualization.arrayToDataTable([
+      	  ['i_content', 'cnt'],
+      	  ['데빈 부커', 4],
+      	  ['크리스 폴', 3],
+      	  ['케빈 듀란트', 6],
+        ]);
+
+        var options = {
+          title: '2.피닉스에서 주목해야할 선수는?(다중선택가능) q_idx, q_title'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+        chart.draw(data, options);
       }
-        
-	}
+    
+    function drawChart3() {
+
+        var data = google.visualization.arrayToDataTable([
+      	  ['i_content', 'cnt'],
+      	  ['니콜라 요키치', 6],
+      	  ['애런 고든', 1],
+      	  ['자말 머레이', 3],
+        ]);
+
+        var options = {
+          title: '3.덴버에서 주목해야할 선수는?(다중선택가능) q_idx, q_title'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+        chart.draw(data, options);
+      }
     </script>
 </head>
 
@@ -52,7 +77,13 @@
   		<div class="row">
   			<c:forEach var="data" items="${surveyChart}" varStatus="status">
     			<div class="col">
-      				<div id="piechart${data.qIdx}" style="width: 600px; height: 350px;"></div>
+      				<div id="piechart" style="width: 600px; height: 350px;"></div>
+    			</div>
+    			<div class="col">
+      				<div id="piechart2" style="width: 600px; height: 350px;"></div>
+    			</div>
+    			<div class="col">
+      				<div id="piechart3" style="width: 600px; height: 350px;"></div>
     			</div>
     		</c:forEach>
   		</div>
