@@ -14,36 +14,38 @@
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'i_content');
+      data.addColumn('number', 'cnt');
 
-      var data = google.visualization.arrayToDataTable([
-    	  ['i_content', 'cnt'],
-    	  ['덴버 너기츠', 4],
-    	  ['피닉스 선즈', 2],
-      ]);
-
+      <c:forEach var="chart" items="${surveyChart}">
+      	data.addRow(['${chart.iContent}', ${chart.cnt}]);
+      </c:forEach>
+      
       var options = {
         title: '1.누가 이길까? q_idx, q_title'
       };
 
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-      chart.draw(data, options);
+      <c:forEach var="chart" items="{surveyChart}" varStatus="status">
+      	var chart = new google.visualization.PieChart(document.getElementById('piechart${status.index}'));
+      	chart.draw(data, options);
+      </c:forEach>
     }
     
-    </script>
+</script>
 </head>
 
 <body>
 	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
 	
 	<div class="container text-center">
-  		<div class="row">
-  			<c:forEach var="data" items="${surveyChart}" varStatus="status">
+  		<c:forEach var="data" items="${surveyChart}" varStatus="status">
+  			<div class="row">
     			<div class="col">
-      				<div id="piechart" style="width: 600px; height: 350px;"></div>
+      				<div id="piechart${status.index}" style="width: 600px; height: 350px;"></div>
     			</div>
-    		</c:forEach>
-  		</div>
+    		</div>
+    	</c:forEach>
 	</div>
 	
 	
