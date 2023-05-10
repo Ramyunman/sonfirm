@@ -14,35 +14,77 @@
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-      var data = new google.visualization.DataTable(
+      var data = new google.visualization.DataTable();
       
       data.addColumn('string', 'qIdx');
       data.addColumn('string', 'qTitle');
       data.addColumn('string', 'qType');
       data.addColumn('array', 'items');
-    		  {
-    	  "sIdx": s_idx,
-    	  "questions" : [
-    		  
-    		  {
-    			  "qIdx": q_idx,
-    			  "qTitle": q_title,
-    			  "qType": q_type,
-    			  
-    			  "items": [
-    				  "iIdx":i_idx,
-    				  "iContent":i_content,
-    				  "cnt": cnt
-    			  ]
-    			  
-    		  }
-    	  ]
-    	  
-      }  
-    	  
-   );
-    
       
+      var questions= [
+    	  {
+    		  "qIdx": 1,
+    		  "qTitle": "Question 1",
+    		  "qType": "Type A",
+    		  "items": [
+    			  {
+    				  "iIdx":1,
+    				  "iContent": "Item 1",
+    				  "cnt": 10
+    			  },
+    			  {
+    				  "iIdx":2,
+    				  "iContent": "Item 2",
+    				  "cnt": 5
+    			  },
+    			  {
+    				  "iIdx":3,
+    				  "iContent": "Item 3",
+    				  "cnt": 10
+    			  },
+    			  {
+    				  "iIdx":4,
+    				  "iContent": "Item 4",
+    				  "cnt": 10
+    			  }
+    		  ]
+    	  },
+    	  {
+    		  "qIdx": 2,
+    		  "qTitle": "Question 2",
+    		  "qType": "Type B",
+    		  "items": [
+    			  {
+    				  "iIdx":5,
+    				  "iContent": "Item 5",
+    				  "cnt": 8
+    			  },
+    			  {
+    				  "iIdx":6,
+    				  "iContent": "Item 6",
+    				  "cnt": 5
+    			  }
+    		  ]
+    	  }
+      ];
+    		  
+      for (var i = 0; i < questions.length; i++) {
+    	  var question = questions[i];
+    	  var items = [];
+    	  
+    	  for (var j = 0; j < question.items.length; j++) {
+    		  var item = question.items[j];
+    		  items.push([item.iIdx, item.iContent, item.cnt]);
+    	  }
+    	  
+    	  data.addRow([
+    		  question.qIdx,
+    		  question.qTitle,
+    		  question.qType,
+    		  items
+    	  ]);
+      }		  
+     
       var options = {
         title: 'q_Title'
       };
@@ -58,18 +100,8 @@
 <body>
 	<h1 style="margin-bottom:20px; margin-left:20px; margin-top:20px;">결과 차트</h1>
 	
-	<div class="container text-center">
-  		<c:forEach var="data" items="${surveyChart}" varStatus="status">
-  			<div class="row">
-    			<div class="col">
-      				<div id="piechart" style="width: 600px; height: 350px;"></div>
-    			</div>
-    		</div>
-    	</c:forEach>
-	</div>
-	
-	
-		
+    	<div id="piechart" style="width: 600px; height: 350px;"></div>
+    	
 	<button type="button" class="btn btn-link" onclick="location.href='/survey-list'">설문지 전체 목록</button>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
