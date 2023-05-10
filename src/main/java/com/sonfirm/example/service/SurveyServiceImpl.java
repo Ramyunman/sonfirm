@@ -91,12 +91,6 @@ public class SurveyServiceImpl implements SurveyService {
 		return surveyMapper.showChart(sIdx);
 	}
 
-	@Override		// chartinfo 저장
-	public void insertChartInfo(Chart chart) {
-		surveyMapper.insertChartInfo(chart);
-	}
-
-
 
 
 }

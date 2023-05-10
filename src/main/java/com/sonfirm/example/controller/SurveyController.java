@@ -68,8 +68,7 @@ public class SurveyController {
 		return "/survey_chart";
 	}
 	
-	@RequestMapping("/submit-survey")
-	
+	@RequestMapping("/submit-survey")	
 	@ResponseBody
 	public Survey submitSurvey(@RequestBody Survey survey) {
 		surveyservice.createSurvey(survey);		
@@ -97,17 +96,9 @@ public class SurveyController {
 	
 	@RequestMapping("/submit-response")
 	@ResponseBody
-	public Map<String, Object> submitResponse(@RequestBody String jsonData) throws JsonMappingException, JsonProcessingException {
-		ObjectMapper mapper = new ObjectMapper();
-		Response response = mapper.treeToValue(mapper.readTree(jsonData).get("response"), Response.class);
-		Chart chart = mapper.treeToValue(mapper.readTree(jsonData).get("chart"), Chart.class);
+	public Response submitResponse(@RequestBody Response response) {
 		surveyservice.createResponse(response);
-		surveyservice.insertChartInfo(chart);
-		
-		Map<String, Object> result = new HashMap<>();
-		result.put("response", response);
-		result.put("chart", chart);
-		return result;
+		return response;
 	}
 	
 }

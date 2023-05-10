@@ -42,6 +42,4 @@ public interface SurveyService {
 	//survey 차트 데이터 
 	public List<Chart> showChart(int sIdx);
 	
-	//chartinfo 저장
-	public void insertChartInfo(Chart chart);
 }

@@ -30,21 +30,18 @@
     	  groupedData[data.qIdx].push([data.iContent, data.cnt]);
       });
       
-      var chartDataList = [];
-      for (var qIdx in groupedData) {
-    	  chartDataList.push(groupedData[qIdx]);
-      }
-     
       // PieChart 차트 그리기
-      chartDataList.forEach(function(chartData, index) {
+      for (var qIdx in groupedData) {
+    	  var chartData = groupedData[qIdx];
     	  var options = {
-    		title: 'Question' + (parseInt(index) + 1)
+    	  	title: 'Question' + qIdx
     	  };
     	  var dataTable = google.visualization.arrayToDataTable([['Answer', 'Count']].concat(chartData));
-          var chart = new google.visualization.PieChart(document.getElementById('piechart' + index));
+          var chart = new google.visualization.PieChart(document.getElementById('piechart' + qIdx));
           chart.draw(dataTable, options);
-      });      
-    }
+      }
+        
+	}
     </script>
 </head>
 
@@ -55,7 +52,7 @@
   		<div class="row">
   			<c:forEach var="data" items="${surveyChart}" varStatus="status">
     			<div class="col">
-      				<div id="piechart${status.index}" style="width: 600px; height: 350px;"></div>
+      				<div id="piechart${data.qIdx}" style="width: 600px; height: 350px;"></div>
     			</div>
     		</c:forEach>
   		</div>

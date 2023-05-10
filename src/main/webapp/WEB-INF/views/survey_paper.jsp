@@ -123,56 +123,17 @@ $(document).on('click', '.surveyResponse-submit', function() {
 			rItems: itemList,
 		});
 	});
-	
-	let chartList = [];
-	
-	$('.questionCard').each(function() {
-		let question = $(this);
-		let q_idx = $(this).find('.quesProp').attr('qIdx');
-		let q_type = $(this).find('.quesProp').attr('qType');
-		let q_title = $(this).find('.qTitle').text();
-		
-		if (q_type === 'objective') {
-			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
-			let i_content = $(this).find('input[type="radio"]:checked').siblings('label').text();
 			
-		} else if (q_type === 'checkbox') {
-			$(this).find('input[type="checkbox"]:checked').each(function() {
-				let i_idx = $(this).attr('iIdx');
-				let i_content = $(this).siblings('label').text();
-			
-			});
-		}
-		
-		chartList.push({
-			qIdx: q_idx,
-			iIdx: i_idx,
-			iContent: i_content,
-			qTitle: q_title,
-			qType: q_type
-			
-		});
-	});
-	
 	let s_idx = '${surveyPaper.sIdx}';
 	let responseSubmit = { sIdx: s_idx, rQuestions: questionList };
-	let chartSubmit = { sIdx: s_idx, chartList: chartList };
-	
-	let result = {
-			response: responseSubmit,
-			chart: chartSubmit
-	};
-		
+			
 	console.log('설문지 작성 제출');
 	console.log(responseSubmit);
-	console.log('차트용 자료 제출');
-	console.log(chartSubmit);
-
 	
 	$.ajax({
 		url: '/submit-response',
 		type: 'POST',
-		data: JSON.stringify(result),
+		data: JSON.stringify(responseSubmit),
 		contentType: 'application/json',
 		success: function(data) {
 			console.log('설문 작성 제출 완료');
