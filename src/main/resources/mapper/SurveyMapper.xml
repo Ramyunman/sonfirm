@@ -120,15 +120,24 @@
 </insert>
  
 <!-- 차트 불러오기 -->
-<select id="showChart" parameterType="Integer" resultType="Chart">
+<select id="showChart" parameterType="Integer" resultMap="chartResultMap">
 	SELECT		tb.q_idx, tb.i_idx, COUNT(tb.i_idx) cnt, tc.i_content, td.q_title, td.q_type
 	FROM		response ta
 	LEFT JOIN 	response_item tb ON ta.r_idx = tb.r_idx
 	LEFT JOIN 	item tc ON tb.q_idx = tc.q_idx AND tb.i_idx = tc.i_idx
 	LEFT JOIN	question td ON tb.q_idx = td.q_idx 
-	WHERE 		ta.s_idx = #{sIdx} AND tb.q_idx = #{qIdx}
+	WHERE 		ta.s_idx = #{sIdx} AND td.q_type != 'subjective'
 	GROUP BY 	tb.q_idx, tb.i_idx
 </select>
+
+<resultMap id="chartResultMap" type="Chart">
+  <id property="qIdx" column="q_idx"/>
+  <result property="iIdx" column="i_idx"/>
+  <result property="cnt" column="cnt"/>
+  <result property="iContent" column="i_content"/>
+  <result property="qTitle" column="q_title"/>
+  <result property="qType" column="q_type"/>
+</resultMap>
 
 </mapper>
 
