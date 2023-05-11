@@ -83,6 +83,7 @@
 			</nav>
    		</div>
    		<div class="col"></div>
+   		<div class="chart-container"></div>
 	</div>
 </div>
 	
@@ -109,7 +110,6 @@ $(document).on('click', '.lookChart', function() {
 			
 			for (var i = 0; i < data.length; i++) {
 				var item = data[i];
-			    
 				// 이미 동일한 qIdx가 chartData에 존재하는지 확인합니다.
 				var existingChartItem = chartData.find(function(chartItem) {
 					return chartItem.qIdx === item.qIdx;
@@ -148,14 +148,16 @@ $(document).on('click', '.lookChart', function() {
 			google.charts.setOnLoadCallback(drawCharts);
 			
 			function drawCharts() {
+				 // 이전 차트 요소 삭제
+			    $('.chart-container').remove();
+				
 				for (var i = 0; i < chartData.length; i++) {
 					var item = chartData[i];
 					var qIdx = item.qIdx;
 					var qTitle = item.qTitle;
 					var items = item.items;
-					
+										  
 					// qIdx 별로 파이차트를 그리기 위한 데이터 생성
-					
 					var data = new google.visualization.DataTable();
 					data.addColumn('string', 'Item');
 					data.addColumn('number', 'Count');
@@ -170,6 +172,7 @@ $(document).on('click', '.lookChart', function() {
 					
 					// 파이차트를 표시할 요소 생성
 					var chartElement = document.createElement('div');
+					chartElement.classList.add('chart-container');
 					chartElement.id = 'piechart-' + qIdx;
 					chartElement.style.width = '600px';
 					chartElement.style.height = '350px';
@@ -185,7 +188,7 @@ $(document).on('click', '.lookChart', function() {
 			
 			// 차트를 원하는 화면에 표시
 			// 예시로 body 태그의 마지막에 차트를 추가하는 코드
-			$('body').append('<div id="piechart" style="width: 600px; height: 350px;"></div>');
+		//	$('body').append('<div id="piechart" style="width: 600px; height: 350px;"></div>');
 		},
 		error: function(error) {
 			console.log('차트 데이터 제출 실패');
