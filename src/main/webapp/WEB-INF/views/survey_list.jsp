@@ -145,20 +145,42 @@ $(document).on('click', '.lookChart', function() {
 						
 			// 구글 파이 차트 생성
 			google.charts.load('current', {'packages':['corechart']});
-			google.charts.setOnLoadCallback(drawChart);
+			google.charts.setOnLoadCallback(drawCharts);
 			
-			function drawChart() {
-				var data = new google.visualization.DataTable();
-				data.addColumn('string', 'Item');
-				data.addColumn('number', 'Count');
-				data.addRows(chartData);
-				
-				var options = {
-						title: 'Survey Chart'
-				};
-				
-				var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-			    chart.draw(data, options);	
+			function drawCharts() {
+				for (var i = 0; i < chartData.length; i++) {
+					var item = chartData[i];
+					var qIdx = item.qIdx;
+					var qTitle = item.qTitle;
+					var items = item.items;
+					
+					// qIdx 별로 파이차트를 그리기 위한 데이터 생성
+					
+					var data = new google.visualization.DataTable();
+					data.addColumn('string', 'Item');
+					data.addColumn('number', 'Count');
+					for (var j = 0; j < items.length; j++) {
+						var subItem = items[j];
+						data.addRow([subItem.iContent, subItem.cnt]);
+					}
+					
+					var options = {
+							title: qTitle
+					};
+					
+					// 파이차트를 표시할 요소 생성
+					var chartElement = document.createElement('div');
+					chartElement.id = 'piechart-' + qIdx;
+					chartElement.style.width = '600px';
+					chartElement.style.height = '350px';
+					document.body.appendChild(chartElement);
+					
+					// 파이차트 생성 및 표시
+					var chart = new google.visualization.PieChart(chartElement);
+				    chart.draw(data, options);	
+					
+				}		
+			
 			}
 			
 			// 차트를 원하는 화면에 표시
