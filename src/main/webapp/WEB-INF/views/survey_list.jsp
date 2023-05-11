@@ -105,27 +105,26 @@ $(document).on('click', '.lookChart', function() {
 			console.log(data);
 						
 			// 데이터 가공
-			var chartData = [
-				{
-					"qIdx": data.qIdx,
-					"qTitle": data.qTitle,
-					"items": [
-						{
-							"iIdx": data.iIdx,
-							"iContent": data.iContent,
-							"cnt": data.cnt
-						}
-					]
-				}
-			];
+			var chartData = [];
 			
-			console.log(chartData);
-			
-			for (var i=0; i<data.length; i++) {
+			for (var i = 0; i < data.length; i++) {
 				var item = data[i];
-				chartData.push([item.iIdx, item.iContent, item.cnt]);
+			    var chartItem = {
+			      "qIdx": item.qIdx,
+			      "qTitle": item.qTitle,
+			      "items": [
+			        {
+			          "iIdx": item.iIdx,
+			          "iContent": item.iContent,
+			          "cnt": item.cnt
+			        }
+			      ]
+			    };
+			    chartData.push(chartItem);
 			}
 			
+			console.log(chartData);
+						
 			// 구글 파이 차트 생성
 			google.charts.load('current', {'packages':['corechart']});
 			google.charts.setOnLoadCallback(drawChart);
