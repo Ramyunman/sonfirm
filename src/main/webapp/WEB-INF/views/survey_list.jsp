@@ -39,12 +39,11 @@
       						<td><a href="${pageContext.request.contextPath}/survey-paper/${survey.sIdx}">${survey.sIdx }</a></td>
       						<td>${survey.sTitle }</td>
       						<td>${survey.sDesc }</td>
-      						<td><a class="btn btn-primary btn-sm lookChart" sIdx="${survey.sIdx}">결과보기</a></td>
+      						<td><a class="btn btn-primary btn-sm show-chart-btn" sIdx="${survey.sIdx}">결과보기</a></td>
     					</tr>
     				</c:forEach>
    				</tbody>
 			</table>
-    	
     </div>
     <div class="col"></div>
   </div>
@@ -88,7 +87,7 @@
 </div>
 	
 <script>
-$(document).on('click', '.lookChart', function() {
+$(document).on('click', '.show-chart-btn', function() {
 		
 	let s_idx = $(this).attr("sIdx");
 	let surveyIndex = { sIdx: s_idx };
