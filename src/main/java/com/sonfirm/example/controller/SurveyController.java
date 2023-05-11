@@ -51,10 +51,10 @@ public class SurveyController {
 		return "/survey_create";
 	}
 	
-	@RequestMapping("/survey-chartData/{sIdx}")		// 설문지 결과차트 
-	public List<Chart> responseChart(@PathVariable("sIdx") int sIdx, Model model) {
-		List<Chart> chartInfo = surveyservice.showChart(sIdx);
-		model.addAttribute("surveyChart", chartInfo);
+	@RequestMapping("/survey-chart")		// 설문지 차트에 데이터를 뿌려주는 역할
+	@ResponseBody
+	public List<Chart> surveyChart(@RequestBody Chart chart) {
+		List<Chart> chartInfo = surveyservice.showChart(chart);
 		return chartInfo;
 	}
 	

@@ -2,6 +2,7 @@ package com.sonfirm.example.domain;
 
 public class Chart {
 	
+	private int sIdx;			// s_idx
 	private int qIdx;			// q_idx
 	private int iIdx;			// i_idx
 	private int cnt;			// cnt
@@ -9,6 +10,12 @@ public class Chart {
 	private String qTitle;		// q_title
 	private String qType;		// q_type
 	
+	public int getsIdx() {
+		return sIdx;
+	}
+	public void setsIdx(int sIdx) {
+		this.sIdx = sIdx;
+	}
 	public int getqIdx() {
 		return qIdx;
 	}

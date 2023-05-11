@@ -87,9 +87,11 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	@Override
-	public List<Chart> showChart(int sIdx) {
-		return surveyMapper.showChart(sIdx);
+	public List<Chart> showChart(Chart chart) {
+		return surveyMapper.showChart(chart);
 	}
+
+
 
 
 

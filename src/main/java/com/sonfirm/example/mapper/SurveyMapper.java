@@ -43,6 +43,6 @@ public interface SurveyMapper {
 	public void createResponseItem(ResponseQuestion responseQuestion);
 	
 	//survey 차트 데이터 
-	public List<Chart> showChart(int sIdx);
+	public List<Chart> showChart(Chart chart);
 	
 }
