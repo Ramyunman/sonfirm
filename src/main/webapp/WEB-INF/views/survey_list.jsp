@@ -109,18 +109,36 @@ $(document).on('click', '.lookChart', function() {
 			
 			for (var i = 0; i < data.length; i++) {
 				var item = data[i];
-			    var chartItem = {
-			      "qIdx": item.qIdx,
-			      "qTitle": item.qTitle,
-			      "items": [
-			        {
-			          "iIdx": item.iIdx,
-			          "iContent": item.iContent,
-			          "cnt": item.cnt
-			        }
-			      ]
-			    };
-			    chartData.push(chartItem);
+			    
+				// 이미 동일한 qIdx가 chartData에 존재하는지 확인합니다.
+				var existingChartItem = chartData.find(function(chartItem) {
+					return chartItem.qIdx === item.qIdx;
+				});
+				
+				if (existingChartItem) {
+					// 이미 동일한 qIdx가 있는 경우 해당 chartItem에 새로운 아이템을 추가합니다.
+					existingChartItem.items.push({
+						"iIdx": item.iIdx,
+						"iContent": item.iContent,
+						"cnt": item.cnt
+					});
+				} else {
+					//동일한 qIdx가 없는 경우 새로운 chartItem을 생성하고 추가합니다.
+					var chartItem = {
+						"qIdx": item.qIdx,
+						"qTitle": item.qTitle,
+						"items": [
+						 	{
+						    	"iIdx": item.iIdx,
+						    	"iContent": item.iContent,
+						    	"cnt": item.cnt
+						          		
+						    }
+						 ]
+					};
+					chartData.push(chartItem);
+				}
+				
 			}
 			
 			console.log(chartData);
