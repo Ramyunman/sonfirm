@@ -59,7 +59,7 @@ public class SurveyController {
 	}
 	
 	@RequestMapping("/survey-result/{sIdx}")		// 설문 결과 차트보기
-	public String surveyResult(@PathVariable("sIdx") int sIdx, Model model) {
+	public String surveyResult(@PathVariable("sIdx") int sIdx) {
 		return "/survey_result";
 	}
 	
