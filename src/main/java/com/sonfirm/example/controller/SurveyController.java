@@ -58,6 +58,11 @@ public class SurveyController {
 		return chartInfo;
 	}
 	
+	@RequestMapping("/survey-result/{sIdx}")		// 설문 결과 차트보기
+	public String surveyResult(@PathVariable("sIdx") int sIdx, Model model) {
+		return "/survey_result";
+	}
+	
 	@RequestMapping("/submit-survey")	
 	@ResponseBody
 	public Survey submitSurvey(@RequestBody Survey survey) {
