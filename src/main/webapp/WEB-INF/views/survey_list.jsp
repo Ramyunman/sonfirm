@@ -68,7 +68,7 @@
    							<c:when test="${ pagination.currentPage == i}">		<%-- 현재페이지가 i와 같다면 회색으로 나오게 한다. --%>
 								<li class="page-item" style="background-color:#ededed;"><a class="page-link" href="#">${i}</a></li>
 							</c:when>
-							<c:when test="${ pagination.currentPage != i }">	<%-- 현재페이지가 i와 같다면 회색으로 나오게 한다. --%>
+							<c:when test="${ pagination.currentPage != i }">	<%-- 현재페이지가 i와 다르다면 링크를 걸게 한다. --%>
 								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/survey-list?currentPage=${i}">${i}</a></li>
 							</c:when>
 						</c:choose>
