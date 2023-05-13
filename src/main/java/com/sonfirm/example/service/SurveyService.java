@@ -36,7 +36,7 @@ public interface SurveyService {
 	//response question 생성
 	public void createResponseQuestion(ResponseQuestion responseQuestion);
 	
-	//response question 생성
+	//response item 생성
 	public void createResponseItem(ResponseQuestion responseQuestion);
 	
 	//survey 차트 데이터 

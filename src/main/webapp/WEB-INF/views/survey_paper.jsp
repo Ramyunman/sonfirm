@@ -93,7 +93,6 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		
 		if (q_type === 'objective') {
 			let i_idx = $(this).find('input[type="radio"]:checked').attr('iIdx');
-			let i_content = $(this).find('input[type="radio"]:checked').siblings('label').text();
 			itemList.push({
 				iIdx: i_idx,
 			});
@@ -101,7 +100,6 @@ $(document).on('click', '.surveyResponse-submit', function() {
 		} else if (q_type === 'checkbox') {
 			$(this).find('input[type="checkbox"]:checked').each(function() {
 				let i_idx = $(this).attr('iIdx');
-				let i_content = $(this).siblings('label').text();
 				itemList.push({
 					iIdx: i_idx,
 				});

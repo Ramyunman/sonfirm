@@ -37,7 +37,7 @@ public class SurveyController {
 	
 	@Autowired SurveyService surveyservice;
 	
-	@RequestMapping("/")
+	@RequestMapping("/")					// 메인 화면
 	public String home(Model model) {
 		
 		logger.debug("debug");
@@ -46,31 +46,19 @@ public class SurveyController {
 		return "/index";
 	}
 	
-	@RequestMapping("/survey-create")		// 설문 작성
+	@RequestMapping("/survey-create")		// 설문지 만드는 화면 보기
 	public String surveyCreate() {
 		return "/survey_create";
 	}
 	
-	@RequestMapping("/survey-chart")		// 설문지 차트에 데이터를 뿌려주는 역할
-	@ResponseBody
-	public List<Chart> surveyChart(@RequestBody Chart chart) {
-		List<Chart> chartInfo = surveyservice.showChart(chart);
-		return chartInfo;
-	}
-	
-	@RequestMapping("/survey-result/{sIdx}")		// 설문 결과 차트보기
-	public String surveyResult(@PathVariable("sIdx") int sIdx) {
-		return "/survey_result";
-	}
-	
-	@RequestMapping("/submit-survey")	
+	@RequestMapping("/submit-survey")		// 풀 수 있도록 설문지를 작성
 	@ResponseBody
 	public Survey submitSurvey(@RequestBody Survey survey) {
 		surveyservice.createSurvey(survey);		
 		return survey;
 	}
 		
-	@RequestMapping("/survey-list")
+	@RequestMapping("/survey-list")			// 전체 설문지 목록보기
 	public String surveyList(Pagination pagination, Model model) {
 		int totalSurveyCount = surveyservice.countSurvey();
 		pagination.setAmount(totalSurveyCount);
@@ -82,18 +70,30 @@ public class SurveyController {
 		
 	}
 	
-	@RequestMapping("/survey-paper/{sIdx}")
+	@RequestMapping("/survey-paper/{sIdx}")		// 만들어진 설문지를 풀 수 있도록 보여주는 화면.
 	public String surveyPaper(@PathVariable("sIdx") int sIdx, Model model) {
 		Survey survey = surveyservice.showAllData(sIdx);
 		model.addAttribute("surveyPaper", survey);		
 		return "/survey_paper";
 	}
 	
-	@RequestMapping("/submit-response")
+	@RequestMapping("/submit-response")		// 만들어진 설문지를 제출함.
 	@ResponseBody
 	public Response submitResponse(@RequestBody Response response) {
 		surveyservice.createResponse(response);
 		return response;
+	}
+	
+	@RequestMapping("/survey-chart")		// 응답한 설문지 결과 데이터를 차트에 뿌리는 역할
+	@ResponseBody
+	public List<Chart> surveyChart(@RequestBody Chart chart) {
+		List<Chart> chartInfo = surveyservice.showChart(chart);
+		return chartInfo;
+	}
+	
+	@RequestMapping("/survey-result/{sIdx}")		// 응답한 설문지 결과 차트 보기
+	public String surveyResult(@PathVariable("sIdx") int sIdx) {
+		return "/survey_result";
 	}
 	
 }

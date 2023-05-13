@@ -148,16 +148,16 @@ $(document).ready(function() {
 		var new_form = $('#question_form_1').clone().attr('id', 'question_form_' + (form_count + 1)).show();
 		
 		// 새로운 객관식 요소 생성, 객관식 요소 추가
-		var multiple_choice = $('<div>').addClass('objectiveBox').hide();
-		new_form.find('.selectType').after(multiple_choice);
+		var objective_box = $('<div>').addClass('objectiveBox').hide();
+		new_form.find('.selectType').after(objective_box);
 		
 		// 새로운 체크박스 요소 생성, 체크박스 요소 추가
 		var check_box = $('<div>').addClass('checkBox').hide();
 		new_form.find('.selectType').after(check_box);
 		
 		// 새로운 주관식 요소 생성, 주관식 요소 추가
-		var long_sentence = $('<div>').addClass('subjectiveBox').hide();
-		new_form.find('.selectType').after(long_sentence);
+		var subjective_box = $('<div>').addClass('subjectiveBox').hide();
+		new_form.find('.selectType').after(subjective_box);
 		
 		// 새로운 폼 추가
 		$('#question_form_' + form_count).after(new_form);
@@ -181,7 +181,7 @@ $(document).ready(function() {
 		} else {
 			$(this).closest('.question_form').find('.objectiveBox').hide();
 		    $(this).closest('.question_form').find('.checkBox').hide();
-		    $(this).closest('.question_form').find('.subjectiveBoxe').hide();
+		    $(this).closest('.question_form').find('.subjectiveBox').hide();
 		}
 	});
 });
