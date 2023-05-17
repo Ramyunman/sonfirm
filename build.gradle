@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.10'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'war'
 }
 
 group = 'com.sonsurvey'
@@ -35,3 +36,10 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+war {
+    archiveName 'son-survey'
+    from sourceSets.main.output
+    dependsOn bootWar
+}
+
