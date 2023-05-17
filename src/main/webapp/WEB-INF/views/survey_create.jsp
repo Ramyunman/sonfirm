@@ -159,8 +159,8 @@ $(document).ready(function() {
 		var subjective_box = $('<div>').addClass('subjectiveBox').hide();
 		new_form.find('.selectType').after(subjective_box);
 		
-		// 새로운 폼 추가
-		$('#question_form_' + form_count).after(new_form);
+		// 추가 버튼이 있는 상위 요소에 새로운 폼 추가
+		$('#question_forms').append(new_form);
 	});
 	
 	// 질문 형태에 따른 질문지 나오게
@@ -184,12 +184,15 @@ $(document).ready(function() {
 		    $(this).closest('.question_form').find('.subjectiveBox').hide();
 		}
 	});
+	
+	// Question 닫기 버튼
+	$(document).on('click', '.q-close', function() {
+		  $(this).closest('.question_form').remove();
+	});
+	
 });
 
-// Question 닫기 버튼
-$(document).on('click', '.q-close', function() {
-	  $(this).closest('.question_form').remove();
-});
+
 	
 //객관식 추가 버튼 클릭 이벤트 핸들러
 $(document).on('click', '.add-radio-input', function() {
