@@ -188,7 +188,7 @@ $(document).ready(function() {
 
 // Question 닫기 버튼
 $(document).on('click', '.q-close', function() {
-	  $(this).closest('.question_form').hide();
+	  $(this).closest('.question_form').remove();
 });
 	
 //객관식 추가 버튼 클릭 이벤트 핸들러
