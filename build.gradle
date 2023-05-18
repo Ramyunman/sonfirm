@@ -8,6 +8,7 @@ plugins {
 group = 'com.sonsurvey'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+apply plugin: 'war'
 
 repositories {
 	mavenCentral()
@@ -20,11 +21,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
 	implementation 'org.springframework.session:spring-session-jdbc'
-	// developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	
 	//jsp 연동	
 	implementation('org.apache.tomcat.embed:tomcat-embed-jasper')
@@ -39,7 +39,5 @@ tasks.named('test') {
 }
 
 bootWar {
-	archiveBaseName = '-'
-	archiveFileName = '-.war'
-	archiveVersion = "0.0.0"
+	archiveName("sonfirm.war")
 }
