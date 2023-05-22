@@ -48,8 +48,8 @@
 		<h1>Hello Survey~!</h1>
 			<div class="card">
   				<div class="card-body">
-    				<input class="form-control surveyTitle" type="text" placeholder="설문조사 주제를 입력하세요." aria-label="default input example" style=margin-bottom: 10px;">
-					<input class="form-control surveyDesc" type="text" placeholder="주제에 대한 상세내용을 입력하세요." aria-label="default input example">
+    				<input class="form-control surveyTitle" type="text" placeholder="설문조사 주제를 입력하세요." aria-label="default input example" style="width: 56rem;  margin-bottom: 10px;">
+					<input class="form-control surveyDesc" type="text" placeholder="주제에 대한 상세내용을 입력하세요." aria-label="default input example" style="width: 56rem;">
   				</div>
 			</div>
    		</div>
