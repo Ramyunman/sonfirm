@@ -79,6 +79,25 @@
   </div>
 </div>
 
+<!-- 모달창 -->
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">설문조사 제출</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>설문조사 제출이 완료되었습니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary modaltolist2" onclick="location.href='/survey-list'">완료</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 // 설문지 사용자 제출 버튼 
 $(document).on('click', '.surveyResponse-submit', function() {
@@ -140,6 +159,13 @@ $(document).on('click', '.surveyResponse-submit', function() {
 			console.log('설문 작성 제출 실패');
 		}
 	});
+});
+
+//버튼 클릭 이벤트 핸들러
+document.querySelector('.surveyResponse-submit').addEventListener('click', function() {
+  // 모달 창 보이기
+  var modal = new bootstrap.Modal(document.querySelector('.modal'));
+  modal.show();
 });
 </script>
 
