@@ -16,9 +16,9 @@ spring:
       suffix: ".jsp"
       
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/lakers?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://3.39.93.100:3306/lakers?characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: 1234
+    password: a5b4c3d2e1
     driver-class-name: com.mysql.cj.jdbc.Driver
     
   session:
@@ -28,7 +28,7 @@ spring:
   
       
 server:
-  port: 8080
+  port: 80
   tomcat:
     file-encoding: UTF-8
     
