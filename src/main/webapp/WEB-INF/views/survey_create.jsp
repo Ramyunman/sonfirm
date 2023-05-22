@@ -42,32 +42,30 @@
 <body>
 
 <div class="container">	
-	<div class="row">
+	<div class="row justify-content-center">
 		<div class="col"></div>
-		<div class="col">
+		<div class="col-12 col-md-8">
 		<h1>Hello Survey~!</h1>
-			<div class="card">
+			<div class="card" style="max-width: 850px; margin-bottom: 10px;">
   				<div class="card-body">
-    				<input class="form-control surveyTitle" type="text" placeholder="설문조사 주제를 입력하세요." aria-label="default input example" style="width: 56rem;  margin-bottom: 10px;">
-					<input class="form-control surveyDesc" type="text" placeholder="주제에 대한 상세내용을 입력하세요." aria-label="default input example" style="width: 56rem;">
+    				<input class="form-control surveyTitle" type="text" placeholder="설문조사 주제를 입력하세요." aria-label="default input example" style="margin-bottom: 10px; padding: 10px;">
+					<input class="form-control surveyDesc" type="text" placeholder="주제에 대한 상세내용을 입력하세요." aria-label="default input example" style="padding: 10px;">
   				</div>
 			</div>
    		</div>
 		<div class="col"></div>
+		<button class="btn btn-outline-success" id="add_question_button" type="button" style="max-width: 800px; margin-bottom: 10px;">질문 추가하기</button>
 	</div>
 </div>
 
-&nbsp;
-<div class="d-grid gap-2 col-6 mx-auto">
-  <button class="btn btn-outline-success" id="add_question_button" type="button">질문 추가하기</button>
-</div>
-&nbsp;
+
+
 
 <!-- 설문지 폼 -->
 <div class="row question_form" id="question_form_1" style="display:none; margin-bottom:10px;">
 	<div class="col"></div>
   	<div class="col">
-  		<div class="card" style="width:58rem;">
+  		<div class="card" style="width:800px;">
   			<div class="card-body" >
   				<div class="container">
     				<div class="row">
@@ -119,7 +117,7 @@
     <div class="col"></div>
 </div>
 
-<div class="row" id="question_forms" style="margin-bottom:10px;"></div>
+<div class="row justify-content-center" id="question_forms" style="margin-bottom:10px;"></div>
 
 <button type="button" class="btn-close i-close" aria-label="Close" style="display:none;"></button>
 
