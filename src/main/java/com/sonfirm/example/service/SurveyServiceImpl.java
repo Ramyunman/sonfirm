@@ -69,21 +69,18 @@ public class SurveyServiceImpl implements SurveyService {
 		for (ResponseQuestion rq : response.getrQuestions()) {
 			rq.setrIdx(response.getrIdx());
 			surveyMapper.createResponseQuestion(rq);
-			surveyMapper.createResponseItem(rq);
-			
+			surveyMapper.createResponseItem(rq);		
 		}
 	}
 
 	@Override		// response question 생성
 	public void createResponseQuestion(ResponseQuestion responseQuestion) {
 		surveyMapper.createResponseQuestion(responseQuestion);
-		
 	}
 
 	@Override		// response item 생성
 	public void createResponseItem(ResponseQuestion responseQuestion) {
 		surveyMapper.createResponseItem(responseQuestion);
-		
 	}
 
 	@Override		//survey 차트 데이터 
