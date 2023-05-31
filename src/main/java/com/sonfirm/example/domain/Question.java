@@ -9,7 +9,6 @@ public class Question {
 	private String qType;		//q_type	
 	private int sIdx;			//s_idx
 	private List<Item> qItems;
-	private List<ResponseItem> responseItems;
 	
 	public int getqIdx() {
 		return qIdx;
@@ -41,12 +40,7 @@ public class Question {
 	public void setqItems(List<Item> qItems) {
 		this.qItems = qItems;
 	}
-	public List<ResponseItem> getResponseItems() {
-		return responseItems;
-	}
-	public void setResponseItems(List<ResponseItem> responseItems) {
-		this.responseItems = responseItems;
-	}
+	
 
 	
 	

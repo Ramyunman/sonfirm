@@ -52,17 +52,17 @@ public class SurveyServiceImpl implements SurveyService {
 		return surveyMapper.listSurvey(pagination);
 	}
 
-	@Override		//survey 갯수 카운트
+	@Override		// survey 갯수 카운트
 	public int countSurvey() {
 		return surveyMapper.countSurvey();
 	}
 
-	@Override		//survey 모든 데이터
+	@Override		// survey 모든 데이터
 	public Survey showAllData(int sIdx) {
 		return surveyMapper.showAllData(sIdx);
 	}
 
-	@Override		//response 생성
+	@Override		// response 생성
 	public void createResponse(Response response) {
 		surveyMapper.createResponse(response);
 		
@@ -74,19 +74,19 @@ public class SurveyServiceImpl implements SurveyService {
 		}
 	}
 
-	@Override		//response question 생성
+	@Override		// response question 생성
 	public void createResponseQuestion(ResponseQuestion responseQuestion) {
 		surveyMapper.createResponseQuestion(responseQuestion);
 		
 	}
 
-	@Override		//response item 생성
+	@Override		// response item 생성
 	public void createResponseItem(ResponseQuestion responseQuestion) {
 		surveyMapper.createResponseItem(responseQuestion);
 		
 	}
 
-	@Override
+	@Override		//survey 차트 데이터 
 	public List<Chart> showChart(Chart chart) {
 		return surveyMapper.showChart(chart);
 	}
