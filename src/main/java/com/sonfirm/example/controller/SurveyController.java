@@ -39,10 +39,6 @@ public class SurveyController {
 	
 	@RequestMapping("/")					// 메인 화면
 	public String home(Model model) {
-		
-		logger.debug("debug");
-		logger.info("info");
-		logger.info("error");
 		return "/index";
 	}
 	
