@@ -160,7 +160,8 @@ $(document).ready(function() {
 		var form_count = $('.question_form').length;
 		
 		// 새로운 폼 생성
-		var new_form = $('#question_form_1').clone().attr('id', 'question_form_' + (form_count + 1)).show();
+		var new_form = $('#question_form_1').clone().attr('id', 'question_form_'
+				+ (form_count + 1)).show();
 		
 		// 새로운 객관식 요소 생성, 객관식 요소 추가
 		var objective_box = $('<div>').addClass('objectiveBox').hide();
