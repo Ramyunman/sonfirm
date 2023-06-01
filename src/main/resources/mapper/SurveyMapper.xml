@@ -61,11 +61,13 @@
   <id property="sIdx" column="s_idx" />
   <result property="sTitle" column="s_title" />
   <result property="sDesc" column="s_desc" />
+  
   <collection property="sQuestions" ofType="com.sonfirm.example.domain.Question">
     <!-- Define resultMap for Question class -->
     <id property="qIdx" column="q_idx" />
     <result property="qTitle" column="q_title" />
     <result property="qType" column="q_type" />
+    
     <collection property="qItems" ofType="com.sonfirm.example.domain.Item">
       <!-- Define resultMap for Item class -->
       <id property="iIdx" column="i_idx" />
