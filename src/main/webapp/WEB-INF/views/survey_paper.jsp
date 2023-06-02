@@ -48,7 +48,6 @@
    											${item.iContent }
   										</label>
 									</div>
-									
     								</c:when>
     								<c:when test="${question.qType == 'checkbox' }">
     									<div class="form-check" style="text-align: left;">
