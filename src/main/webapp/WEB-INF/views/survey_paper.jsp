@@ -52,7 +52,7 @@
     								<c:when test="${question.qType == 'checkbox' }">
     									<div class="form-check" style="text-align: left;">
   											<input class="form-check-input" type="checkbox" name="q${question.qIdx}" id="q${question.qIdx}a${item.iIdx}" iIdx="${item.iIdx}">
-  											<label class="form-check-label" for="q${question.qIdx}a{item.iIdx}">
+  											<label class="form-check-label" for="q${question.qIdx}a${item.iIdx}">
     											${item.iContent }
   											</label>
   										</div>
