@@ -15,7 +15,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.csrf().disable() // CSRF 방어 비활성화
 			.authorizeRequests()
-			.antMatchers("/submit_survey").permitAll() // "/submit_survey" 경로에 대한 인증 필요 없음
+			.antMatchers("/submit-survey").permitAll() // "/submit-survey" 경로에 대한 인증 필요 없음
 			.anyRequest().permitAll(); // 나머지 모든 요청에 대해 허용
 			
 	}
